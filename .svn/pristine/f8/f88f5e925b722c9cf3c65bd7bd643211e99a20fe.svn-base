@@ -1,0 +1,509 @@
+﻿var grid;
+var filter;
+var line = 0;
+$(function () {
+	$("#areablock").ligerComboBox();
+	$("#blockstationname").ligerComboBox();
+	$("#wellnum").ligerComboBox();
+	filter = $("#filter").ligerCheckBox();
+	
+	$("#start").ligerDateEditor(
+                {
+                    format: "yyyy-MM-dd",
+                    labelWidth: 120,
+                    labelAlign: 'center',
+                    cancelable : false
+            }).setValue(myDate().Format("yyyy-MM-dd"));
+	
+	$("#end").ligerDateEditor(
+            {
+                format: "yyyy-MM-dd",
+                labelWidth: 120,
+                labelAlign: 'center',
+                cancelable : false
+            }).setValue(myDate().Format("yyyy-MM-dd"));
+	
+	var proData = [{ id: 1 , text: '' }];
+	jQuery.ajax({
+		type : 'post',
+		url : 'subcool_alarmInfoInit.action',
+		success : function(jsondata) {
+		if (jsondata != null && typeof(jsondata)!="undefined"){
+				var data = eval('(' + jsondata + ')');
+				grid = $("#maingrid").ligerGrid(data);
+			}else{
+				$.ligerDialog.error(outerror(jsondata));
+			}
+		},
+		error : function(data) {
+			
+		}
+	});
+	
+	$("#areablock").ligerComboBox({
+		url:'sagd_queryAreablockInfo.action?arg=sagd',
+		valueField: 'id',
+		valueFieldID: 'areablockid',
+		textField: 'text',
+		selectBoxHeight:350,
+		selectBoxWidth:100,
+		autocomplete:true,
+		hideOnLoseFocus:true,
+		onBeforeSelect:function (data){
+			liger.get("blockstationname").setValue('');
+			liger.get("wellnum").setValue('');	
+		},
+		onSelected:function (data){
+			$('#area_block').text(liger.get("areablock").getText());
+			if (data != null && typeof(data)!="undefined" && data != '') {
+				getStationInitData(data, proData);
+			}
+    	}
+	});
+	
+	$("#blockstationname").ligerComboBox({
+		url:'sagd_queryStationInfo.action',
+        valueField: 'id',
+		valueFieldID: 'stationid',
+		textField: 'text',
+		selectBoxHeight:400,
+		selectBoxWidth:140,
+        hideOnLoseFocus:true,
+        autocomplete:true,
+        onBeforeSelect:function (data){
+        	liger.get("wellnum").setValue('');
+		},
+        onSelected:function (data){
+			$('#blockstation_name').text(liger.get("blockstationname").getText());
+			if (data != null && typeof(data)!="undefined" && data != ''){
+				setWellInitData(data, proData);
+			}
+		}
+	});
+	
+	$("#wellnum").ligerComboBox({
+		url:'sagd_queryWellNameInfo.action',
+		valueField: 'id',
+		valueFieldID: 'wellnumsid',
+		textField: 'text',
+		selectBoxHeight:350,
+		selectBoxWidth:100,
+		hideOnLoseFocus:true,
+        autocomplete:true,
+        onBeforeSelect:function (data){
+        	if(liger.get("areablock").getValue() != ''){
+        		
+        	}
+		},
+		onSelected:function (data){
+			$('#well_num').text(liger.get("wellnum").getText());
+		}
+	});
+
+});
+
+function onSubmit() {
+	var start = $("#start").val();
+	var end = $("#end").val();
+	if(typeof(start) == "undefined" || start == "" ){
+		$.ligerDialog.question("开始时间不能为空");
+		return;
+	}
+	if(typeof(end) == "undefined" || end == "" ){
+		$.ligerDialog.question("结束时间不能为空");
+		return;
+	}
+	if(new Date(start.replace(/\-/g, "\/")) > new Date(end.replace(/\-/g, "\/"))) {
+		$.ligerDialog.question("结束时间必须大于开始时间！");
+		return;
+	}
+ 	
+ 	if(line == 1) {
+ 		$('#maingrid').toggle("normal");
+ 		$('#mainline').toggle("normal");
+ 		line = 0;
+ 	}
+ 	
+	loadData();
+}
+
+function loadData() {
+	grid.setOptions({
+		parms: [
+	        { name: 'areablock', value: $("#areablock").val() },
+	        { name: 'blockstationname', value: $("#blockstationname").val() },
+	        { name: 'wellnum', value: $("#wellnum").val() },
+	        { name: 'filter', value: filter.getValue() },
+	        { name: 'start', value: $("#start").val() },
+	        { name: 'end', value: $("#end").val() }
+		]
+	});
+ 	grid.loadData(true);
+}
+
+function setWellInitData(data,proData) {
+	jQuery.ajax({
+		type : 'post',
+		url:'sagd_queryWellNameInfo.action',
+		data: {"orgid":data},
+		
+		success : function(jsondata) {
+			if (jsondata != null && typeof(jsondata)!="undefined" && jsondata!=0){
+				liger.get("wellnum").setData(eval('(' + jsondata + ')'));
+			}
+			else{
+				liger.get("wellnum").setData(proData);
+			}
+		},
+		error : function(jsondata) {
+			$.ligerDialog.question("请求数据失败，请重新查询");
+		}
+	});
+}
+
+function getStationInitData(data,proData) {
+	var url;
+	if(data == '1') 
+		url = 'sagd_queryStationInfo.action';
+	else
+		url = 'sagd_queryStationInfo.action?areaid='+data;
+	jQuery.ajax({
+		type : 'post',
+		url : url,
+		success : function(jsondata) {
+			if (jsondata != null && typeof(jsondata)!="undefined" && jsondata!=0){
+				liger.get("blockstationname").setData(eval('(' + jsondata + ')'));
+				liger.get("wellnum").setData(proData);
+			}
+			else{
+				liger.get("blockstationname").setData(proData);
+				liger.get("wellnum").setData(proData);
+			}
+		},
+		error : function(jsondata) {
+			$.ligerDialog.question("请求数据失败，请重新查询");
+		}
+	});
+}
+
+function onExport() {
+	var totalNum = 0;
+	var areablock = $("#areablock").val();
+	var blockstationname = $("#blockstationname").val();
+	var wellnum = $("#wellnum").val();
+	var start = $("#start").val();
+	var end = $("#end").val();
+	var url = 'subcool_exportAlarmInfo.action?type=export&areablock='+encodeURIComponent(areablock)+'&blockstationname='+encodeURIComponent(blockstationname)+'&wellnum='+encodeURIComponent(wellnum)+'&start='+encodeURIComponent(start)+'&end='+encodeURIComponent(end);
+	var urls = 'subcool_exportAlarmInfo.action?type=total&areablock='+encodeURIComponent(areablock)+'&blockstationname='+encodeURIComponent(blockstationname)+'&wellnum='+encodeURIComponent(wellnum)+'&start='+encodeURIComponent(start)+'&end='+encodeURIComponent(end);
+	$.ajax({
+		type : 'post',
+		url : urls,
+		async : false,
+		timeout : '30000',
+		success : function (data){
+			totalNum = data;
+		}
+	});
+	if (totalNum < 10000 && totalNum > 0) {
+		 $.ligerDialog.confirm('确定导出吗?<br/>您要导出的数据共有<span style="color:green">' + totalNum + '</span>条',function (yes) { if(yes) window.location.href= url });
+	}
+	else if(totalNum > 10000){
+		$.ligerDialog.confirm('确定导出吗?<br/>您要导出的数据共有<span style="color:red">' + totalNum + '</span>条,<span style="color:red">将会占用较多内存</span>',function (yes) { if(yes) window.location.href= url });
+	}
+	else {
+		$.ligerDialog.confirm('没有可导出的数据！');
+	}
+}
+
+function onLine() {
+	if(typeof($("#wellnum").val()) == "undefined" || $("#wellnum").val() == "" ){
+		$.ligerDialog.question("请选择需要查看曲线的井号");
+		return;
+	}
+	
+	if (line == 0) {
+		$('#maingrid').toggle("normal");
+		$('#mainline').toggle("normal");
+		line = 1;
+	}
+	DrawEChart();
+	/*if($('#lineBtn').text() == "动态曲线") {
+		$('#lineBtn').text("动态数据");
+		DrawEChart();
+	} else {
+		$('#lineBtn').text("动态曲线");
+		loadData();
+	}*/
+}
+
+function DrawEChart() {
+	var myChart0 = echarts.init(document.getElementById('main0'));
+	var myChart1 = echarts.init(document.getElementById('main1'));
+	var myChart2 = echarts.init(document.getElementById('main2'));
+	myChart0.showLoading({  
+        text : "图表数据正在努力加载..."  
+    }); 
+	myChart1.showLoading({  
+        text : "图表数据正在努力加载..."  
+    });
+	myChart2.showLoading({  
+        text : "图表数据正在努力加载..."  
+    });
+	var option0 = {
+		title: {
+			x : 'center',
+			y : 1,
+			text: "SubCool动态曲线"
+		},
+		tooltip : {
+			trigger: 'item',
+			formatter : function (params) {
+	            var date = new Date(params.value[0]);
+	            data = timeToStr(date);
+	            var unit = '';
+	            if(params.seriesName == 'SubCool')
+	            	unit = ' (℃)';
+	            else
+	            	unit = ' (Mpa)'
+	            return data + '<br/>' + params.seriesName + ' : ' + params.value[1] + unit;
+	        }
+		},
+		dataZoom : {
+			y : 320,
+	        show : true,
+	        start : 70,
+	        end : 100
+	    },
+		legend: {
+			x : 80,
+			data:['操作压力','SubCool']
+		},
+		toolbox: {
+			x : 960,
+			show : false,
+			feature : {
+				mark : {show: true},
+				dataView : {show: true, readOnly: false},
+				magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+				restore : {show: true},
+				saveAsImage : {show: true}
+			}
+		},
+		calculable : true,
+		grid: {
+	        x: 40,
+	        y: 30,
+	        x2:40,
+	        y2:10
+	    },
+		xAxis : [
+			{
+				type : 'time',
+				axisLabel:{show:false},
+				data : []
+			}
+		],
+		yAxis : [
+			{
+				type : 'value'
+			}
+		],
+		series : [
+			{
+				name:'操作压力',
+				type:'line',
+				symbolSize:1,
+				data:[]
+			},
+			{
+				name:'SubCool',
+				type:'bar',
+				barWidth:2,
+				data:[]
+			}
+		]
+	};
+	
+	var option1 = {
+			tooltip : {
+				trigger: 'item',
+				formatter : function (params) {
+		            var date = new Date(params.value[0]);
+		            data = timeToStr(date);
+		            var unit = '';
+		            if(params.seriesName == '冲次')
+		            	unit = ' (r/min)';
+		            else
+		            	unit = ' (mm)'
+		            return data + '<br/>' + params.seriesName + ' : ' + params.value[1] + unit;
+		        }
+			},
+			legend: {
+				x : 80,
+				y : 1,
+				data:['冲次','油嘴']
+			},
+			toolbox: {
+				x : 960,
+				show : false,
+				feature : {
+					mark : {show: true},
+					dataView : {show: true, readOnly: false},
+					magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+					restore : {show: true},
+					saveAsImage : {show: true}
+				}
+			},
+			dataZoom : {
+		        show : true,
+		        start : 70,
+		        end : 100
+		    },
+			calculable : true,
+			grid: {
+		        x: 40,
+		        y: 20,
+		        x2:40,
+		        y2:35
+		    },
+			xAxis : [
+				{
+					type : 'time',
+					data : []
+				}
+			],
+			yAxis : [
+				{
+					type : 'value'
+				}
+			],
+			series : [
+				{
+					name:'冲次',
+					type:'line',
+					symbolSize:1,
+					data:[]
+				},
+				{
+					name:'油嘴',
+					type:'bar',
+					barWidth:2,
+					data:[]
+				}
+			]
+		};
+	
+	var option2 = {
+			tooltip : {
+				trigger: 'item',
+				formatter : function (params) {
+		            var date = new Date(params.value[0]);
+		            data = dateToStr(date);
+		            return data + '<br/>' + params.seriesName + ' : ' + params.value[1] + ' (t/d)';
+		        }
+			},
+			legend: {
+				x : 80,
+				y : 1,
+				data:['注气量','产液量']
+			},
+			toolbox: {
+				x : 960,
+				show : false,
+				feature : {
+					mark : {show: true},
+					dataView : {show: true, readOnly: false},
+					magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+					restore : {show: true},
+					saveAsImage : {show: true}
+				}
+			},
+			calculable : true,
+			grid: {
+		        x: 40,
+		        y: 20,
+		        x2:40,
+		        y2:35
+		    },
+			xAxis : [
+				{
+					type : 'time',
+					data : []
+				}
+			],
+			yAxis : [
+				{
+					type : 'value'
+				}
+			],
+			series : [
+				{
+					name:'注气量',
+					type:'line',
+					data:[]
+				},
+				{
+					name:'产液量',
+					type:'line',
+					data:[]
+				}
+			]
+		};
+	
+	jQuery.ajax({
+		type : 'post',
+		url : 'subcool_searchAlarmLine.action',
+		data : {
+			"areablock":$("#areablock").val(),
+			"blockstationname":$("#blockstationname").val(),
+			"wellnum":$("#wellnum").val(),
+			"start":$("#start").val(),
+			"end":$("#end").val()
+		},
+		dataType: "json",
+		success : function(result) {
+			 if (result) {
+				 //option0.legend.data = result.legend;
+				 var data1 = [];
+				 var data2 = [];
+				 var data3 = [];
+				 var data4 = [];
+				 var data5 = [];
+				 var data6 = [];
+				 for(var i = 0; i < result.time.length; i++){
+					 var str = result.time[i];
+					 str = str.replace(/-/g,"/");
+					 data1.push([new Date(str), result.press[i]]);
+					 data2.push([new Date(str), result.subcool[i]]);
+					 data3.push([new Date(str), result.jig[i]]);
+					 data4.push([new Date(str), result.nip[i]]);
+				 }
+				 for(var i = 0; i < result.day.length; i++){
+					 var str = result.day[i];
+					 str = str.replace(/-/g,"/");
+					 data5.push([new Date(str), result.steam[i]]);
+					 data6.push([new Date(str), result.output[i]]);
+				 }
+				 option0.series[0].data = data1;
+				 option0.series[1].data = data2;
+				 option1.series[0].data = data3;
+				 option1.series[1].data = data4;
+				 option2.series[0].data = data5;
+				 option2.series[1].data = data6;
+
+                 myChart0.hideLoading();
+                 myChart1.hideLoading();
+                 myChart2.hideLoading();
+                 
+                 myChart0.setOption(option0);
+                 myChart1.setOption(option1);
+                 myChart2.setOption(option2);
+                 myChart0.connect([myChart1]);
+                 myChart1.connect([myChart0]);
+             } 
+		},
+		error : function(data) {
+			$.ligerDialog.question("请求数据失败，请重新查询");
+		}
+	});
+}

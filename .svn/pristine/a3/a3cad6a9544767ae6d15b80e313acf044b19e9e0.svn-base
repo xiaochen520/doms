@@ -1,0 +1,116 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 联合站Action -->
+	<!-- <package name="struts-abstract" extends="struts-default"> <global-results> 
+		<result name="login" type=”redirect”>/login.jsp</result> </global-results> 
+		</package> -->
+	<package name="combination" extends="struts-abstract">
+		<!-- 日报Action -->
+
+		<!--除氧器日报 -->
+		<action name="tytrb_*" class="com.echo.action.TytyxrbAction" method="{1}"></action>
+		<!--集中水处理日报 -->
+		<action name="jzsclrb_*" class="com.echo.action.JzsclrbAction" method="{1}"></action>
+		<!-- 综合日报Action -->
+		<action name="zhrb_*" class="com.echo.action.ZHRBRPDAction" method="{1}"></action>
+
+		<!-- 分线计量 -->
+		<action name="linem_*" class="com.echo.action.LineMeasureAction" method="{1}"></action>
+		
+		<!-- 反应器 -->
+		<action name="reactor_*" class="com.echo.action.ReactorAction" method="{1}"></action>
+
+		<!-- 综合日报Action -->
+		<action name="yycljy_*" class="com.echo.action.YYCLJYRPDACTION" method="{1}"></action>
+
+		<!-- 水处理加药Action -->
+		<action name="scljy_*" class="com.echo.action.SCLJYRPDAction" method="{1}"></action>
+
+		<!-- 采出水处理Action -->
+		<action name="ccscl_*" class="com.echo.action.CCSCLRPDAction" method="{1}"></action>
+		<!-- 稀油注输联合站-原油处理综合日报Action -->
+		<action name="xyyycl_*" class="com.echo.action.XyyyclAction" method="{1}"></action>
+		<!-- 注水泵房Action -->
+		<action name="zpump_*" class="com.echo.action.ZhuWaterPumpAction" method="{1}"></action>
+
+		<!-- 污 水 处 理 综 合 日 报Action -->
+		<action name="xywscl_*" class="com.echo.action.XYWSCLAction" method="{1}"></action>
+
+		<!-- 原油交接台账Action -->
+		<action name="crudeoil_*" class="com.echo.action.CrudeOilAction" method="{1}"></action>
+
+		<!-- 2号联合站水质监测报Action -->
+		<action name="u2szjc_*" class="com.echo.action.U2szjcAction" method="{1}"></action>
+
+		<!-- 密闭 综 合 日 报Action -->
+		<action name="mbzhrb_*" class="com.echo.action.MBZHRBRPDAction" method="{1}"></action>
+
+		<!-- 一号稠油联合处理站水一区水质监测记录报表Action -->
+		<action name="u1q1szjc_*" class="com.echo.action.U1Q1szjcAction" method="{1}"></action>
+
+		<!-- 一号稠油联合处理站水二区水质监测记录报表Action -->
+		<action name="u1s2szjc_*" class="com.echo.action.U1Q2szjcAction" method="{1}"></action>
+
+		<!--一号稠油联合处理站水一区罐液位及流量报表 -->
+		<action name="u1s1gy_*" class="com.echo.action.U1s1gyAction" method="{1}"></action>
+
+		<!--一号稠油联合处理站水一掺柴油报表 -->
+		<action name="u1czy_*" class="com.echo.action.U1CZYAction" method="{1}"></action>
+
+		<!--一号稠油联合处理站水一分线计量流量日报表 -->
+		<action name="u1fxjl_*" class="com.echo.action.U1FXJLAction" method="{1}"></action>
+		
+		<!--1号稠油联合处理站（油区动态数据 -->
+		<action name="u1yqdt_*" class="com.echo.action.U1yqdtAction" method="{1}"></action>
+		
+		<!--1号稠油联合处理站（油区动态数据 -->
+		<action name="u1sqdt_*" class="com.echo.action.U1sqdtAction" method="{1}"></action>
+		
+		<!--稀油注输联合站（油区） -->
+		<action name="xyyqdt_*" class="com.echo.action.XyyqdtAction" method="{1}"></action>
+		<!--稀油注输联合站（水区） -->
+		<action name="xysqdt_*" class="com.echo.action.XysqdtAction" method="{1}"></action>
+		<!--2号稠油联合处理站（分线计量） -->
+		<action name="u2fxjldt_*" class="com.echo.action.U2fxjldtAction" method="{1}"></action>
+		
+		<!--2号稠油联合处理站（水区） -->
+		<action name="u2sqdt_*" class="com.echo.action.U2sqdtAction" method="{1}"></action>
+		<!--2号稠油联合处理站（油区） -->
+		<action name="u2yqdt_*" class="com.echo.action.U2yqdtAction" method="{1}"></action>
+		<!--1号稠油联合处理站（密闭处理） -->
+		<action name="u1mbdt_*" class="com.echo.action.U1mbdtAction" method="{1}"></action>
+		
+		<!--1号稠油联合处理站（综合） -->
+		<action name="u1ZHRB_*" class="com.echo.action.U1ZHRBAction" method="{1}"></action>
+		<!--除氧器日报 -->
+		<action name="cyqrb_*" class="com.echo.action.CyqyxrbAction" method="{1}"></action>
+		<!--水源井运行日报 -->
+		<action name="syjyxrb_*" class="com.echo.action.SyjyxrbAction" method="{1}"></action>
+		
+		<!--特二联运行日报 -->
+		<action name="t2lyxrb_*" class="com.echo.action.T2sclrbAction" method="{1}"></action>
+		
+		<!--软化器运行日报 -->
+		<action name="rhqyxrb_*" class="com.echo.action.RhqyxrbAction" method="{1}"></action>
+		
+		<!--四合一运行日报 -->
+		<action name="shysclyxrb_*" class="com.echo.action.SHYSCLRBAction" method="{1}"></action>
+			<!--sagd基础信息 -->
+		<action name="sagd_*" class="com.echo.action.SagdAction" method="{1}"></action>
+		<!--供气联合站 -->
+		<action name="gqlhz_*" class="com.echo.action.GQLHZZHAction" method="{1}"></action>
+		<!--采出注入审核统计 -->
+		<action name="cczr_*" class="com.echo.action.CCZRSHAction" method="{1}"></action>
+		
+		<!-- 一号稠油联合处理站水二区罐液位及流量报表 -->
+		<action name="*_*" class="com.echo.action.{1}Action" method="{2}"></action>
+		
+		
+		
+
+		
+	</package>
+</struts>

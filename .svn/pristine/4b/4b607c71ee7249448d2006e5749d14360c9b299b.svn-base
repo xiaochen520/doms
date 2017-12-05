@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+
+
+	<!-- 读取属性文件 -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<value>classpath:jdbc.properties</value>
+		</property>
+	</bean>
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${jdbc.classDriver}"></property>
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<!-- 最长闲置时间,超过这个时间则当前连接被丢弃 -->
+		<property name="maxWait" value="${jdbc.maxwait}"></property>
+		<!-- 最大访问数(同一时间) -->
+		<property name="maxActive" value="${jdbc.maxactive}"></property>
+		<!-- 最多等待连接数 -->
+		<property name="maxIdle" value="${jdbc.maxidle}"></property>
+	</bean>
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="mappingResources">
+			<list>
+				<!-- 映射文件 -->
+				<value>com/echo/dto/PcCdMenuT.hbm.xml</value>
+				<value>com/echo/dto/PcCdDepartmentT.hbm.xml</value>
+				<value>com/echo/dto/PcCdOrgT.hbm.xml</value>
+				<value>com/echo/dto/PcCdPositionT.hbm.xml</value>
+				<value>com/echo/dto/PcCdRightT.hbm.xml</value>
+				<value>com/echo/dto/PcCdRoleT.hbm.xml</value>
+				<value>com/echo/dto/PcCdUserT.hbm.xml</value>
+				<value>com/echo/dto/PcRdLoginfoT.hbm.xml</value>
+
+				<value>com/echo/dto/PcCdWaterSourceWellT.hbm.xml</value>
+				<value>com/echo/dto/PcCdBoilerT.hbm.xml</value>
+				<value>com/echo/dto/PcCdManifoldT.hbm.xml</value>
+				<value>com/echo/dto/PcCdBranchingT.hbm.xml</value>
+
+				<value>com/echo/dto/PcCdObservationWellT.hbm.xml</value>
+				<value>com/echo/dto/PcCdCombinationStationT.hbm.xml</value>
+				<value>com/echo/dto/PcCdStationT.hbm.xml</value>
+				<value>com/echo/dto/PcCdGasstation.hbm.xml</value>
+				
+				<value>com/echo/dto/PcCdAreaInfoT.hbm.xml</value>
+				<value>com/echo/dto/PcCdZoneT.hbm.xml</value>
+				<value>com/echo/dto/PcCdOildrillingStationT.hbm.xml</value>
+				<value>com/echo/dto/PcCdWellSagdT.hbm.xml</value>
+				<value>com/echo/dto/PcCdServerNodeT.hbm.xml</value>
+				<value>com/echo/dto/PcCdRuleWellT.hbm.xml</value>
+				<value>com/echo/dto/PcCdGasWellT.hbm.xml</value>
+			
+				<value>com/echo/dto/PcCdThinoilWellT.hbm.xml</value>
+				<value>com/echo/dto/PcCdWaterfloodingWellT.hbm.xml</value>
+				<value>com/echo/dto/PcCdWaterInjectiontopryT.hbm.xml</value>
+				<value>com/echo/dto/PcCdPortalMenuT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdWellSagddT.hbm.xml</value>				
+				<value>com/echo/dto/PcRpdBoilerCommondT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdBoilerSuperheatT.hbm.xml</value>
+				<value>com/echo/dto/PcCdInstruMentationT.hbm.xml</value>
+				<value>com/echo/dto/PcCdBlCellT.hbm.xml</value>
+				<value>com/echo/dto/PcCdControllerT.hbm.xml</value>
+				<value>com/echo/dto/PcCdBoilerCellT.hbm.xml</value>
+				<value>com/echo/dto/PcCdWellCellT.hbm.xml</value>
+				<!-- <value>com/echo/dto/PcCdInstruNamecT.hbm.xml</value> -->
+				<value>com/echo/dto/PcRpdBoilerCommonT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdBoilerHighDryT.hbm.xml</value>
+				<value>com/echo/dto/PcCdSwitchInFlgT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdReportMessageT.hbm.xml</value>
+				<value>
+					com/echo/dto/PcRpdCrudeTransitionT.hbm.xml
+				</value>
+				<value>com/echo/dto/PcRpdU2GeneralT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdUThinWaterAutoT.hbm.xml</value>
+				<value>
+					com/echo/dto/PcRpdUThinWaterGeneralT.hbm.xml
+				</value>
+				<value>com/echo/dto/PcRpdU2WaterQualityT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdU1SagdGeneralT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdU1SagdAutoT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdU1SagdLiquidT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdU1SagdPivotalT.hbm.xml</value>
+				<value>
+					com/echo/dto/PcRpdU1WaterQuality1T.hbm.xml
+				</value>
+				<value>
+					com/echo/dto/PcRpdU1WaterQuality2T.hbm.xml
+				</value>
+				<value>com/echo/dto/PcRpdU1WaterAutoT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdU1OilAutoT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdUThinOilAutoT.hbm.xml</value>
+				<value>
+					com/echo/dto/PcRpdUThinOilGeneralT.hbm.xml
+				</value>
+				<value>com/echo/dto/PcCdIpSegmentT.hbm.xml</value>
+				<value>com/echo/dto/PcCdIpUsedT.hbm.xml</value>
+				<value>com/echo/dto/PcCdTeamT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdRuleWellProdT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdRuleWellProdbT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdGasWelldT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdU1GeneralT.hbm.xml</value>
+				<value>com/echo/dto/PcCdPortalParamT.hbm.xml</value>
+				<value>
+					com/echo/dto/PcRpdWaterfloodingWellT.hbm.xml
+				</value>
+				<value>com/echo/dto/PcRpdThinWellwT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdThinWellwbT.hbm.xml</value>
+				<value>
+					com/echo/dto/PcRpdWaterfloodingWellbT.hbm.xml
+				</value>
+				<value>com/echo/dto/PcRpdGasDailybT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdGasDailyT.hbm.xml</value>
+				<value>com/echo/dto/PcWellDowntime.hbm.xml</value>
+				<value>com/echo/dto/PcPkStimuTypeT.hbm.xml</value>
+				<value>com/echo/dto/PcProWellStimDaily.hbm.xml</value>
+				<value>
+					com/echo/dto/PcFlowWellParaffinCut.hbm.xml
+				</value>
+
+				<value>com/echo/dto/PcProWellHotWashing.hbm.xml</value>
+				<value>com/echo/dto/PcRpdWaterMessageT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdDeaeratorT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdWaterSourceWelldT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdMollifierT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdDtowerT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdJzsclT.hbm.xml</value>
+				<value>com/echo/dto/PcRpdRhsclT2T.hbm.xml</value>
+				<value>com/echo/dto/PcRpdShysclT.hbm.xml</value>
+				<value>com/echo/dto/PcCdNetworkMdT.hbm.xml</value>
+				<value>com/echo/dto/PcCdCliquePoolT.hbm.xml</value>
+				<value>com/echo/dto/PcCdLargeStationT.hbm.xml</value>
+				
+				<!-- <value>com/echo/dto/PcCdObjectTypeT.hbm.xml</value>
+				<value>com/echo/dto/PcCdFactoryCodeT.hbm.xml</value>
+				<value>com/echo/dto/PcCdSmallStationT.hbm.xml</value> -->
+				
+				<value>com/echo/dto/PcRpdGqlhzzhT.hbm.xml</value>
+				
+				<value>com/echo/dto/PcCdStationPointT.hbm.xml</value>
+				<value>com/echo/dto/PcCdSmallStationT.hbm.xml</value>
+				<value>
+					com/echo/dto/PcCdInstruMentationDT.hbm.xml
+				</value>
+				
+				<value>com/echo/dto/PcCdSubcoolDefaultParam.hbm.xml</value>
+				<value>com/echo/dto/PcCdSubcoolCalParamsInfoT.hbm.xml</value>
+				<value>com/echo/dto/PcRdSubcoolCalResultsT.hbm.xml</value>
+				<value>com/echo/dto/PcRdSuggestionRulesT.hbm.xml</value>
+				<value>com/echo/dto/PcRdSubcoolModifyNewT.hbm.xml</value>
+				<value>com/echo/dto/PcRdSubcoolModifyT.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+				<prop key="hibernate.default_schema">portal</prop>
+				<prop key="hibernate.hbm2ddl.auto">validate</prop>
+				<prop key="hibernate.dialect"> org.hibernate.dialect.OracleDialect</prop>	
+				<!--配置hibernate二级缓存  -->
+				<prop key="hibernate.cache.use_second_level_cache">true</prop> 
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+          		<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>			
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 日志配置 -->
+	<bean id="logClass" class="com.echo.util.AddLog" />
+    
+    <!-- 日志记录类 -->        
+	<bean id="logUtil" class="com.echo.aop.LogUtil"></bean>
+	
+	<!-- 日志管理aop -->
+	<!-- 强制使用cglib代理，如果不设置，将默认使用jdk的代理，但是jdk的代理是基于接口的 -->
+	<aop:config proxy-target-class="true" />  
+	<aop:config>
+	 <aop:aspect id="myAspect" ref="logUtil">
+	  <aop:pointcut expression="execution(* com.echo..*.*(..))" id="logPointCut"/>
+		<aop:before method="logInfo" pointcut-ref="logPointCut"/>
+	 </aop:aspect>
+	</aop:config>
+
+	
+	<!-- AOP配置 -->
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+	<aop:config>
+	<!--方法日志切入点  -->
+	
+	<aop:aspect id="log" ref="logClass">
+	 <!--日志切入点  -->
+	<aop:pointcut expression="execution(* com.echo.service.impl.*.*(..))" id="logbsAssessPoint"/>
+	<aop:after method="addLog" pointcut-ref="logbsAssessPoint"/>
+	</aop:aspect>
+	
+	</aop:config>
+	
+    <!-- 配置事物的组件(Spring提供的对于hibernate事物的管理类) -->
+   <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+   		<property name="sessionFactory" ref="sessionFactory"></property>
+   </bean>
+    <!-- 切入事物com.echo.dao.impl -->  
+   <aop:config>
+   		<aop:pointcut expression="execution(* com.echo.service..*.*(..))" id="businessService"/>
+   		<aop:advisor advice-ref="txManager" pointcut-ref="businessService"/>
+   </aop:config> 
+
+   <!-- 配置通知 -->
+     <tx:advice id="txManager" transaction-manager="transactionManager">
+     	<!-- 指定需要被spring使用事物管理的方法 -->
+     	<tx:attributes>
+     		<tx:method name="add*" propagation="REQUIRED"/>
+     		<tx:method name="remove*" propagation="REQUIRED"/>
+     		<tx:method name="update*"  propagation="REQUIRED"/>
+     		<tx:method name="search*" propagation="REQUIRED" read-only="true"/>
+     	</tx:attributes>
+     </tx:advice>
+   <import resource="beans.xml"/>
+  </beans>

@@ -1,0 +1,1240 @@
+package com.echo.service.impl;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import com.echo.beans.PageControl;
+import com.echo.dao.LineMeasureDao;
+import com.echo.service.LineMeasureService;
+import com.echo.util.CommonsUtil;
+import com.echo.util.DateBean;
+
+public class LineMeasureServiceImpl implements LineMeasureService{
+
+	private LineMeasureDao lineMeasureDao;
+	
+	public void setLineMeasureDao(LineMeasureDao lineMeasureDao) {
+		this.lineMeasureDao = lineMeasureDao;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public JSONArray searchLineM(String rq) throws Exception {
+		JSONObject obj = new JSONObject();
+		JSONArray arr = new JSONArray();
+		//一行
+		String FIT10109Z = "";
+		String FIT10101B = "";
+		String FIT10102B = "";
+		String FIT10103B = "";
+		String FIT10104B = "";
+		
+		List<String>  FIT10109ZSUM = new ArrayList<String>();
+		List<String>  FIT10101BSUM = new ArrayList<String>();
+		List<String>  FIT10102BSUM = new ArrayList<String>();
+		List<String>  FIT10103BSUM = new ArrayList<String>();
+		List<String>  FIT10104BSUM = new ArrayList<String>();
+	 
+		//-----------------合计
+		  List<String> FIT10109ZSUMday  = new ArrayList<String>();
+		  List<String> FIT10101BSUMday  = new ArrayList<String>();
+		  List<String> FIT10102BSUMday  = new ArrayList<String>();
+		  List<String> FIT10103BSUMday  = new ArrayList<String>();
+		  List<String> FIT10104BSUMday  = new ArrayList<String>();
+		  
+		
+		
+		int dataflg = 0;  //数据存在标识  0：不存在， 1：存在
+		String timeCalssql = "select tp.parameter_value from PC_CD_TRIGGERED_PROCESS_T tp where tp.parameter_name='union_station_rpd_start_time'";
+		String calcNum = "-16";
+		List<Object[]> dataSet = lineMeasureDao.searchLineM(timeCalssql);
+		if(dataSet != null && dataSet.size()>0){
+			calcNum = dataSet.get(0) + "";
+		}
+		
+		String stratime =DateBean.getDynamicTime(calcNum, rq, "0");
+		String endtime =DateBean.getDynamicTime(calcNum, rq, "1");
+//		String sql1 ="select RPD_U2_LINE_MEASURE_ID,  to_char(report_time,'YYYY-MM-DD HH24:MI:SS')as report_time ,"+
+//					"FIT_10109,  FIT10109Z,PT_10109, TT_10109, FIT10101A, FIT10101B,PT_10101,TT_10101,MR_10101,"+
+//					"FIT10102A, FIT10102B, PT_10102,TT_10102,MR_10102,FIT10103A,FIT10103B,  PT_10103,TT_10103,"+
+//					"MR_10103,FIT10104A,FIT10104B,PT_10104,TT_10104,MR_10104,"+
+//					"FIT_10110,FIT10110Z, PT_10110, TT_10110, FIT10105A, FIT10105B, PT_10105, TT_10105, MR_10105,"+
+//					"FIT10106A, FIT10106B, PT_10106, TT_10106, MR_10106, FIT10107A, FIT10107B,    PT_10107,"+
+//					"TT_10107, MR_10107, FIT10108A, FIT10108B, PT_10108, TT_10108,"+
+//					"MR_10108 from  PC_RPD_U2_LINE_MEASURE_T  where 1=1";
+		
+		String sql1 ="select RPD_U2_LINE_MEASURE_ID,  to_char(report_time,'YYYY-MM-DD HH24:MI:SS')as report_time ,"+
+		"FIT_10109,  FIT10109Z,PT_10109, TT_10109, FIT10101A, FIT10101B,PT_10101,TT_10101,MR_10101,"+
+		"FIT10102A, FIT10102B, PT_10102,TT_10102,MR_10102,FIT10103A,FIT10103B,  PT_10103,TT_10103,"+
+		"MR_10103,FIT10104A,FIT10104B,PT_10104,TT_10104,MR_10104  from  PC_RPD_U2_LINE_MEASURE_T  where 1=1";
+			sql1 += " and report_time between TO_DATE('"+stratime+"','YYYY-MM-DD HH24:MI:SS') and TO_DATE('"+endtime+"','YYYY-MM-DD HH24:MI:SS') order by report_time";
+		
+//		String sql2 ="select RPD_U2_LINE_MEASURE_ID,  to_char(report_time,'YYYY-MM-DD HH24:MI:SS')as report_time ,"+
+//			"FIT_10110,FIT10110Z, PT_10110, TT_10110, FIT10105A, FIT10105B, PT_10105, TT_10105, MR_10105,"+
+//			"FIT10106A, FIT10106B, PT_10106, TT_10106, MR_10106, FIT10107A, FIT10107B,    PT_10107,"+
+//			"TT_10107, MR_10107, FIT10108A, FIT10108B, PT_10108, TT_10108,"+
+//			"MR_10108 from  PC_RPD_U2_LINE_MEASURE_T  where 1=1";
+//		sql2 += " and report_time between TO_DATE('"+stratime+"','YYYY-MM-DD HH24:MI:SS') and TO_DATE('"+endtime+"','YYYY-MM-DD HH24:MI:SS') order by report_time";
+
+		Object[] u2oiltable = null;
+		//for(int n=1;n<3;n++){
+			
+		List<Object[]> u2oils = lineMeasureDao.searchLineM(sql1);
+		String[][] dates = DateBean.getReportTime("time", rq);
+		if(u2oils != null && u2oils.size()>0){
+
+			for (int i = 0; i < dates.length; i++) {
+				String[] dateList = dates[i];
+				obj = new JSONObject();
+				//yi
+			
+				 
+//				 FIT10109ZSUMday.add(Double.parseDouble(FIT10109Z));
+//				 FIT10101BSUMday.add(Double.parseDouble(FIT10101B));
+//				 FIT10102BSUMday.add(Double.parseDouble(FIT10102B));
+//				 FIT10103BSUMday.add(Double.parseDouble(FIT10103B));
+//				 FIT10104BSUMday.add(Double.parseDouble(FIT10104B));
+			if (i == 2) {
+				 JSONObject oobj =  (JSONObject) arr.get(5);
+		
+				    obj.put("RPD_U2_LINE_MEASURE_ID", "");
+					obj.put("REPORT_TIME", "班累积");
+					obj.put("FIT_10109", "/");
+					if(u2oils.size()>8 && u2oils.get(8)!=null){
+						obj.put("FIT10109Z", CommonsUtil.getRegulation0(u2oils.get(8)[3], u2oils.get(4)[3]));
+					}else{
+						obj.put("FIT10109Z","");
+					}
+					
+					obj.put("PT_10109", "/");
+				    obj.put("TT_10109", "/");
+				    obj.put("FIT10101A", "/");
+				    if(u2oils.size()>8 && u2oils.get(8)!=null){
+				    	obj.put("FIT10101B",  CommonsUtil.getRegulation0(u2oils.get(8)[7], u2oils.get(4)[7]));
+				    }else{
+				    	obj.put("FIT10101B",  "");
+				    }
+				   obj.put("PT_10101", "/");
+				   obj.put("TT_10101", "/");
+				   obj.put("MR_10101", "/");
+				   obj.put("FIT10102A", "/");
+				   if(u2oils.size()>8 && u2oils.get(8)!=null){
+					   obj.put("FIT10102B",  CommonsUtil.getRegulation0(u2oils.get(8)[12], u2oils.get(4)[12]));
+				   }else{
+					   obj.put("FIT10102B",  "");
+				   }
+				   obj.put("PT_10102", "/");
+				   obj.put("TT_10102", "/");
+				   obj.put("MR_10102", "/");
+				   obj.put("FIT10103A", "/");
+				   if(u2oils.size()>8 && u2oils.get(8)!=null){
+					   obj.put("FIT10103B",  CommonsUtil.getRegulation0(u2oils.get(8)[17], u2oils.get(4)[17]));
+				   }else{
+					   obj.put("FIT10103B",  ""); 
+				   }
+				   obj.put("PT_10103", "/");
+				   obj.put("TT_10103", "/");
+				   obj.put("MR_10103", "/");
+				   obj.put("FIT10104A", "/");
+				   if(u2oils.size()>8 && u2oils.get(8)!=null){
+					   obj.put("FIT10104B",  CommonsUtil.getRegulation0(u2oils.get(8)[22], u2oils.get(4)[22]));
+				   }else{
+					   obj.put("FIT10104B", "");
+				   }
+				   obj.put("PT_10104", "/");
+				   obj.put("TT_10104", "/");
+				   obj.put("MR_10104", "/");
+			}else{
+				 FIT10109Z = CommonsUtil.getBanSumData0(FIT10109ZSUM);
+				 FIT10101B = CommonsUtil.getBanSumData0(FIT10101BSUM);
+				 FIT10102B = CommonsUtil.getBanSumData0(FIT10102BSUM);
+				 FIT10103B = CommonsUtil.getBanSumData0(FIT10103BSUM);
+				 FIT10104B = CommonsUtil.getBanSumData0(FIT10104BSUM);
+				 
+				 obj.put("RPD_U2_LINE_MEASURE_ID", "");
+					obj.put("REPORT_TIME", "班累积");
+					obj.put("FIT_10109", "/");
+					obj.put("FIT10109Z",FIT10109Z);
+					obj.put("PT_10109", "/");
+				    obj.put("TT_10109", "/");
+				    obj.put("FIT10101A", "/");
+				    obj.put("FIT10101B", FIT10101B);
+				   obj.put("PT_10101", "/");
+				   obj.put("TT_10101", "/");
+				   obj.put("MR_10101", "/");
+				   obj.put("FIT10102A", "/");
+				   obj.put("FIT10102B", FIT10102B);
+				   obj.put("PT_10102", "/");
+				   obj.put("TT_10102", "/");
+				   obj.put("MR_10102", "/");
+				   obj.put("FIT10103A", "/");
+				   obj.put("FIT10103B", FIT10103B);
+				   obj.put("PT_10103", "/");
+				   obj.put("TT_10103", "/");
+				   obj.put("MR_10103", "/");
+				   obj.put("FIT10104A", "/");
+				  obj.put("FIT10104B", FIT10104B);
+				   obj.put("PT_10104", "/");
+				   obj.put("TT_10104", "/");
+				   obj.put("MR_10104", "/");
+			}
+				 
+				   arr.add(obj);
+				   FIT10109ZSUM = new ArrayList<String>();
+				   FIT10101BSUM = new ArrayList<String>();
+				   FIT10102BSUM = new ArrayList<String>();
+				   FIT10103BSUM = new ArrayList<String>();
+				   FIT10104BSUM = new ArrayList<String>();
+				   
+				   //er
+				  
+				
+				for(String data:dateList){
+					System.out.println(data);
+					u2oiltable = null;
+					dataflg = 0;
+					
+					for(Object[] u2oil:u2oils){
+						obj = new JSONObject();
+						
+						if(data.toString().equals(u2oil[1].toString())){
+							dataflg = 1;
+							u2oiltable = u2oil;
+							//添加班累积值
+//					
+							if(u2oil[3] != null && !"".equals(u2oil[3])){
+								FIT10109ZSUMday.add(u2oil[3].toString());
+							}else{
+								FIT10109ZSUMday.add("");
+							}
+							if(u2oil[7] != null && !"".equals(u2oil[7])){
+								FIT10101BSUMday.add(u2oil[7].toString());
+							}else{
+								FIT10101BSUMday.add("");
+							}
+
+							if(u2oil[12] != null && !"".equals(u2oil[12])){
+								FIT10102BSUMday.add(u2oil[12].toString());
+							}else{
+								FIT10102BSUMday.add("");
+							}
+
+							if(u2oil[17] != null && !"".equals(u2oil[17])){
+								FIT10103BSUMday.add(u2oil[17].toString());
+							}else{
+								FIT10103BSUMday.add("");
+							}
+							if(u2oil[22] != null && !"".equals(u2oil[22])){
+								FIT10104BSUMday.add(u2oil[22].toString());
+							}else{
+								FIT10104BSUMday.add("");
+							}
+							
+							
+						}
+					}
+						if(dataflg == 1){
+							obj.put("RPD_U2_LINE_MEASURE_ID", u2oiltable[0]);
+							obj.put("REPORT_TIME",  data.substring(11, 16));
+
+						   obj.put("FIT_10109", CommonsUtil.getIntData(u2oiltable[2]));
+						   if(u2oiltable[3] !=null){
+						   obj.put("FIT10109Z", CommonsUtil.getIntData(u2oiltable[3]));
+						   FIT10109ZSUM.add(u2oiltable[3].toString());
+						   }else{
+							   obj.put("FIT10109Z", "");
+							   FIT10109ZSUM.add("");
+						   }
+						   obj.put("PT_10109", CommonsUtil.getNotOneData(u2oiltable[4]));
+						   obj.put("TT_10109", CommonsUtil.getIntData(u2oiltable[5]));
+						   obj.put("FIT10101A", CommonsUtil.getIntData(u2oiltable[6]));
+						   if(u2oiltable[7] !=null){
+							   obj.put("FIT10101B", CommonsUtil.getIntData(u2oiltable[7]));
+							   FIT10101BSUM.add(u2oiltable[7].toString());
+						   }else{
+							   obj.put("FIT10101B", "");
+							   FIT10101BSUM.add("");
+						   }
+					  
+						    obj.put("PT_10101", CommonsUtil.getNotOneData(u2oiltable[8]));
+							obj.put("TT_10101", CommonsUtil.getIntData(u2oiltable[9]));
+							obj.put("MR_10101", CommonsUtil.getNotOneData(u2oiltable[10]));
+							obj.put("FIT10102A", CommonsUtil.getIntData(u2oiltable[11]));
+							if(u2oiltable[12] !=null){
+								obj.put("FIT10102B", CommonsUtil.getIntData(u2oiltable[12]));
+								FIT10102BSUM.add(u2oiltable[12].toString());
+							}else{
+								obj.put("FIT10102B", "");
+								FIT10102BSUM.add("");
+							}
+							  
+							obj.put("PT_10102", CommonsUtil.getNotOneData(u2oiltable[13]));
+							obj.put("TT_10102", CommonsUtil.getIntData(u2oiltable[14]));
+							obj.put("MR_10102", CommonsUtil.getNotOneData(u2oiltable[15]));
+							obj.put("FIT10103A", CommonsUtil.getIntData(u2oiltable[16]));
+							if(u2oiltable[17] !=null){
+								obj.put("FIT10103B", CommonsUtil.getIntData(u2oiltable[17]));
+								FIT10103BSUM.add(u2oiltable[17].toString());
+							}else{
+								obj.put("FIT10103B", "");
+								FIT10103BSUM.add("");
+							}
+							obj.put("PT_10103", CommonsUtil.getNotOneData(u2oiltable[18]));
+							obj.put("TT_10103", CommonsUtil.getIntData(u2oiltable[19]));
+							obj.put("MR_10103", CommonsUtil.getNotOneData(u2oiltable[20]));
+							obj.put("FIT10104A", CommonsUtil.getIntData(u2oiltable[21]));
+							if(u2oiltable[22] !=null){
+								obj.put("FIT10104B", CommonsUtil.getIntData(u2oiltable[22]));
+								FIT10104BSUM.add(u2oiltable[22].toString());
+							}else{
+								obj.put("FIT10104B", "");
+								FIT10104BSUM.add("");
+							}
+							obj.put("PT_10104", CommonsUtil.getNotOneData(u2oiltable[23]));
+							obj.put("TT_10104", CommonsUtil.getIntData(u2oiltable[24]));
+							obj.put("MR_10104", CommonsUtil.getNotOneData(u2oiltable[25]));
+							
+							
+							
+						}else{
+							obj.put("RPD_U2_LINE_MEASURE_ID", "");
+							obj.put("REPORT_TIME",  data.substring(11, 16));
+
+						   obj.put("FIT_10109", "");
+						   obj.put("FIT10109Z", "");
+						   obj.put("PT_10109", "");
+						   obj.put("TT_10109", "");
+						   obj.put("FIT10101A", "");
+						   obj.put("FIT10101B", "");
+					  
+						    obj.put("PT_10101", "");
+							obj.put("TT_10101", "");
+							obj.put("MR_10101", "");
+							obj.put("FIT10102A", "");
+							obj.put("FIT10102B","");
+							  
+							obj.put("PT_10102", "");
+							obj.put("TT_10102", "");
+							obj.put("MR_10102", "");
+							obj.put("FIT10103A", "");
+							obj.put("FIT10103B","");
+							  
+							obj.put("PT_10103", "");
+							obj.put("TT_10103", "");
+							obj.put("MR_10103", "");
+							obj.put("FIT10104A", "");
+							obj.put("FIT10104B","");
+							obj.put("PT_10104", "");
+							obj.put("TT_10104", "");
+							obj.put("MR_10104", "");
+							
+							
+							FIT10109ZSUM.add("");
+							FIT10101BSUM.add("");
+							FIT10102BSUM.add("");
+							FIT10103BSUM.add("");
+							FIT10104BSUM.add("");
+						 
+							//-----------------合计
+							FIT10109ZSUMday.add(""); 
+							FIT10101BSUMday.add(""); 
+							FIT10102BSUMday.add(""); 
+							FIT10103BSUMday.add(""); 
+							FIT10104BSUMday.add(""); 
+						
+						}
+						arr.add(obj);
+						System.out.println(obj);
+					
+					}
+				
+			}
+			
+
+//			   FIT10109Z = CommonsUtil.getSumData00(FIT10109ZSUMday);
+//			   FIT10101B = CommonsUtil.getSumData00(FIT10101BSUMday);
+//			   FIT10102B = CommonsUtil.getSumData00(FIT10102BSUMday);
+//			   FIT10103B = CommonsUtil.getSumData00(FIT10103BSUMday);
+//			   FIT10104B = CommonsUtil.getSumData00(FIT10104BSUMday);
+			
+//			    obj.put("RPD_U2_LINE_MEASURE_ID", "");
+//				obj.put("REPORT_TIME", "班累积");
+//				obj.put("FIT_10109", "/");
+//				obj.put("FIT10109Z", FIT10109Z);
+//				obj.put("PT_10109", "/");
+//			    obj.put("TT_10109", "/");
+//			    obj.put("FIT10101A", "/");
+//			    obj.put("FIT10101B", FIT10101B);
+//			   obj.put("PT_10101", "/");
+//			   obj.put("TT_10101", "/");
+//			   obj.put("MR_10101", "/");
+//			   obj.put("FIT10102A", "/");
+//			   obj.put("FIT10102B", FIT10102B);
+//			   obj.put("PT_10102", "/");
+//			   obj.put("TT_10102", "/");
+//			   obj.put("MR_10102", "/");
+//			   obj.put("FIT10103A", "/");
+//			   obj.put("FIT10103B", FIT10103B);
+//			   obj.put("PT_10103", "/");
+//			   obj.put("TT_10103", "/");
+//			   obj.put("MR_10103", "/");
+//			   obj.put("FIT10104A", "/");
+//			   obj.put("FIT10104B", FIT10104B);
+//			   obj.put("PT_10104", "/");
+//			   obj.put("TT_10104", "/");
+//			   obj.put("MR_10104", "/");
+			
+			obj.put("RPD_U2_LINE_MEASURE_ID", "");
+			obj.put("REPORT_TIME", "班累积");
+			obj.put("FIT_10109", "/");
+			if(u2oils.size()==13 && u2oils.get(12)[3]!=null){
+				obj.put("FIT10109Z", CommonsUtil.getRegulation0(u2oils.get(12)[3], u2oils.get(8)[3]));
+			}else{
+				obj.put("FIT10109Z", "");
+			}
+			
+			obj.put("PT_10109", "/");
+		    obj.put("TT_10109", "/");
+		    obj.put("FIT10101A", "/");
+		    if(u2oils.size()==13 && u2oils.get(12)[7]!=null){
+		    	obj.put("FIT10101B",  CommonsUtil.getRegulation0(u2oils.get(12)[7], u2oils.get(8)[7]));
+		    }else{
+		    	obj.put("FIT10101B", "");
+		    }
+		   obj.put("PT_10101", "/");
+		   obj.put("TT_10101", "/");
+		   obj.put("MR_10101", "/");
+		   obj.put("FIT10102A", "/");
+		   if(u2oils.size()==13 && u2oils.get(12)[12]!=null){
+			   obj.put("FIT10102B",  CommonsUtil.getRegulation0(u2oils.get(12)[12], u2oils.get(8)[12]));
+		   }else{
+			   obj.put("FIT10102B",  "");
+		   }
+		   obj.put("PT_10102", "/");
+		   obj.put("TT_10102", "/");
+		   obj.put("MR_10102", "/");
+		   obj.put("FIT10103A", "/");
+		   if(u2oils.size()==13 && u2oils.get(12)[17]!=null){
+			   obj.put("FIT10103B",  CommonsUtil.getRegulation0(u2oils.get(12)[17], u2oils.get(8)[17]));
+		   }else{
+			   obj.put("FIT10103B", ""); 
+		   }
+		   obj.put("PT_10103", "/");
+		   obj.put("TT_10103", "/");
+		   obj.put("MR_10103", "/");
+		   obj.put("FIT10104A", "/");
+		   if(u2oils.size()==13 && u2oils.get(12)[22]!=null){
+			   obj.put("FIT10104B",  CommonsUtil.getRegulation0(u2oils.get(12)[22], u2oils.get(8)[22]));
+		   }else{
+			   obj.put("FIT10104B",  "");
+		   }
+		   obj.put("PT_10104", "/");
+		   obj.put("TT_10104", "/");
+		   obj.put("MR_10104", "/");	   
+			
+			  
+			  arr.add(obj);
+			}else{
+
+				for(String[] dateList:dates){
+					obj = new JSONObject();
+					for(String data:dateList){
+						System.out.println(data);
+						obj = new JSONObject();
+						obj.put("RPD_U2_LINE_MEASURE_ID", "");
+						obj.put("REPORT_TIME",  data.substring(11, 16));
+
+					   obj.put("FIT_10109", "");
+					   obj.put("FIT10109Z", "");
+					   obj.put("PT_10109", "");
+					   obj.put("TT_10109", "");
+					   obj.put("FIT10101A", "");
+					   obj.put("FIT10101B", "");
+				  
+					    obj.put("PT_10101", "");
+						obj.put("TT_10101", "");
+						obj.put("MR_10101", "");
+						obj.put("FIT10102A", "");
+						obj.put("FIT10102B","");
+						  
+						obj.put("PT_10102", "");
+						obj.put("TT_10102", "");
+						obj.put("MR_10102", "");
+						obj.put("FIT10103A", "");
+						obj.put("FIT10103B","");
+						  
+						obj.put("PT_10103", "");
+						obj.put("TT_10103", "");
+						obj.put("MR_10103", "");
+						obj.put("FIT10104A", "");
+						obj.put("FIT10104B","");
+						obj.put("PT_10104", "");
+						obj.put("TT_10104", "");
+						obj.put("MR_10104", "");
+						arr.add(obj);
+					}
+					 obj.put("RPD_U2_LINE_MEASURE_ID", "");
+						obj.put("REPORT_TIME", "班累积");
+						
+						obj.put("FIT_10109", "/");
+						  obj.put("FIT10109Z", "");
+						obj.put("PT_10109", "/");
+					    obj.put("TT_10109", "/");
+					    obj.put("FIT10101A", "/");
+					    obj.put("FIT10101B", "");
+					   obj.put("PT_10101", "/");
+					   obj.put("TT_10101", "/");
+					   obj.put("MR_10101", "/");
+					   obj.put("FIT10102A", "/");
+					   obj.put("FIT10102B", "");
+					   obj.put("PT_10102", "/");
+					   obj.put("TT_10102", "/");
+					   obj.put("MR_10102", "/");
+					   obj.put("FIT10103A", "/");
+					   obj.put("FIT10103B", "");
+					   obj.put("PT_10103", "/");
+					   obj.put("TT_10103", "/");
+					   obj.put("MR_10103", "/");
+					   obj.put("FIT10104A", "/");
+					   obj.put("FIT10104B", "");
+					   obj.put("PT_10104", "/");
+					   obj.put("TT_10104", "/");
+					   obj.put("MR_10104", "/");
+					arr.add(obj);
+				}
+			
+			}
+		//}
+	
+		
+		//jieshu
+		if(u2oils != null && u2oils.size()>0){
+		arr.remove(0);
+		obj = new JSONObject();
+	
+//		FIT10109ZSUMday.remove(0);
+//		FIT10101BSUMday.remove(0);
+//		FIT10102BSUMday.remove(0);
+//		FIT10103BSUMday.remove(0);
+//		FIT10104BSUMday.remove(0);
+		
+		
+		
+		obj.put("RPD_U2_LINE_MEASURE_ID", "");
+		obj.put("REPORT_TIME", "合计");
+		obj.put("FIT_10109", "/");
+		obj.put("FIT10109Z", CommonsUtil.getSumData0(FIT10109ZSUMday));
+		obj.put("PT_10109", "/");
+	    obj.put("TT_10109", "/");
+	    obj.put("FIT10101A", "/");
+	    obj.put("FIT10101B", CommonsUtil.getSumData0(FIT10101BSUMday));
+	   obj.put("PT_10101", "/");
+	   obj.put("TT_10101", "/");
+	   obj.put("MR_10101", "/");
+	   obj.put("FIT10102A", "/");
+	   obj.put("FIT10102B", CommonsUtil.getSumData0(FIT10102BSUMday));
+	   obj.put("PT_10102", "/");
+	   obj.put("TT_10102", "/");
+	   obj.put("MR_10102", "/");
+	   obj.put("FIT10103A", "/");
+	   obj.put("FIT10103B", CommonsUtil.getSumData0(FIT10103BSUMday));
+	   obj.put("PT_10103", "/");
+	   obj.put("TT_10103", "/");
+	   obj.put("MR_10103", "/");
+	   obj.put("FIT10104A", "/");
+	   obj.put("FIT10104B", CommonsUtil.getSumData0(FIT10104BSUMday));
+	   obj.put("PT_10104", "/");
+	   obj.put("TT_10104", "/");
+	   obj.put("MR_10104", "/");
+	 
+	   arr.add(obj);
+		}else{
+			obj = new JSONObject();
+		
+			obj.put("RPD_U2_LINE_MEASURE_ID", "");
+			obj.put("REPORT_TIME", "合计");
+			obj.put("FIT_10109", "/");
+			obj.put("FIT10109Z", "");
+			obj.put("PT_10109", "/");
+		    obj.put("TT_10109", "/");
+		    obj.put("FIT10101A", "/");
+		    obj.put("FIT10101B", "");
+		   obj.put("PT_10101", "/");
+		   obj.put("TT_10101", "/");
+		   obj.put("MR_10101", "/");
+		   obj.put("FIT10102A", "/");
+		   obj.put("FIT10102B", "");
+		   obj.put("PT_10102", "/");
+		   obj.put("TT_10102", "/");
+		   obj.put("MR_10102", "/");
+		   obj.put("FIT10103A", "/");
+		   obj.put("FIT10103B", "");
+		   obj.put("PT_10103", "/");
+		   obj.put("TT_10103", "/");
+		   obj.put("MR_10103", "/");
+		   obj.put("FIT10104A", "/");
+		   obj.put("FIT10104B", "");
+		   obj.put("PT_10104", "/");
+		   obj.put("TT_10104", "/");
+		   obj.put("MR_10104", "/");
+		 
+		   arr.add(obj);
+		}
+	   return arr;	
+		//
+	
+}
+
+	@Override
+	public List<Object[]> searchLineMeasure(String rq, String fields) throws Exception {
+
+		String timeCalssql = "select tp.parameter_value from PC_CD_TRIGGERED_PROCESS_T tp where tp.parameter_name='union_station_rpd_start_time'";
+		String calcNum = "-16";
+		List<Object[]> dataSet = lineMeasureDao.searchU2OIL(timeCalssql);
+		if(dataSet != null && dataSet.size()>0){
+			calcNum = dataSet.get(0) + "";
+		}
+		String stratime =DateBean.getDynamicTime(calcNum, rq, "0");
+		String endtime =DateBean.getDynamicTime(calcNum, rq, "1");
+		String sql = "select " + fields + " from  PC_RPD_U2_LINE_MEASURE_T   u where u.report_time between TO_DATE('"+stratime+"','YYYY-MM-DD HH24:MI:SS') and TO_DATE('"+endtime+"','YYYY-MM-DD HH24:MI:SS') order by u.report_time";
+		List<Object[]> yyList = lineMeasureDao.searchU2OIL(sql);
+		return yyList;
+	
+	}
+
+	@Override
+	public JSONArray searchLineMs(String rq) throws Exception {
+
+		JSONObject obj = new JSONObject();
+		JSONArray arr = new JSONArray();
+		  
+		  //2
+		  String  FIT10110Z = "";
+		  String  FIT10105B = "";
+		  String  FIT10106B = "";
+		  String  FIT10107B = "";
+		  String  FIT10108B = "";
+		  
+		  List<String>   FIT10110ZSUM = new ArrayList<String>();
+		  List<String>   FIT10105BSUM = new ArrayList<String>();
+		  List<String>   FIT10106BSUM = new ArrayList<String>();
+		  List<String>   FIT10107BSUM = new ArrayList<String>();
+		  List<String>   FIT10108BSUM = new ArrayList<String>();
+		  //合计
+		  List<String> FIT10110ZSUMday = new ArrayList<String>();
+		  List<String> FIT10105BSUMday = new ArrayList<String>();
+		  List<String> FIT10106BSUMday = new ArrayList<String>();
+		  List<String> FIT10107BSUMday = new ArrayList<String>();
+		  List<String> FIT10108BSUMday = new ArrayList<String>();
+		
+		int dataflg = 0;  //数据存在标识  0：不存在， 1：存在
+		String timeCalssql = "select tp.parameter_value from PC_CD_TRIGGERED_PROCESS_T tp where tp.parameter_name='union_station_rpd_start_time'";
+		String calcNum = "-16";
+		List<Object[]> dataSet = lineMeasureDao.searchLineM(timeCalssql);
+		if(dataSet != null && dataSet.size()>0){
+			calcNum = dataSet.get(0) + "";
+		}
+		
+		String stratime =DateBean.getDynamicTime(calcNum, rq, "0");
+		String endtime =DateBean.getDynamicTime(calcNum, rq, "1");
+//		String sql1 ="select RPD_U2_LINE_MEASURE_ID,  to_char(report_time,'YYYY-MM-DD HH24:MI:SS')as report_time ,"+
+//					"FIT_10109,  FIT10109Z,PT_10109, TT_10109, FIT10101A, FIT10101B,PT_10101,TT_10101,MR_10101,"+
+//					"FIT10102A, FIT10102B, PT_10102,TT_10102,MR_10102,FIT10103A,FIT10103B,  PT_10103,TT_10103,"+
+//					"MR_10103,FIT10104A,FIT10104B,PT_10104,TT_10104,MR_10104,"+
+//					"FIT_10110,FIT10110Z, PT_10110, TT_10110, FIT10105A, FIT10105B, PT_10105, TT_10105, MR_10105,"+
+//					"FIT10106A, FIT10106B, PT_10106, TT_10106, MR_10106, FIT10107A, FIT10107B,    PT_10107,"+
+//					"TT_10107, MR_10107, FIT10108A, FIT10108B, PT_10108, TT_10108,"+
+//					"MR_10108 from  PC_RPD_U2_LINE_MEASURE_T  where 1=1";
+		
+		
+		String sql2 ="select RPD_U2_LINE_MEASURE_ID,  to_char(report_time,'YYYY-MM-DD HH24:MI:SS')as report_time ,"+
+			"FIT_10110,FIT10110Z, PT_10110, TT_10110, FIT10105A, FIT10105B, PT_10105, TT_10105, MR_10105,"+
+			"FIT10106A, FIT10106B, PT_10106, TT_10106, MR_10106, FIT10107A, FIT10107B,    PT_10107,"+
+			"TT_10107, MR_10107, FIT10108A, FIT10108B, PT_10108, TT_10108,"+
+			"MR_10108 from  PC_RPD_U2_LINE_MEASURE_T  where 1=1";
+		sql2 += " and report_time between TO_DATE('"+stratime+"','YYYY-MM-DD HH24:MI:SS') and TO_DATE('"+endtime+"','YYYY-MM-DD HH24:MI:SS') order by report_time";
+
+		Object[] u2oiltable = null;
+			
+		List<Object[]> u2oilss = lineMeasureDao.searchLineM(sql2);
+		String[][] dates = DateBean.getReportTime("time", rq);
+		if(u2oilss != null && u2oilss.size()>0){
+//			for(String[] dateList:dates){
+//				obj = new JSONObject();
+
+			for (int i = 0; i < dates.length; i++) {
+				String[] dateList = dates[i];
+				obj = new JSONObject();
+				  //er
+				    
+//			   FIT10110ZSUMday.add(Double.parseDouble(FIT10110Z));
+//			   FIT10105BSUMday.add(Double.parseDouble(FIT10105B));
+//			   FIT10106BSUMday.add(Double.parseDouble(FIT10106B));
+//			   FIT10107BSUMday.add(Double.parseDouble(FIT10107B));
+//			   FIT10108BSUMday.add(Double.parseDouble(FIT10108B));
+				  
+				   //er
+				if (i == 2) {
+					 JSONObject oobj =  (JSONObject) arr.get(5);
+
+			   obj.put("RPD_U2_LINE_MEASURE_ID", "");
+				obj.put("REPORT_TIME", "班累积");
+				   	obj.put("FIT_10110", "/");
+					 //26
+				   	if(u2oilss.size()>8 && u2oilss.get(8) !=null){
+				   	  obj.put("FIT10110Z",  CommonsUtil.getRegulation0(u2oilss.get(8)[3], u2oilss.get(4)[3]));
+				   	}else{
+				   	  obj.put("FIT10110Z",  "");
+				   	}
+					 obj.put("PT_10110", "/");
+					 obj.put("TT_10110", "/");
+					 obj.put("FIT10105A", "/");
+					//30
+					if(u2oilss.size()>8 && u2oilss.get(8) !=null){
+					   obj.put("FIT10105B",   CommonsUtil.getRegulation0(u2oilss.get(8)[7], u2oilss.get(4)[7]));
+					}else{
+					   obj.put("FIT10105B",   "");
+					}
+					 obj.put("PT_10105", "/");
+					 obj.put("TT_10105", "/");
+					 obj.put("MR_10105", "/");
+					 obj.put("FIT10106A", "/");
+					//35
+					 if(u2oilss.size()>8 && u2oilss.get(8) !=null){
+						 obj.put("FIT10106B",  CommonsUtil.getRegulation0(u2oilss.get(8)[12], u2oilss.get(4)[12]));
+					 }else{
+						 obj.put("FIT10106B",  "");
+					 }
+					 obj.put("PT_10106", "/");
+					 obj.put("TT_10106", "/");
+					 obj.put("MR_10106", "/");
+					 obj.put("FIT10107A", "/");
+					 //40
+					 if(u2oilss.size()>8 && u2oilss.get(8) !=null){
+					   obj.put("FIT10107B",  CommonsUtil.getRegulation0(u2oilss.get(8)[17], u2oilss.get(4)[17]));
+					 }else{
+					   obj.put("FIT10107B",  "");
+					 }
+					 obj.put("PT_10107", "/");
+					 obj.put("TT_10107", "/");
+					 obj.put("MR_10107", "/");
+					 obj.put("FIT10108A", "/");
+					 //45
+					 if(u2oilss.size()>8 && u2oilss.get(8) !=null){
+						 obj.put("FIT10108B",  CommonsUtil.getRegulation0(u2oilss.get(8)[22], u2oilss.get(4)[22]));
+					  }else{
+							 obj.put("FIT10108B",  "");
+					}
+					  //obj.put(" FIT10108B",FIT10108B);
+					 obj.put("PT_10108", "/");
+					 obj.put("TT_10108", "/");
+					 obj.put("MR_10108", "/");
+				}else{
+				    FIT10110Z = CommonsUtil.getBanSumData0(FIT10110ZSUM);
+				    FIT10105B = CommonsUtil.getBanSumData0(FIT10105BSUM);
+				    FIT10106B = CommonsUtil.getBanSumData0(FIT10106BSUM);
+				    FIT10107B = CommonsUtil.getBanSumData0(FIT10107BSUM);
+				    FIT10108B = CommonsUtil.getBanSumData0(FIT10108BSUM);
+				    
+					 obj.put("RPD_U2_LINE_MEASURE_ID", "");
+						obj.put("REPORT_TIME", "班累积");
+						   	obj.put("FIT_10110", "/");
+							 //26
+						    obj.put("FIT10110Z", FIT10110Z);
+							 obj.put("PT_10110", "/");
+							 obj.put("TT_10110", "/");
+							 obj.put("FIT10105A", "/");
+							//30
+							  obj.put("FIT10105B", FIT10105B);
+							 obj.put("PT_10105", "/");
+							 obj.put("TT_10105", "/");
+							 obj.put("MR_10105", "/");
+							 obj.put("FIT10106A", "/");
+							//35
+							 obj.put("FIT10106B", FIT10106B);
+							 obj.put("PT_10106", "/");
+							 obj.put("TT_10106", "/");
+							 obj.put("MR_10106", "/");
+							 obj.put("FIT10107A", "/");
+							 //40
+							  obj.put("FIT10107B", FIT10107B);
+							 obj.put("PT_10107", "/");
+							 obj.put("TT_10107", "/");
+							 obj.put("MR_10107", "/");
+							 obj.put("FIT10108A", "/");
+							 //45
+							 if(FIT10108B !=null){
+								 obj.put("FIT10108B",FIT10108B);
+								 }else{
+									 obj.put("FIT10108B",0.00);
+								 }
+							  //obj.put(" FIT10108B",FIT10108B);
+							 obj.put("PT_10108", "/");
+							 obj.put("TT_10108", "/");
+							 obj.put("MR_10108", "/");
+				}
+				
+				   arr.add(obj);
+				  
+				   //er
+				   FIT10110ZSUM = new ArrayList<String>();
+				   FIT10105BSUM = new ArrayList<String>();
+				   FIT10106BSUM = new ArrayList<String>();
+				   FIT10107BSUM = new ArrayList<String>();
+				   FIT10108BSUM = new ArrayList<String>();
+				
+				for(String data:dateList){
+					System.out.println(data);
+					u2oiltable = null;
+					dataflg = 0;
+					
+					for(Object[] u2oil:u2oilss){
+						obj = new JSONObject();
+						
+						if(data.toString().equals(u2oil[1].toString())){
+							dataflg = 1;
+							u2oiltable = u2oil;
+							//添加班累积值
+							
+							//er
+							if(u2oil[3] != null && !"".equals(u2oil[3])){
+								FIT10110ZSUMday.add(u2oil[3].toString());
+							}else{
+								FIT10110ZSUMday.add("");
+							}
+							if(u2oil[7] != null && !"".equals(u2oil[7])){
+								FIT10105BSUMday.add(u2oil[7].toString());
+							}else{
+								FIT10105BSUMday.add("");
+							}
+							if(u2oil[12] != null && !"".equals(u2oil[12])){
+								FIT10106BSUMday.add(u2oil[12].toString());
+							}else{
+								FIT10106BSUMday.add("");
+							}
+							if(u2oil[17] != null && !"".equals(u2oil[17])){
+								FIT10107BSUMday.add(u2oil[17].toString());
+							}else{
+								FIT10107BSUMday.add("");
+							}
+							if(u2oil[22] != null && !"".equals(u2oil[22]) && !u2oil[22].equals("undefined") ){
+								FIT10108BSUMday.add(u2oil[22].toString());
+							}else{
+								FIT10108BSUMday.add("");
+							}
+						}
+					}
+						if(dataflg == 1){
+							
+							
+							//er
+							obj.put("RPD_U2_LINE_MEASURE_ID", u2oiltable[0]);
+							obj.put("REPORT_TIME",  data.substring(11, 16));
+							obj.put("FIT_10110", u2oiltable[2]);
+							 //26 
+							if(u2oiltable[3] !=null){
+					 		 obj.put("FIT10110Z", CommonsUtil.getIntData(u2oiltable[3]));
+					 		FIT10110ZSUM.add(u2oiltable[3].toString());
+							}else{
+								obj.put("FIT10110Z", "");
+								FIT10110ZSUM.add("");
+							}
+							 obj.put("PT_10110", CommonsUtil.getNotOneData(u2oiltable[4]));
+							 obj.put("TT_10110", CommonsUtil.getIntData(u2oiltable[5]));
+							 obj.put("FIT10105A", CommonsUtil.getIntData(u2oiltable[6]));
+							//30
+							 if( u2oiltable[7] !=null){
+							 obj.put("FIT10105B",  CommonsUtil.getIntData(u2oiltable[7]));
+							 FIT10105BSUM.add(u2oiltable[7].toString());
+							 }else{
+								 obj.put("FIT10105B","");
+								 FIT10105BSUM.add("");
+							 }
+							   
+							 obj.put("PT_10105", CommonsUtil.getNotOneData(u2oiltable[8]));
+							 obj.put("TT_10105", CommonsUtil.getIntData(u2oiltable[9]));
+							 obj.put("MR_10105", CommonsUtil.getNotOneData(u2oiltable[10]));
+							 obj.put("FIT10106A", CommonsUtil.getIntData(u2oiltable[11]));
+							//35
+							 if(u2oiltable[12] !=null){
+								 obj.put("FIT10106B",  CommonsUtil.getIntData(u2oiltable[12]));
+								 FIT10106BSUM.add(u2oiltable[12].toString());
+							 }else{
+								 obj.put("FIT10106B", "");
+								 FIT10106BSUM.add("");
+							 }
+							 
+							  
+							 obj.put("PT_10106", CommonsUtil.getNotOneData(u2oiltable[13]));
+							 obj.put("TT_10106", CommonsUtil.getIntData(u2oiltable[14]));
+							 obj.put("MR_10106", CommonsUtil.getNotOneData(u2oiltable[15]));
+							 obj.put("FIT10107A", CommonsUtil.getIntData(u2oiltable[16]));
+							 //40
+							 if(u2oiltable[17] !=null){
+							 obj.put("FIT10107B",  CommonsUtil.getIntData(u2oiltable[17]));
+							 FIT10107BSUM.add(u2oiltable[17].toString());
+							 }else{
+								 obj.put("FIT10107B", "");
+								 FIT10107BSUM.add("");
+							 }
+							   
+							 obj.put("PT_10107", CommonsUtil.getNotOneData(u2oiltable[18]));
+							 obj.put("TT_10107", CommonsUtil.getIntData(u2oiltable[19]));
+							 obj.put("MR_10107", CommonsUtil.getNotOneData(u2oiltable[20]));
+							 obj.put("FIT10108A", CommonsUtil.getIntData(u2oiltable[21]));
+							 //45
+							 if(u2oiltable[22] !=null && !u2oiltable[22].equals("") && !u2oiltable[22].equals("undefined")){
+							 obj.put("FIT10108B",  CommonsUtil.getIntData(u2oiltable[22]));
+							 FIT10108BSUM.add(u2oiltable[22].toString());
+							 }else{
+								 obj.put("FIT10108B", ""); 
+								 FIT10108BSUM.add("");
+							 }
+							 
+							 obj.put("PT_10108", CommonsUtil.getNotOneData(u2oiltable[23]));
+							 obj.put("TT_10108", CommonsUtil.getIntData(u2oiltable[24]));
+							 obj.put("MR_10108", CommonsUtil.getNotOneData(u2oiltable[25]));
+							
+						}else{
+							
+							obj.put("RPD_U2_LINE_MEASURE_ID", "");
+							obj.put("REPORT_TIME",  data.substring(11, 16));
+							//er
+							obj.put("FIT_10110", "");
+							 //26  
+					 		 obj.put("FIT10110Z", "");
+							  
+							 obj.put("PT_10110", "");
+							 obj.put("TT_10110", "");
+							 obj.put("FIT10105A", "");
+							//30
+							 obj.put("FIT10105B", "");
+							   
+							 obj.put("PT_10105", "");
+							 obj.put("TT_10105", "");
+							 obj.put("MR_10105", "");
+							 obj.put("FIT10106A", "");
+							//35
+							 obj.put("FIT10106B","");
+							  
+							 obj.put("PT_10106", "");
+							 obj.put("TT_10106", "");
+							 obj.put("MR_10106", "");
+							 obj.put("FIT10107A", "");
+							 //40
+							 obj.put("FIT10107B", "");
+							   
+							 obj.put("PT_10107", "");
+							 obj.put("TT_10107", "");
+							 obj.put("MR_10107", "");
+							 obj.put("FIT10108A", "");
+							 //45
+							 obj.put("FIT10108B", "");
+							 
+							 obj.put("PT_10108", "");
+							 obj.put("TT_10108", "");
+							 obj.put("MR_10108", "");
+
+							     FIT10110ZSUM.add("");
+							     FIT10105BSUM.add("");
+							     FIT10106BSUM.add("");
+							     FIT10107BSUM.add("");
+							     FIT10108BSUM.add("");
+							  //合计
+							   FIT10110ZSUMday.add("");
+							   FIT10105BSUMday.add("");
+							   FIT10106BSUMday.add("");
+							   FIT10107BSUMday.add("");
+							   FIT10108BSUMday.add("");
+						}
+						arr.add(obj);
+						System.out.println(obj);
+					
+					}
+				
+			}
+			
+
+			 
+//			 FIT10110Z  =CommonsUtil.getSumData00(FIT10110ZSUMday);
+//			 FIT10105B  =CommonsUtil.getSumData00(FIT10105BSUMday);
+//			 FIT10106B  =CommonsUtil.getSumData00(FIT10106BSUMday);
+//			 FIT10107B  =CommonsUtil.getSumData00(FIT10107BSUMday);
+//			 FIT10108B  =CommonsUtil.getSumData00(FIT10108BSUMday);
+//			   
+//			   //er
+//				 obj.put("RPD_U2_WATER_ID", "");
+//				 obj.put("REPORT_TIME", "班累积");
+//			   obj.put("FIT_10110", "/");
+//			   obj.put("FIT10110Z", FIT10110Z);
+//				 obj.put("PT_10110", "/");
+//				 obj.put("TT_10110", "/");
+//				 obj.put("FIT10105A", "/");
+//				//30
+//				 obj.put("FIT10105B",FIT10105B);
+//				 obj.put("PT_10105", "/");
+//				 obj.put("TT_10105", "/");
+//				 obj.put("MR_10105", "/");
+//				 obj.put("FIT10106A", "/");
+//				//35
+//				 obj.put("FIT10106B",FIT10106B);
+//				 obj.put("PT_10106", "/");
+//				 obj.put("TT_10106", "/");
+//				 obj.put("MR_10106", "/");
+//				 obj.put("FIT10107A", "/");
+//				 //40
+//				 obj.put("FIT10107B", FIT10107B);
+//				 obj.put("PT_10107", "/");
+//				 obj.put("TT_10107", "/");
+//				 obj.put("MR_10107", "/");
+//				 obj.put("FIT10108A", "/");
+//				 //45
+//				 if(FIT10108B !=null){
+//				 obj.put("FIT10108B",FIT10108B);
+//				 }else{
+//					 obj.put("FIT10108B",0.00);
+//				 }
+//				 obj.put("PT_10108", "/");
+//				 obj.put("TT_10108", "/");
+//				 obj.put("MR_10108", "/");
+	 
+				 	obj.put("RPD_U2_LINE_MEASURE_ID", "");
+					obj.put("REPORT_TIME", "班累积");
+				   	obj.put("FIT_10110", "/");
+					 //26
+				   	if(u2oilss.size()==13 && u2oilss.get(12)[3] !=null){
+				   	  obj.put("FIT10110Z",  CommonsUtil.getRegulation0(u2oilss.get(12)[3], u2oilss.get(8)[3]));
+				   	}else{
+				   	  obj.put("FIT10110Z",  "");
+				   	}
+					 obj.put("PT_10110", "/");
+					 obj.put("TT_10110", "/");
+					 obj.put("FIT10105A", "/");
+					//30
+					if(u2oilss.size()==13 && u2oilss.get(12)[7] !=null){
+					   obj.put("FIT10105B",   CommonsUtil.getRegulation0(u2oilss.get(12)[7], u2oilss.get(8)[7]));
+					}else{
+					   obj.put("FIT10105B",   "");
+					}
+					 obj.put("PT_10105", "/");
+					 obj.put("TT_10105", "/");
+					 obj.put("MR_10105", "/");
+					 obj.put("FIT10106A", "/");
+					//35
+					 if(u2oilss.size()==13 && u2oilss.get(12)[12] !=null){
+						 obj.put("FIT10106B",  CommonsUtil.getRegulation0(u2oilss.get(12)[12], u2oilss.get(8)[12]));
+					 }else{
+						 obj.put("FIT10106B", "");
+					 }
+					 obj.put("PT_10106", "/");
+					 obj.put("TT_10106", "/");
+					 obj.put("MR_10106", "/");
+					 obj.put("FIT10107A", "/");
+					 //40
+					 if(u2oilss.size()==13 && u2oilss.get(12)[17] !=null){
+					   obj.put("FIT10107B",  CommonsUtil.getRegulation0(u2oilss.get(12)[17], u2oilss.get(8)[17]));
+					 }else{
+					   obj.put("FIT10107B",  "");
+					 }
+					 obj.put("PT_10107", "/");
+					 obj.put("TT_10107", "/");
+					 obj.put("MR_10107", "/");
+					 obj.put("FIT10108A", "/");
+					 //45
+					 if(u2oilss.size()==13 && u2oilss.get(12)[22] !=null){
+						 obj.put("FIT10108B",  CommonsUtil.getRegulation0(u2oilss.get(12)[22], u2oilss.get(8)[22]));
+					  }else{
+							 obj.put("FIT10108B",  "");
+					}
+					  //obj.put(" FIT10108B",FIT10108B);
+					 obj.put("PT_10108", "/");
+					 obj.put("TT_10108", "/");
+					 obj.put("MR_10108", "/");
+					   //er
+			  arr.add(obj);
+			}else{
+
+				for(String[] dateList:dates){
+					obj = new JSONObject();
+					for(String data:dateList){
+						obj = new JSONObject();
+						obj.put("RPD_U2_LINE_MEASURE_ID", "");
+						obj.put("REPORT_TIME",  data.substring(11, 16));
+						//er
+						obj.put("FIT_10110", "");
+						 //26  
+				 		 obj.put("FIT10110Z", "");
+						  
+						 obj.put("PT_10110", "");
+						 obj.put("TT_10110", "");
+						 obj.put("FIT10105A", "");
+						//30
+						 obj.put("FIT10105B", "");
+						   
+						 obj.put("PT_10105", "");
+						 obj.put("TT_10105", "");
+						 obj.put("MR_10105", "");
+						 obj.put("FIT10106A", "");
+						//35
+						 obj.put("FIT10106B","");
+						  
+						 obj.put("PT_10106", "");
+						 obj.put("TT_10106", "");
+						 obj.put("MR_10106", "");
+						 obj.put("FIT10107A", "");
+						 //40
+						 obj.put("FIT10107B", "");
+						   
+						 obj.put("PT_10107", "");
+						 obj.put("TT_10107", "");
+						 obj.put("MR_10107", "");
+						 obj.put("FIT10108A", "");
+						 //45
+						 obj.put("FIT10108B", "");
+						 
+						 obj.put("PT_10108", "");
+						 obj.put("TT_10108", "");
+						 obj.put("MR_10108", "");
+						arr.add(obj);
+					}
+					obj.put("RPD_U2_WATER_ID", "");
+					 obj.put("REPORT_TIME", "班累积");
+				   obj.put("FIT_10110", "/");
+				   obj.put("FIT10110Z", "");
+					 obj.put("PT_10110", "/");
+					 obj.put("TT_10110", "/");
+					 obj.put("FIT10105A", "/");
+					//30
+					 obj.put("FIT10105B","");
+					 obj.put("PT_10105", "/");
+					 obj.put("TT_10105", "/");
+					 obj.put("MR_10105", "/");
+					 obj.put("FIT10106A", "/");
+					//35
+					 obj.put("FIT10106B","");
+					 obj.put("PT_10106", "/");
+					 obj.put("TT_10106", "/");
+					 obj.put("MR_10106", "/");
+					 obj.put("FIT10107A", "/");
+					 //40
+					 obj.put("FIT10107B", "");
+					 obj.put("PT_10107", "/");
+					 obj.put("TT_10107", "/");
+					 obj.put("MR_10107", "/");
+					 obj.put("FIT10108A", "/");
+					 //45
+					 obj.put("FIT10108B","");
+					 obj.put("PT_10108", "/");
+					 obj.put("TT_10108", "/");
+					 obj.put("MR_10108", "/");
+					arr.add(obj);
+				}
+			
+			}
+	
+		
+		//jieshu
+		if(u2oilss != null && u2oilss.size()>0){
+		arr.remove(0);
+		obj = new JSONObject();
+		obj.put("RPD_U2_LINE_MEASURE_ID", "");
+		obj.put("REPORT_TIME", "合计");
+		//er
+		
+//		FIT10110ZSUMday.remove(0);
+//		FIT10105BSUMday.remove(0);
+//		FIT10106BSUMday.remove(0);
+//		FIT10107BSUMday.remove(0);
+//		FIT10108BSUMday.remove(0);
+	 
+	   //er
+	
+	   obj.put("FIT_10110", "/");
+		 //26  
+	   obj.put("FIT10110Z",CommonsUtil.getSumData0(FIT10110ZSUMday)); 
+		  
+		 obj.put("PT_10110", "/");
+		 obj.put("TT_10110", "/");
+		 obj.put("FIT10105A", "/");
+		//30
+		 obj.put("FIT10105B",CommonsUtil.getSumData0(FIT10105BSUMday)); 
+		   
+		 obj.put("PT_10105", "/");
+		 obj.put("TT_10105", "/");
+		 obj.put("MR_10105", "/");
+		 obj.put("FIT10106A", "/");
+		//35
+		 obj.put("FIT10106B",CommonsUtil.getSumData0(FIT10106BSUMday)); 
+		  
+		 obj.put("PT_10106", "/");
+		 obj.put("TT_10106", "/");
+		 obj.put("MR_10106", "/");
+		 obj.put("FIT10107A", "/");
+		 //40
+		 obj.put("FIT10107B", CommonsUtil.getSumData0(FIT10107BSUMday)); 
+		   
+		 obj.put("PT_10107", "/");
+		 obj.put("TT_10107", "/");
+		 obj.put("MR_10107", "/");
+		
+		 obj.put("FIT10108A", "/");
+		 //45
+		 obj.put("FIT10108B",CommonsUtil.getSumData0(FIT10108BSUMday)); 
+		 obj.put("PT_10108", "/");
+		 obj.put("TT_10108", "/");
+		 obj.put("MR_10108", "/");
+		 
+	   arr.add(obj);
+		}else{
+
+			obj = new JSONObject();
+			obj.put("RPD_U2_LINE_MEASURE_ID", "");
+			obj.put("REPORT_TIME", "合计");
+		
+		   obj.put("FIT_10110", "/");
+			 //26  
+		   obj.put("FIT10110Z",""); 
+			  
+			 obj.put("PT_10110", "/");
+			 obj.put("TT_10110", "/");
+			 obj.put("FIT10105A", "/");
+			//30
+			 obj.put("FIT10105B",""); 
+			   
+			 obj.put("PT_10105", "/");
+			 obj.put("TT_10105", "/");
+			 obj.put("MR_10105", "/");
+			 obj.put("FIT10106A", "/");
+			//35
+			 obj.put("FIT10106B",""); 
+			  
+			 obj.put("PT_10106", "/");
+			 obj.put("TT_10106", "/");
+			 obj.put("MR_10106", "/");
+			 obj.put("FIT10107A", "/");
+			 //40
+			 obj.put("FIT10107B", ""); 
+			   
+			 obj.put("PT_10107", "/");
+			 obj.put("TT_10107", "/");
+			 obj.put("MR_10107", "/");
+			
+			 obj.put("FIT10108A", "/");
+			 //45
+			 obj.put("FIT10108B",""); 
+			 obj.put("PT_10108", "/");
+			 obj.put("TT_10108", "/");
+			 obj.put("MR_10108", "/");
+			 
+		   arr.add(obj);
+			
+		}
+	   return arr;	
+		//
+	
+	}
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.echo.dto.PcCdAlarmManagT" table="PC_CD_ALARM_MANAG_T">
+		<id name="alarmuserid" type="string">
+			<column name="alarmuserid" length="36" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="username" type="string">
+			<column name="username" length="20" />
+		</property>
+		<property name="phone" type="string">
+			<column name="phone" length="20" />
+		</property>
+		<property name="dept" type="string" >
+			<column name="dept" length="20" />
+		</property>
+		<property name="alarmkey" type="string">
+			<column name="alarm_key" length="200" />
+		</property>
+
+		<property name="dep_manag" type="string">
+			<column name="dep_manag" length="20" />
+		</property>
+
+		<property name="data_unit" type="string">
+			<column name="data_unit" length="20" />
+		</property>
+
+		<property name="remark" type="string">
+			<column name="remark" length="20" />
+		</property>
+		
+		<property name="yuliu3" type="string">
+			<column name="yuliu3" length="20" />
+		</property>
+		<property name="yuliu4" type="string">
+			<column name="yuliu4" length="20" />
+		</property>
+		<property name="yuliu5" type="string">
+			<column name="yuliu5" length="20" />
+		</property>
+		
+	</class>
+</hibernate-mapping>

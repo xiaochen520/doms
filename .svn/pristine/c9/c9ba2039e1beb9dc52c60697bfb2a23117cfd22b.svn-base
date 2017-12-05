@@ -1,0 +1,127 @@
+package com.echo.service.impl;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import com.echo.beans.PageControl;
+import com.echo.dao.CommonDao;
+import com.echo.service.U2fxjldtService;
+import com.echo.util.DateBean;
+
+public class U2fxjldtServiceImpl implements U2fxjldtService {
+	private  CommonDao commonDao;
+	
+
+	public void setCommonDao(CommonDao commonDao) {
+		this.commonDao = commonDao;
+	}
+
+
+	public HashMap<String,Object>  searchProducedRD(String startDate, String endDate, int pageNo,
+			String sort, String order, int rowsPerpage, String totalNumFlag)throws Exception {
+		
+		JSONArray jsonArr = null;
+		HashMap<String,Object> map = new HashMap<String, Object>();
+		JSONObject tjo = null;
+		String cloums = "select   ";
+		String formTable = " from PC_RD_U2_LINE_MEASURE_T a where 1=1 ";
+		String totalNum = "select count(*) ";
+		String kk="";
+		Date today = new Date();
+		String nowdate = DateBean.getTimeStr(today);
+		
+		if("".equals(startDate)){
+			startDate = nowdate.substring(0, 10) + " 00:00:00";
+		}else{
+			startDate = startDate + ":00";
+		}
+		if("".equals(endDate)){
+			endDate = nowdate.substring(0, 10) + " 23:59:59";
+		}else{
+			endDate = endDate + ":00";
+		}
+		formTable=formTable+" and ACQUISITION_TIME between TO_DATE('"+startDate+"','YYYY-MM-DD HH24:MI:SS') and TO_DATE('"+endDate+"','YYYY-MM-DD HH24:MI:SS')";
+		
+		String[] cloumnsName = {"ACQUISITION_TIME","FIT10101A","FIT10102A","FIT10103A","FIT10104A","FIT10105A","FIT10106A","FIT10107A","FIT10108A","FIT_10109","FIT_10110","FT2HZ","FIT10101B","FIT10102B","FIT10103B","FIT10104B","FIT10105B","FIT10106B","FIT10107B","FIT10108B","FIQ2HZ","PT_10101","PT_10102","PT_10103","PT_10104","PT_10105","PT_10106","PT_10107","PT_10108","PT_10109","PT_10110","PT2HZ","TT_10101","TT_10102","TT_10103","TT_10104","TT_10105","TT_10106","TT_10107","TT_10108","TT_10109","TT_10110","TE2HZ","MR_10101","MR_10102","MR_10103","MR_10104","MR_10105","MR_10106","MR_10107","MR_10108","MT2HZ"};
+		for(int m=0;m<cloumnsName.length;m++){
+			if(m == cloumnsName.length-1){
+				kk=kk+cloumnsName[m];
+			}else{
+				if("ACQUISITION_TIME".equals(cloumnsName[m])){
+					kk=kk+"to_char(ACQUISITION_TIME,'YYYY-MM-DD hh24:mi:ss') as ACQUISITION_TIME,";
+				}else{
+					kk=kk+cloumnsName[m]+",";
+				}
+			}
+			
+		}
+		kk.subSequence(0, kk.length()-2);
+	
+		String product = cloums + kk+formTable;
+		//获取总条数
+		int total = 0;
+		if ("1".equals(totalNum)) {
+			total = 1;
+		} else {
+			totalNum += formTable;
+			total = commonDao.getCounts(totalNum);
+		}
+		if ("totalNum".equals(totalNumFlag)) {
+			map.put("totalNum", total + "");
+			return map;
+		}
+		//排序
+		if(!"".equals(sort) && !"ACQUISITION_TIME".equals(sort)){
+			for (String cloumn : cloumnsName) {
+				if(cloumn.equals(sort)){
+					product +=" order by " + cloumn + " " + order;
+					break;
+				}
+			}
+		}
+		else {
+			product +=" order by ACQUISITION_TIME desc";
+		}
+		//计算分页
+		PageControl control = new PageControl();
+		//当前页
+		List<Object[]> lo = new ArrayList<Object[]>();
+		control.setInt_num(rowsPerpage);
+		if ("export".equals(totalNumFlag)) {
+			lo = commonDao.searchEverySql(product);
+		}
+		else {
+			control.init(pageNo, total);
+			//开始条数
+			int start = control.getStart()-1;
+			lo = commonDao.searchPaging(product,start,rowsPerpage,cloumnsName);
+		}
+		
+		if (lo != null && 0 < lo.size()) {
+			// 生成树节点json文档
+			jsonArr = new JSONArray();
+			for (Object[] o : lo) {
+				tjo = new JSONObject();
+
+				for (int i = 0; i < o.length; i++) {
+					if (o[i] == null||o[i].equals("null")) {
+						o[i] = "";
+					}
+					tjo.put(cloumnsName[i], o[i].toString());
+				}
+				jsonArr.add(tjo);
+			}
+		}
+		tjo = new JSONObject();
+		tjo.put("Rows",jsonArr);
+		tjo.put("Total",total);
+		map.put("list", lo);
+		map.put("json", tjo);
+		return map;
+	}
+}

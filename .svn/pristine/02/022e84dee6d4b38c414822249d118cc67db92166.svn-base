@@ -1,0 +1,429 @@
+package com.echo.dto;
+
+import java.math.BigDecimal;
+import java.util.Date;
+
+/**
+ * PcRpdUThinWaterGeneralT entity. @author MyEclipse Persistence Tools
+ */
+
+public class PcRpdUThinWaterGeneralT implements java.io.Serializable {
+
+	// Fields
+
+	private String rpdUThinWaterGeneralId;
+	private Date bbrq;
+	private BigDecimal djhy;
+	private BigDecimal dchy;
+	private BigDecimal xjhy;
+	private BigDecimal xchy;
+	private BigDecimal yjjkhy;
+	private BigDecimal yjckhy;
+	private BigDecimal ejckhy;
+	private BigDecimal zsjkhy;
+	private BigDecimal w33hy;
+	private BigDecimal gyhy;
+	private BigDecimal cgyhy;
+	private BigDecimal djxfw;
+	private BigDecimal dcxfw;
+	private BigDecimal xjxfw;
+	private BigDecimal xcxfw;
+	private BigDecimal yjjkxfw;
+	private BigDecimal yjckxfw;
+	private BigDecimal ejckxfw;
+	private BigDecimal zsjkxfw;
+	private BigDecimal w33xfw;
+	private BigDecimal gyxfw;
+	private BigDecimal cgyxfw;
+	private BigDecimal xjjyl;
+	private BigDecimal zgjyl;
+	private BigDecimal fxyl;
+	private BigDecimal fpjyl;
+	private BigDecimal snl;
+	private BigDecimal zyjyl;
+	private BigDecimal syj1sl;
+	private BigDecimal syj2sl;
+	private BigDecimal syj3sl;
+	private String zbr;
+	private String shr;
+	private Date shsj;
+	private String xgr;
+	private Date xgsj;
+	private String bz;
+
+	// Constructors
+
+	/** default constructor */
+	public PcRpdUThinWaterGeneralT() {
+	}
+
+	/** minimal constructor */
+	public PcRpdUThinWaterGeneralT(Date bbrq) {
+		this.bbrq = bbrq;
+	}
+
+	/** full constructor */
+	public PcRpdUThinWaterGeneralT(Date bbrq, BigDecimal djhy, BigDecimal dchy,
+			BigDecimal xjhy, BigDecimal xchy, BigDecimal yjjkhy, BigDecimal yjckhy,
+			BigDecimal ejckhy, BigDecimal zsjkhy, BigDecimal w33hy, BigDecimal gyhy,
+			BigDecimal cgyhy, BigDecimal djxfw, BigDecimal dcxfw, BigDecimal xjxfw,
+			BigDecimal xcxfw, BigDecimal yjjkxfw, BigDecimal yjckxfw, BigDecimal ejckxfw,
+			BigDecimal zsjkxfw, BigDecimal w33xfw, BigDecimal gyxfw, BigDecimal cgyxfw,
+			BigDecimal xjjyl, BigDecimal zgjyl, BigDecimal fxyl, BigDecimal fpjyl, BigDecimal snl,
+			BigDecimal zyjyl, BigDecimal syj1sl, BigDecimal syj2sl, BigDecimal syj3sl,
+			String zbr, String shr, Date shsj, String xgr, Date xgsj, String bz) {
+		this.bbrq = bbrq;
+		this.djhy = djhy;
+		this.dchy = dchy;
+		this.xjhy = xjhy;
+		this.xchy = xchy;
+		this.yjjkhy = yjjkhy;
+		this.yjckhy = yjckhy;
+		this.ejckhy = ejckhy;
+		this.zsjkhy = zsjkhy;
+		this.w33hy = w33hy;
+		this.gyhy = gyhy;
+		this.cgyhy = cgyhy;
+		this.djxfw = djxfw;
+		this.dcxfw = dcxfw;
+		this.xjxfw = xjxfw;
+		this.xcxfw = xcxfw;
+		this.yjjkxfw = yjjkxfw;
+		this.yjckxfw = yjckxfw;
+		this.ejckxfw = ejckxfw;
+		this.zsjkxfw = zsjkxfw;
+		this.w33xfw = w33xfw;
+		this.gyxfw = gyxfw;
+		this.cgyxfw = cgyxfw;
+		this.xjjyl = xjjyl;
+		this.zgjyl = zgjyl;
+		this.fxyl = fxyl;
+		this.fpjyl = fpjyl;
+		this.snl = snl;
+		this.zyjyl = zyjyl;
+		this.syj1sl = syj1sl;
+		this.syj2sl = syj2sl;
+		this.syj3sl = syj3sl;
+		this.zbr = zbr;
+		this.shr = shr;
+		this.shsj = shsj;
+		this.xgr = xgr;
+		this.xgsj = xgsj;
+		this.bz = bz;
+	}
+
+	// Property accessors
+
+	public String getRpdUThinWaterGeneralId() {
+		return this.rpdUThinWaterGeneralId;
+	}
+
+	public void setRpdUThinWaterGeneralId(String rpdUThinWaterGeneralId) {
+		this.rpdUThinWaterGeneralId = rpdUThinWaterGeneralId;
+	}
+
+	public Date getBbrq() {
+		return this.bbrq;
+	}
+
+	public void setBbrq(Date bbrq) {
+		this.bbrq = bbrq;
+	}
+
+	public BigDecimal getDjhy() {
+		return this.djhy;
+	}
+
+	public void setDjhy(BigDecimal djhy) {
+		this.djhy = djhy;
+	}
+
+	public BigDecimal getDchy() {
+		return this.dchy;
+	}
+
+	public void setDchy(BigDecimal dchy) {
+		this.dchy = dchy;
+	}
+
+	public BigDecimal getXjhy() {
+		return this.xjhy;
+	}
+
+	public void setXjhy(BigDecimal xjhy) {
+		this.xjhy = xjhy;
+	}
+
+	public BigDecimal getXchy() {
+		return this.xchy;
+	}
+
+	public void setXchy(BigDecimal xchy) {
+		this.xchy = xchy;
+	}
+
+	public BigDecimal getYjjkhy() {
+		return this.yjjkhy;
+	}
+
+	public void setYjjkhy(BigDecimal yjjkhy) {
+		this.yjjkhy = yjjkhy;
+	}
+
+	public BigDecimal getYjckhy() {
+		return this.yjckhy;
+	}
+
+	public void setYjckhy(BigDecimal yjckhy) {
+		this.yjckhy = yjckhy;
+	}
+
+	public BigDecimal getEjckhy() {
+		return this.ejckhy;
+	}
+
+	public void setEjckhy(BigDecimal ejckhy) {
+		this.ejckhy = ejckhy;
+	}
+
+	public BigDecimal getZsjkhy() {
+		return this.zsjkhy;
+	}
+
+	public void setZsjkhy(BigDecimal zsjkhy) {
+		this.zsjkhy = zsjkhy;
+	}
+
+	public BigDecimal getW33hy() {
+		return this.w33hy;
+	}
+
+	public void setW33hy(BigDecimal w33hy) {
+		this.w33hy = w33hy;
+	}
+
+	public BigDecimal getGyhy() {
+		return this.gyhy;
+	}
+
+	public void setGyhy(BigDecimal gyhy) {
+		this.gyhy = gyhy;
+	}
+
+	public BigDecimal getCgyhy() {
+		return this.cgyhy;
+	}
+
+	public void setCgyhy(BigDecimal cgyhy) {
+		this.cgyhy = cgyhy;
+	}
+
+	public BigDecimal getDjxfw() {
+		return this.djxfw;
+	}
+
+	public void setDjxfw(BigDecimal djxfw) {
+		this.djxfw = djxfw;
+	}
+
+	public BigDecimal getDcxfw() {
+		return this.dcxfw;
+	}
+
+	public void setDcxfw(BigDecimal dcxfw) {
+		this.dcxfw = dcxfw;
+	}
+
+	public BigDecimal getXjxfw() {
+		return this.xjxfw;
+	}
+
+	public void setXjxfw(BigDecimal xjxfw) {
+		this.xjxfw = xjxfw;
+	}
+
+	public BigDecimal getXcxfw() {
+		return this.xcxfw;
+	}
+
+	public void setXcxfw(BigDecimal xcxfw) {
+		this.xcxfw = xcxfw;
+	}
+
+	public BigDecimal getYjjkxfw() {
+		return this.yjjkxfw;
+	}
+
+	public void setYjjkxfw(BigDecimal yjjkxfw) {
+		this.yjjkxfw = yjjkxfw;
+	}
+
+	public BigDecimal getYjckxfw() {
+		return this.yjckxfw;
+	}
+
+	public void setYjckxfw(BigDecimal yjckxfw) {
+		this.yjckxfw = yjckxfw;
+	}
+
+	public BigDecimal getEjckxfw() {
+		return this.ejckxfw;
+	}
+
+	public void setEjckxfw(BigDecimal ejckxfw) {
+		this.ejckxfw = ejckxfw;
+	}
+
+	public BigDecimal getZsjkxfw() {
+		return this.zsjkxfw;
+	}
+
+	public void setZsjkxfw(BigDecimal zsjkxfw) {
+		this.zsjkxfw = zsjkxfw;
+	}
+
+	public BigDecimal getW33xfw() {
+		return this.w33xfw;
+	}
+
+	public void setW33xfw(BigDecimal w33xfw) {
+		this.w33xfw = w33xfw;
+	}
+
+	public BigDecimal getGyxfw() {
+		return this.gyxfw;
+	}
+
+	public void setGyxfw(BigDecimal gyxfw) {
+		this.gyxfw = gyxfw;
+	}
+
+	public BigDecimal getCgyxfw() {
+		return this.cgyxfw;
+	}
+
+	public void setCgyxfw(BigDecimal cgyxfw) {
+		this.cgyxfw = cgyxfw;
+	}
+
+	public BigDecimal getXjjyl() {
+		return this.xjjyl;
+	}
+
+	public void setXjjyl(BigDecimal xjjyl) {
+		this.xjjyl = xjjyl;
+	}
+
+	public BigDecimal getZgjyl() {
+		return this.zgjyl;
+	}
+
+	public void setZgjyl(BigDecimal zgjyl) {
+		this.zgjyl = zgjyl;
+	}
+
+	public BigDecimal getFxyl() {
+		return this.fxyl;
+	}
+
+	public void setFxyl(BigDecimal fxyl) {
+		this.fxyl = fxyl;
+	}
+
+	public BigDecimal getFpjyl() {
+		return this.fpjyl;
+	}
+
+	public void setFpjyl(BigDecimal fpjyl) {
+		this.fpjyl = fpjyl;
+	}
+
+	public BigDecimal getSnl() {
+		return this.snl;
+	}
+
+	public void setSnl(BigDecimal snl) {
+		this.snl = snl;
+	}
+
+	public BigDecimal getZyjyl() {
+		return this.zyjyl;
+	}
+
+	public void setZyjyl(BigDecimal zyjyl) {
+		this.zyjyl = zyjyl;
+	}
+
+	public BigDecimal getSyj1sl() {
+		return this.syj1sl;
+	}
+
+	public void setSyj1sl(BigDecimal syj1sl) {
+		this.syj1sl = syj1sl;
+	}
+
+	public BigDecimal getSyj2sl() {
+		return this.syj2sl;
+	}
+
+	public void setSyj2sl(BigDecimal syj2sl) {
+		this.syj2sl = syj2sl;
+	}
+
+	public BigDecimal getSyj3sl() {
+		return this.syj3sl;
+	}
+
+	public void setSyj3sl(BigDecimal syj3sl) {
+		this.syj3sl = syj3sl;
+	}
+
+	public String getZbr() {
+		return this.zbr;
+	}
+
+	public void setZbr(String zbr) {
+		this.zbr = zbr;
+	}
+
+	public String getShr() {
+		return this.shr;
+	}
+
+	public void setShr(String shr) {
+		this.shr = shr;
+	}
+
+	public Date getShsj() {
+		return this.shsj;
+	}
+
+	public void setShsj(Date shsj) {
+		this.shsj = shsj;
+	}
+
+	public String getXgr() {
+		return this.xgr;
+	}
+
+	public void setXgr(String xgr) {
+		this.xgr = xgr;
+	}
+
+	public Date getXgsj() {
+		return this.xgsj;
+	}
+
+	public void setXgsj(Date xgsj) {
+		this.xgsj = xgsj;
+	}
+
+	public String getBz() {
+		return this.bz;
+	}
+
+	public void setBz(String bz) {
+		this.bz = bz;
+	}
+
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- 系统Action -->
+	<package name="dmsalarm" extends="struts-default">
+
+		<action name="bjfzzsk_*" class="com.echo.action.BjfzzskAction" method="{1}">
+			<result name="success" type="dispatcher">/bjfzzsk.jsp</result>
+			<result name="fail" type="dispatcher">/bjfzzsk.jsp</result>
+		</action> 
+
+	<!--短信用户管理Action-->
+		<action name="dxyhgl_*" class="com.echo.action.DxyhglAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+		</action>
+	<!-- 报警限值审批 -->
+		<action name="bjxzsp_*" class="com.echo.action.BjxzspAction" method="{1}">
+			<result name="success" type="dispatcher">/bjxzsp.jsp</result>
+			<result name="fail" type="dispatcher">/bjxzsp.jsp</result>
+		</action> 
+		
+		
+	</package>
+</struts>

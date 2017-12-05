@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.echo.dto.PcCdWarningKnowT" table="PC_CD_WARNING_KNOW_T">
+		<id name="zskid" type="string">
+			<column name="zsk_id" length="36" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="miaoshu" type="string">
+			<column name="miaoshu" length="20" />
+		</property>
+		<property name="csyy" type="string">
+			<column name="csyy" length="20" />
+		</property>
+		<property name="clfs" type="string" >
+			<column name="clfs" length="20" />
+		</property>
+		
+	</class>
+</hibernate-mapping>

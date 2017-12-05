@@ -1,0 +1,40 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- 系统Action -->
+	<package name="system" extends="struts-default">
+		<!-- 登陆Action -->
+		<action name="login_*" class="com.echo.action.LoginAction" method="{1}">
+			<result name="success" type="dispatcher">/main.jsp</result>
+			<result name="fail" type="dispatcher">/index.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+		<!-- 系统菜单Action -->
+		<action name="system_*" class="com.echo.action.SystemTreeAction" method="{1}">
+			<result name="success" type="dispatcher">/registerSuccess.jsp</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+		</action>
+		<!-- 用户Action -->
+		<action name="user_*" class="com.echo.action.UserAction" method="{1}">
+			<result name="success" type="dispatcher">/user.jsp</result>
+			<result name="fail" type="dispatcher">/user.jsp</result>
+		</action>
+		<!-- 角色Action -->
+		<action name="role_*" class="com.echo.action.RoleAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/system/authority.jsp</result>
+			<result name="fail" type="dispatcher">/pages/system/authority.jsp</result>
+		</action>
+		<!-- 日志Action -->
+		<action name="log_*" class="com.echo.action.LogAction" method="{1}">
+			<result name="success" type="dispatcher">/registerSuccess.jsp</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+		</action>
+		<!-- PORTAL菜单Action -->
+		<action name="portal_*" class="com.echo.action.PortalAction" method="{1}">
+			<result name="success" type="dispatcher">/registerSuccess.jsp</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+		</action>
+	</package>
+</struts>

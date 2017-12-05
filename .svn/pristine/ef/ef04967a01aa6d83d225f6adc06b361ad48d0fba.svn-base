@@ -1,0 +1,16 @@
+package com.echo.dao;
+
+import java.util.List;
+
+import com.echo.dto.PcRpdU1WaterAutoT;
+
+public interface U1s1gyDao {
+
+	public List<Object[]> searchU1s1gy(String timeCalssql) throws Exception;
+
+	public List<PcRpdU1WaterAutoT> SreachU1S1gy(String hql)throws Exception;
+
+	public boolean updateU1S1gy(PcRpdU1WaterAutoT us)throws Exception;
+
+
+}

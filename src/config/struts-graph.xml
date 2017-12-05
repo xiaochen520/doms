@@ -1,0 +1,14 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- 系统Action -->
+	<package name="graph" extends="struts-default">
+		<!-- 图形曲线Action -->
+		<action name="graph4line_*" class="com.echo.action.FourLineAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/pages/user/login.jsp</result>
+		</action>
+	</package>
+</struts>

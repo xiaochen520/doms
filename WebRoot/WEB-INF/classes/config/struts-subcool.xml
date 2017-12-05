@@ -1,0 +1,23 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- 系统Action -->
+	<package name="subcool" extends="struts-default">
+		<!-- SubCool Action -->
+		<action name="subcool_*" class="com.echo.action.SubCoolAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+			<result name="adjust" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${adjustName}"</param>
+				<param name="inputName">adjustFile</param>
+			</result>
+		</action>
+	</package>
+</struts>

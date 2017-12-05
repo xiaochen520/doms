@@ -1,0 +1,156 @@
+package com.echo.service;
+
+import java.io.ByteArrayOutputStream;
+import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.List;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import com.echo.dto.PcCdSubcoolCalParamsInfoT;
+import com.echo.dto.PcCdSubcoolDefaultParam;
+import com.echo.dto.PcRdSubcoolCalResultsT;
+import com.echo.dto.User;
+
+/**
+ * 
+ * @Company: Etrol
+ * @ClassName: SubcoolService
+ * @author LIJUN
+ * @date 2015-8-20
+ */
+public interface SubcoolService {
+
+	/**
+	 * 设置subcool默认参数
+	 * 
+	 * @param subcoolParam
+	 * @return
+	 */
+	public boolean setSubcoolDefaultParam(PcCdSubcoolDefaultParam subcoolParam);
+
+	/**
+	 * 获得subcool默认参数
+	 * 
+	 * @return
+	 */
+	public JSONObject getSubcoolDefaultParam(String key);
+
+	/**
+	 * 设置subcool计算参数
+	 * 
+	 * @param alarmParam
+	 * @return
+	 */
+	public boolean setSubcoolAlarmParam(PcCdSubcoolCalParamsInfoT alarmParam);
+
+	/**
+	 * 删除subcool计算参数
+	 * 
+	 * @param alarmParam
+	 * @return
+	 */
+	public boolean removeSubcoolAlarmParam(String calid);
+
+	/**
+	 * 查找Subcool报警参数
+	 * 
+	 * @param area
+	 * @param block
+	 * @param jh
+	 * @param pageNo
+	 * @param sort
+	 * @param order
+	 * @param rowsPerpage
+	 * @return
+	 */
+	public HashMap<String, Object> searchSubcoolAlarmParam(String area,
+			String block, String jh, int pageNo, String sort, String order,
+			int rowsPerpage);
+
+	/**
+	 * 添加subcool计算参数
+	 * 
+	 * @param area
+	 * @param block
+	 * @param jh
+	 * @param cal
+	 * @param min
+	 * @param max
+	 * @param flow
+	 * @return 添加数量
+	 */
+	public int addSubcoolAlarmParam(String area, String block, String jh,
+			int cal, BigDecimal min, BigDecimal max, int flow);
+
+	/**
+	 * 修改subcool计算参数
+	 * 
+	 * @param area
+	 * @param block
+	 * @param jh
+	 * @param cal
+	 * @param min
+	 * @param max
+	 * @param flow
+	 * @return
+	 */
+	public boolean modifySubcoolAlarmParam(String calId, int cal,
+			BigDecimal min, BigDecimal max, int flow);
+
+	/**
+	 * 根据ID获得Subcool计算结果
+	 * 
+	 * @param calrdId
+	 * @return
+	 */
+	public PcRdSubcoolCalResultsT getSubcoolCalResultById(String calrdId);
+
+	/**
+	 * 查找Subcool计算结果
+	 * @param area
+	 * @param block
+	 * @param jh
+	 * @param start
+	 * @param end
+	 * @param pageNo
+	 * @param sort
+	 * @param order
+	 * @param rowsPerpage
+	 * @return
+	 */
+	public HashMap<String, Object> searchSubcoolCalResults(String area,
+			String block, String jh, String filter, String startTime, String endTime, int pageNo,
+			String sort, String order, int rowsPerpage);
+	
+	/**
+	 * 根据id获取全部计算结果数据
+	 * @param rdid
+	 * @return
+	 */
+	public JSONObject getSubcoolCalResult(String rdid);
+	
+	/**
+	 * 修改建议控制参数
+	 * @param rdid
+	 * @param modifyflow
+	 * @param modifyjig
+	 * @param modifynip
+	 * @return
+	 */
+	public boolean modifySubcoolSuggestParam(String rdid, BigDecimal modifyflow,
+			BigDecimal modifyjig, BigDecimal modifynip, int modifymode, User user);
+
+	public JSONObject searchSubcoolCalResults(String area, String block, String jh, String startTime, String endTime);
+
+	public List<Object[]> exportSuggest(String sagds);
+
+	public JSONObject searchSubcoolNew(String area, String block, String jh);
+
+	public int getExportTotal(String area, String block, String jh,
+			String start, String end);
+
+	public List<Object[]> exportAlarmInfo(String area, String block, String jh,
+			String start, String end);
+}

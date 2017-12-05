@@ -1,0 +1,68 @@
+@CHARSET "UTF-8";
+	body {
+		margin-left: 0px;
+		margin-top: 0px;
+		margin-right: 0px;
+		margin-bottom: 0px;
+		background-color: #FFFFFF;
+		font-size: 9px;
+	}
+	
+	.STYLE1 {font-family: "宋体"; font-size: 12px; color: #FFFFFF; line-height:0px;}
+	.STYLE2 {font-family: "宋体"; font-size: 12px; color: #000000; line-height:0px;}
+	
+	.STYLE3 {
+		font-family: "宋体";
+		font-size: 9pt;
+		font-style: normal;
+		line-height: 1.5;
+		text-align: left;
+		vertical-align: middle;
+		list-style-type: disc;
+		height: 16pt;
+	}
+	
+	.dashtb {
+		style="border-top:1   dashed   #ff0000;";
+	}
+	
+	.STYLE4 {
+		font-family: "宋体";
+		font-weight: bold;
+		font-size: 9pt;
+		color: #FFFFFF;
+	}
+	
+	.STYLE_DATE{font-size:9pt;line-height:12px;}
+
+	.btn {font-family:"宋体"; font-size:9pt;height:15pt;BORDER-RIGHT: #7b9ebd 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #7b9ebd 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#cecfde); BORDER-LEFT: #7b9ebd 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 0px; BORDER-BOTTOM: #7b9ebd 1px solid
+	}
+
+	a.Channel1:link {color: #555555;text-decoration: none;} /*未访问的链接 */ 
+	a.Channel1:visited {color: #555555;text-decoration: none;} /*已访问的链接*/ 
+	a.Channel1:hover{color: #EE1C11;text-decoration: none;} /*鼠标在链接上 */ 
+	a.Channel1:active {color: #555555;text-decoration:none;} /*点击激活链接*/
+	
+	a.Channel2:link {color: #FFFFFF;text-decoration: none;} /*未访问的链接 */ 
+	a.Channel2:visited {color: #FFFFFF;text-decoration: none;} /*已访问的链接*/ 
+	a.Channel2:hover{color: #0000FF;text-decoration: none;} /*鼠标在链接上 */ 
+	a.Channel2:active {color: #FFFFFF;text-decoration:none;} /*点击激活链接*/
+
+	html:text {font-family: "宋体";
+		font-size: 9pt;}
+	
+	td,th {font-size: 12px;}
+	.m01 {
+		border-top-width: 1px;
+		border-right-width: 1px;
+		border-bottom-width: 1px;
+		border-left-width: 1px;
+		border-top-style: solid;
+		border-right-style: solid;
+		border-bottom-style: solid;
+		border-left-style: solid;
+		border-top-color: #B9C2DF;
+		border-right-color: #8A99C9;
+		border-bottom-color: #8A99C9;
+		border-left-color: #B9C2DF;
+	}		

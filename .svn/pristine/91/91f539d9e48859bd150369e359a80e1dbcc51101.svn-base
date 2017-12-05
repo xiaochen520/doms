@@ -1,0 +1,388 @@
+package com.echo.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import com.echo.dao.PublicDao;
+import com.echo.dao.ZhuWaterPumpDao;
+import com.echo.dto.PcRpdUThinWaterAutoT;
+import com.echo.service.ZhuWaterPumpService;
+import com.echo.util.CommonsUtil;
+import com.echo.util.DateBean;
+
+public class ZhuWaterPumpServiceImpl implements ZhuWaterPumpService{
+		private ZhuWaterPumpDao  zhuWaterPumpDao;
+
+		public ZhuWaterPumpDao getZhuWaterPumpDao() {
+			return zhuWaterPumpDao;
+		}
+
+		public void setZhuWaterPumpDao(ZhuWaterPumpDao zhuWaterPumpDao) {
+			this.zhuWaterPumpDao = zhuWaterPumpDao;
+		}
+		
+		@SuppressWarnings("null")
+		@Override
+		public JSONArray searchZhuPump(String rq) throws Exception {
+			
+			String FT_DX_ADD ; //东线流量
+			String FT_XX_ADD;  //西线流量
+			String FT_ZSQ1;  //注水撬流量
+			String WSBXFWLJ;   //累积流量
+			
+			List<String>  FT_DX_ADDSUM = new ArrayList<String>();
+			List<String>  FT_XX_ADDSUM = new ArrayList<String>();
+			List<String>  FT_ZSQ1SUM = new ArrayList<String>();
+			List<String>  WSBXFWLJSUM = new ArrayList<String>();
+			
+			JSONObject obj= null;
+			JSONArray arr = new JSONArray();
+			JSONArray firstArrSum = new JSONArray();
+			int dataflg  =0; //数据存在表示 0：不存在； 1： 存在
+			String timeCalssql = "select tp.parameter_value from PC_CD_TRIGGERED_PROCESS_T tp where tp.parameter_name='union_station_rpd_start_time'";
+			String calcNum = "-16";
+			List<Object[]> dataSet = zhuWaterPumpDao.searchZhuPump(timeCalssql);
+			if(dataSet !=null && dataSet.size()>0){
+				calcNum = dataSet.get(0) + "";
+			}
+			String stratime =DateBean.getDynamicTime(calcNum, rq, "0");
+			String endtime =DateBean.getDynamicTime(calcNum, rq, "1");
+			//to_char(  a.cjsj,'YYYY-MM-DD HH24:MI:SS')as cjsj ,
+			String sql =" select a.rpd_u_thin_water_auto_id,to_char(  a.bbsj,'YYYY-MM-DD HH24:MI:SS')as bbsj,   a.pt_101a,a.pt_101b,a.zsb1dl, a.pt_102a,a.pt_102b,a.zsb2dl, a.pt_103a,a.pt_103b,a.zsb3dl, a.pt_104a,a.pt_104b,a.zsb4dl,a.sc12_zsb_alm_sv,a.sc34_zsb_alm_sv,"+
+					"a.li_1_jhg,a.li_2_jhg,a.pt_zsb, a.ft_dx_add,a.ft_xx_add,a.ft_zsq1,a.wsb2pl, a.wsb1pl,a.fi_jhso1, a.wsbxfwlj"+
+					"  from  PC_RPD_U_THIN_WATER_AUTO_T a where 1=1 ";
+			sql += " and a.bbsj between TO_DATE('"+stratime+"','YYYY-MM-DD HH24:MI:SS') and TO_DATE('"+endtime+"','YYYY-MM-DD HH24:MI:SS') order by bbsj";
+			Object[] pumptable = null;
+			List<Object[]> pumpList = zhuWaterPumpDao.searchZhuPump(sql);
+
+			String[][] dates = DateBean.getReportTime("time", rq);
+			if(pumpList !=null && pumpList.size()>0){
+				
+				for(String[] dateList :dates){
+					 obj= new JSONObject();
+					
+					 for(String data:dateList){
+						 pumptable=null;
+						 dataflg = 0;
+							for(Object[] pump:pumpList){
+								obj = new JSONObject();
+								if(data.toString().equals(pump[1].toString())){
+									dataflg = 1;
+									pumptable =pump;
+							}
+						}	
+								 if(dataflg == 1){
+									 obj.put("rpd_u_thin_water_auto_id", pumptable[0]);
+									 obj.put("cjsj", data.substring(11, 16));
+									 //obj.put("cjsj", pumptable[1]);
+									  if(pumptable[2] !=null){
+										  obj.put("pt_101a",pumptable[2]);
+									  }else{
+										  obj.put("pt_101a","");
+									  }
+									 if(pumptable[3] !=null){
+									 obj.put("pt_101b",pumptable[3] );
+									 }else{
+										 obj.put("pt_101b","");
+									 }
+									 if(pumptable[4] !=null){
+									 obj.put("zsb1dl", pumptable[4]);
+									 }else{
+										 obj.put("zsb1dl", "");
+									 }
+									 if(pumptable[5] !=null){
+									 obj.put("pt_102a",pumptable[5] );
+									 }else{
+										 obj.put("pt_102a","");
+									 }
+									 if(pumptable[6] !=null){
+									 obj.put("pt_102b",pumptable[6] );
+									 }else{
+										 obj.put("pt_102b","");
+									 }
+									 if(pumptable[7] !=null){
+									 obj.put("zsb2dl", pumptable[7]);
+									 }else{
+										 obj.put("zsb2dl","");
+									 }
+									 if(pumptable[8] !=null){
+									 obj.put("pt_103a",pumptable[8] );
+									 }else{
+										 obj.put("pt_103a","");
+									 }
+									 if(pumptable[9] !=null){
+									 obj.put("pt_103b",pumptable[9] );
+									 }else{
+										 obj.put("pt_103b","");
+									 }
+									 if(pumptable[10] !=null){
+									 obj.put("zsb3dl",pumptable[10] );
+									 }else{
+										 obj.put("zsb3dl","");
+									 }
+									 if(pumptable[11] !=null){
+									 obj.put("pt_104a",pumptable[11] );
+									 }else{
+										 obj.put("pt_104a","");
+									 }
+									 if(pumptable[12] !=null){
+									 obj.put("pt_104b",pumptable[12] );
+									 }else{
+										 obj.put("pt_104b","");
+									 }
+									 if(pumptable[13] !=null){
+									 obj.put("zsb4dl",pumptable[13] );
+									 }else{
+										 obj.put("zsb4dl",""); 
+									 }
+									 if(pumptable[14] !=null){
+									 obj.put("sc12_zsb_alm_sv", pumptable[14]);
+									 }else{
+										 obj.put("sc12_zsb_alm_sv", "");
+									 }
+									 if(pumptable[15] !=null){
+									 obj.put("sc34_zsb_alm_sv",pumptable[15] );
+									 }else{
+										 obj.put("sc34_zsb_alm_sv","");
+									 }
+									 if(pumptable[16] !=null){
+									 obj.put("li_1_jhg",pumptable[16] );
+									 }else{
+										 obj.put("li_1_jhg","");
+									 }
+									 if(pumptable[17] !=null){
+									 obj.put("li_2_jhg",pumptable[17] );
+									 }else{
+										 obj.put("li_2_jhg","");
+									 }
+									 if(pumptable[18] !=null){
+									 obj.put("pt_zsq",pumptable[18] );
+									 }else{
+										 obj.put("pt_zsq","");
+									 }
+									 if(pumptable[19] !=null){
+									 obj.put("ft_dx_add",pumptable[19] );
+									 FT_DX_ADDSUM.add(pumptable[19].toString());
+									 }else{
+										 obj.put("ft_dx_add","");
+										 FT_DX_ADDSUM.add("");
+									 }
+									 if(pumptable[20] !=null){
+									 obj.put("ft_xx_add",pumptable[20] );
+									 FT_XX_ADDSUM.add(pumptable[20].toString());
+									 }else{
+										 obj.put("ft_xx_add","");
+										 FT_XX_ADDSUM.add("");
+									 }
+									 if(pumptable[21] !=null){
+									 obj.put("ft_zsq1", pumptable[21]);
+									 FT_ZSQ1SUM.add(pumptable[21].toString());
+									 }else{
+										 obj.put("ft_zsq1", "");
+										 FT_ZSQ1SUM.add("");
+									 }
+									 if(pumptable[22] !=null){
+									 obj.put("wsb1pl",pumptable[22] );
+									 }else{
+										 obj.put("wsb1pl","");
+									 }
+									 if(pumptable[23] !=null){
+									 obj.put("wsb2pl",pumptable[23] );
+									 }else{
+										 obj.put("wsb2pl","");
+									 }
+									 if(pumptable[24] !=null){
+									 obj.put("fi_jhso1",pumptable[24] );
+									 }else{
+										 obj.put("fi_jhso1","");
+									 }
+									 if(pumptable[25] !=null){
+									 obj.put("wsbxfwlj",pumptable[25] );
+									 WSBXFWLJSUM.add(pumptable[25].toString());
+									 }else{
+										 obj.put("wsbxfwlj","");
+										 WSBXFWLJSUM.add("");
+									 }
+								  
+								 }else{
+									 obj.put("rpd_u_thin_water_auto_id", "");
+									 obj.put("cjsj", data.substring(11, 16));
+									 //obj.put("cjsj", pumptable[1]);
+									 obj.put("pt_101a","");
+									 obj.put("pt_101b","" );
+									 obj.put("zsb1dl","");
+									 obj.put("pt_102a","" );
+									 obj.put("pt_102b","" );
+									 obj.put("zsb2dl", "");
+									 obj.put("pt_103a","" );
+									 obj.put("pt_103b","");
+									 obj.put("zsb3dl","");
+									 obj.put("pt_104a","");
+									 obj.put("pt_104b","" );
+									 obj.put("zsb4dl","" );
+									 obj.put("sc12_zsb_alm_sv","");
+									 obj.put("sc34_zsb_alm_sv","");
+									 obj.put("li_1_jhg","");
+									 obj.put("li_2_jhg","");
+									 obj.put("pt_zsq","" );
+									 obj.put("ft_dx_add","");
+									 obj.put("ft_xx_add","");
+									 obj.put("ft_zsq1", "");
+									 obj.put("wsb1pl","");
+									 obj.put("wsb2pl","");
+									 obj.put("fi_jhso1","");
+									 obj.put("wsbxfwlj","");
+									 
+									 FT_DX_ADDSUM.add("");
+									 FT_XX_ADDSUM.add("");
+									 FT_ZSQ1SUM.add("");
+									 WSBXFWLJSUM.add("");
+								 }
+								 arr.add(obj);
+					 }
+				}
+			}else{
+				for(String[] dataList :dates){
+					for(String data:dataList){
+						obj=new JSONObject();
+						obj.put("rpd_u_thin_water_auto_id","");
+						 obj.put("cjsj", data.substring(11, 16));
+						 obj.put("pt_101a","");
+						 obj.put("pt_101b","" );
+						 obj.put("zsb1dl","");
+						 obj.put("pt_102a","" );
+						 obj.put("pt_102b","" );
+						 obj.put("zsb2dl", "");
+						 obj.put("pt_103a","" );
+						 obj.put("pt_103b","");
+						 obj.put("zsb3dl","");
+						 obj.put("pt_104a","");
+						 obj.put("pt_104b","" );
+						 obj.put("zsb4dl","" );
+						 obj.put("sc12_zsb_alm_sv","");
+						 obj.put("sc34_zsb_alm_sv","");
+						 obj.put("li_1_jhg","");
+						 obj.put("li_2_jhg","");
+						 obj.put("pt_zsq","" );
+						 obj.put("ft_dx_add","");
+						 obj.put("ft_xx_add","");
+						 obj.put("ft_zsq1", "");
+						 obj.put("wsb1pl","");
+						 obj.put("wsb2pl","");
+						 obj.put("fi_jhso1","");
+						 obj.put("wsbxfwlj",""); 
+						 arr.add(obj);
+					 }
+				}
+			}
+			if(pumpList !=null && pumpList.size()>0){
+				FT_DX_ADD = CommonsUtil.getSumData0(FT_DX_ADDSUM);
+				FT_XX_ADD = CommonsUtil.getSumData0(FT_XX_ADDSUM);
+				FT_ZSQ1 = CommonsUtil.getSumData0(FT_ZSQ1SUM);
+				WSBXFWLJ = CommonsUtil.getSumData0(WSBXFWLJSUM);
+			 obj.put("rpd_u_thin_water_auto_id", "");
+			 obj.put("cjsj", "");
+			 obj.put("pt_101a","");
+			 obj.put("pt_101b","" );
+			 obj.put("zsb1dl","");
+			 obj.put("pt_102a","" );
+			 obj.put("pt_102b","" );
+			 obj.put("zsb2dl", "");
+			 obj.put("pt_103a","" );
+			 obj.put("pt_103b","");
+			 obj.put("zsb3dl","");
+			 obj.put("pt_104a","");
+			 obj.put("pt_104b","" );
+			 obj.put("zsb4dl","" );
+			 obj.put("sc12_zsb_alm_sv","");
+			 obj.put("sc34_zsb_alm_sv","");
+			 obj.put("li_1_jhg","" );
+			 obj.put("li_2_jhg","" );
+			 obj.put("pt_zsq","累积" );
+			 obj.put("ft_dx_add",FT_DX_ADD);
+			 obj.put("ft_xx_add",FT_XX_ADD);
+			 obj.put("ft_zsq1", FT_ZSQ1);
+			 obj.put("wsb1pl","");
+			 obj.put("wsb2pl","");
+			 obj.put("fi_jhso1","");
+			 obj.put("wsbxfwlj",WSBXFWLJ);
+			 arr.add(obj);
+			}else{
+			 obj.put("rpd_u_thin_water_auto_id", "");
+			 obj.put("cjsj", "");
+			 obj.put("pt_101a","");
+			 obj.put("pt_101b","" );
+			 obj.put("zsb1dl","");
+			 obj.put("pt_102a","" );
+			 obj.put("pt_102b","" );
+			 obj.put("zsb2dl", "");
+			 obj.put("pt_103a","" );
+			 obj.put("pt_103b","");
+			 obj.put("zsb3dl","");
+			 obj.put("pt_104a","");
+			 obj.put("pt_104b","" );
+			 obj.put("zsb4dl","" );
+			 obj.put("sc12_zsb_alm_sv","");
+			 obj.put("sc34_zsb_alm_sv","");
+			 obj.put("li_1_jhg","" );
+			 obj.put("li_2_jhg","" );
+			 obj.put("pt_zsq","累积" );
+			 obj.put("ft_dx_add","");
+			 obj.put("ft_xx_add","");
+			 obj.put("ft_zsq1", "");
+			 obj.put("wsb1pl","");
+			 obj.put("wsb2pl","");
+			 obj.put("fi_jhso1","");
+			 obj.put("wsbxfwlj","");
+			 arr.add(obj);
+			}
+			
+			return arr;
+		}
+
+		@Override
+		public List<PcRpdUThinWaterAutoT> SreachPumpAuto(String id, String date)throws Exception {
+			String hql = "from PcRpdUThinWaterAutoT a   where 1=1"; 
+			if(id !=null && !"".equals(id)){
+				hql += " and a.rpdUThinWaterAutoId  ='"+id+"'";
+			}
+			if(date !=null && !"".equals(date)){
+				hql += " and a.bbsj = '"+date+"'";
+			}
+			return zhuWaterPumpDao.SreachPumpAuto(hql);
+		}
+
+		@Override
+		public boolean updatePumpAuto(PcRpdUThinWaterAutoT waterA)
+				throws Exception {
+			// TODO Auto-generated method stub
+			return zhuWaterPumpDao.updatePumpAuto(waterA);
+		}
+		public int searchCalcNum() {
+			// TODO Auto-generated method stub
+			String timeCalssql = "select tp.parameter_value from PC_CD_TRIGGERED_PROCESS_T tp where tp.parameter_name='union_station_rpd_start_time'";
+			String calcNum = "-16";
+			List<Object[]> dataSet = zhuWaterPumpDao.searchZhuPump(timeCalssql);
+			if(dataSet != null && dataSet.size()>0){
+				calcNum = dataSet.get(0) + "";
+			}
+			return Integer.parseInt(calcNum);
+		}
+		public List<Object[]> searchWSCLOther(String rq,String fields) throws Exception {
+			String timeCalssql = "select tp.parameter_value from PC_CD_TRIGGERED_PROCESS_T tp where tp.parameter_name='union_station_rpd_start_time'";
+			String calcNum = "-16";
+			List<Object[]> dataSet = zhuWaterPumpDao.searchZhuPump(timeCalssql);
+			if(dataSet != null && dataSet.size()>0){
+				calcNum = dataSet.get(0) + "";
+			}
+			String stratime =DateBean.getDynamicTime(calcNum, rq, "0");
+			String endtime =DateBean.getDynamicTime(calcNum, rq, "1");
+			String sql = "select " + fields + " from PC_RPD_U_THIN_WATER_AUTO_T u where u.BBSJ between TO_DATE('" + stratime + "','YYYY-MM-DD HH24:MI:SS') and TO_DATE('" + endtime + "','YYYY-MM-DD HH24:MI:SS') order by u.BBSJ";
+			List<Object[]> yyList = zhuWaterPumpDao.searchZhuPump(sql);
+			return yyList;
+		}
+		
+}

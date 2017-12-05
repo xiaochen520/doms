@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.echo.dto.PcRpdReportRhs2T" table="PC_RPD_REPORT_RHS2_T">
+		<id name="pc_prd_report_rhs2_id" type="string">
+            <column name="pc_prd_report_rhs2_id" length="36" />
+            <generator class="uuid.hex" />
+        </id>
+		<property name="report_date" type="timestamp">
+            <column name="report_date" length="36" not-null="true" />
+        </property>
+		<property name="rhqts_72qs" type="big_decimal">
+            <column name="rhqts_72qs" precision="3"  />
+        </property>
+		<property name="rhqts_72ws" type="big_decimal">
+            <column name="rhqts_72ws" precision="3"  />
+        </property>
+		<property name="rhqts_216ws" type="big_decimal">
+            <column name="rhqts_216ws" precision="3"  />
+        </property>
+		<property name="yxzs_72qs" type="big_decimal">
+            <column name="yxzs_72qs" precision="5"  />
+        </property>
+		<property name="yxzs_72ws" type="big_decimal">
+            <column name="yxzs_72ws" precision="5"  />
+        </property>
+        <property name="yxzs_216ws" type="big_decimal">
+            <column name="yxzs_216ws" precision="5"  />
+        </property>
+        <property name="ss_72qs" type="big_decimal">
+            <column name="ss_72qs" precision="8" scale="1" />
+        </property>
+        <property name="ss_72ws" type="big_decimal">
+            <column name="ss_72ws" precision="8" scale="1" />
+        </property>
+        <property name="ss_216ws" type="big_decimal">
+            <column name="ss_216ws" precision="8" scale="1" />
+        </property>
+        <property name="rzl_72qs" type="big_decimal">
+            <column name="rzl_72qs" precision="8" scale="1" />
+        </property>
+        <property name="rzl_72ws" type="big_decimal">
+            <column name="rzl_72ws" precision="8" scale="1" />
+        </property>
+        <property name="rzl_216ws" type="big_decimal">
+            <column name="rzl_216ws" precision="8" scale="1" />
+        </property>
+        <property name="zszs_72qs" type="big_decimal">
+            <column name="zszs_72qs" precision="5"  />
+        </property>
+        <property name="zszs_72ws" type="big_decimal">
+            <column name="zszs_72ws" precision="5"  />
+        </property>
+        <property name="zszs_216ws" type="big_decimal">
+            <column name="zszs_216ws" precision="5"  />
+        </property>
+        <property name="zsysl_72qs" type="big_decimal">
+            <column name="zsysl_72qs" precision="8" scale="1" />
+        </property>
+        <property name="zsysl_72ws" type="big_decimal">
+            <column name="zsysl_72ws" precision="8" scale="1" />
+        </property>
+        <property name="zsysl_216ws" type="big_decimal">
+            <column name="zsysl_216ws" precision="8" scale="1" />
+        </property>
+        <property name="dwcy_hy_2r" type="big_decimal">
+            <column name="dwcy_hy_2r" precision="8" scale="2" />
+        </property>
+        <property name="jyb_hy_2r" type="big_decimal">
+            <column name="jyb_hy_2r" precision="8" scale="2" />
+        </property>
+        <property name="GL3529_HY" type="big_decimal">
+            <column name="GL35_29_HY" precision="8" scale="2" />
+        </property>
+        <property name="z45sagd_hy" type="big_decimal">
+            <column name="z45sagd_hy" precision="8" scale="2" />
+        </property>
+        <property name="gwcy_jzs" type="big_decimal">
+            <column name="gwcy_jzs" precision="8" scale="2" />
+        </property>
+        <property name="jyb_jzs" type="big_decimal">
+            <column name="jyb_jzs" precision="8" scale="2" />
+        </property>
+        <property name="z1sagd_hy" type="big_decimal">
+            <column name="z1sagd_hy" precision="8" scale="2" />
+        </property>
+        <property name="dwcy_hy_2r_jcr" type="string">
+			<column name="dwcy_hy_2r_jcr" length="10" />
+		</property>
+        <property name="jyb_hy_2r_jcr" type="string">
+			<column name="jyb_hy_2r_jcr" length="10" />
+		</property>
+		<property name="GL3529_HY_JCR" type="string">
+			<column name="GL35_29_HY_JCR" length="10" />
+		</property>
+		<property name="z45sagd_hy_jcr" type="string">
+			<column name="z45sagd_hy_jcr" length="10" />
+		</property>
+		<property name="z1sagd_hy_jcr" type="string">
+			<column name="z1sagd_hy_jcr" length="10" />
+		</property>
+		<property name="gwcy_jzs_jcr" type="string">
+			<column name="gwcy_jzs_jcr" length="10" />
+		</property>
+		<property name="jyb_jzs_jcr" type="string">
+			<column name="jyb_jzs_jcr" length="10" />
+		</property>
+		
+		
+		<property name="sds_bb" type="big_decimal">
+            <column name="sds_bb" precision="5" />
+        </property>
+        <property name="sds_yb" type="big_decimal">
+            <column name="sds_yb" precision="5" />
+        </property>
+        <property name="sds_kc" type="big_decimal">
+            <column name="sds_kc" precision="5" />
+        </property>
+		
+		<property name="qs_yd" type="big_decimal">
+            <column name="qs_yd" precision="8" scale="1" />
+        </property>
+        <property name="qs_lg" type="big_decimal">
+            <column name="qs_lg" precision="8" scale="1" />
+        </property>       
+        <property name="qs_jd" type="big_decimal">
+            <column name="qs_jd" precision="8" scale="1" />
+        </property>
+        <property name="ws_yd" type="big_decimal">
+            <column name="ws_yd" precision="8" scale="1" />
+        </property>
+		<property name="ws_lg" type="big_decimal">
+            <column name="ws_lg" precision="8" scale="1" />
+        </property>
+        <property name="ws_jd" type="big_decimal">
+            <column name="ws_jd" precision="8" scale="1" />
+        </property>
+        <property name="ghj_yd" type="big_decimal">
+            <column name="ghj_yd" precision="8" scale="1" />
+        </property>
+        <property name="ghj_lg" type="big_decimal">
+            <column name="ghj_lg" precision="8" scale="1" />
+        </property>
+        <property name="ghj_jd" type="big_decimal">
+            <column name="ghj_jd" precision="8" scale="1" />
+        </property>
+        <property name="hy1" type="big_decimal">
+            <column name="hy1" precision="8" scale="2" />
+        </property>
+        <property name="hy2" type="big_decimal">
+            <column name="hy2" precision="8" scale="2" />
+        </property>
+        <property name="hy3" type="big_decimal">
+            <column name="hy3" precision="8" scale="2" />
+        </property>
+		<property name="xf1" type="big_decimal">
+            <column name="xf1" precision="8" scale="2" />
+        </property>
+        <property name="xf2" type="big_decimal">
+            <column name="xf2" precision="8" scale="2" />
+        </property>
+        <property name="xf3" type="big_decimal">
+            <column name="xf3" precision="8" scale="2" />
+        </property>
+        
+        <property name="xgnh_d1" type="big_decimal">
+            <column name="xgnh_d1" precision="8" scale="1" />
+        </property>
+		<property name="xgnh_d2" type="big_decimal">
+            <column name="xgnh_d2" precision="8" scale="1" />
+        </property>
+        <property name="xgnh_d3" type="big_decimal">
+            <column name="xgnh_d3" precision="8" scale="1" />
+        </property>
+        <property name="xgnh_d4" type="big_decimal">
+            <column name="xgnh_d4" precision="8" scale="1" />
+        </property>
+		<property name="xgnh_y1" type="big_decimal">
+            <column name="xgnh_y1" precision="8" scale="1" />
+        </property>
+        <property name="xgnh_y2" type="big_decimal">
+            <column name="xgnh_y2" precision="8" scale="1" />
+        </property>
+        <property name="xgnh_y3" type="big_decimal">
+            <column name="xgnh_y3" precision="8" scale="1" />
+        </property>
+        <property name="xgnh_y4" type="big_decimal">
+            <column name="xgnh_y4" precision="8" scale="1" />
+        </property>
+        <property name="xgnh_y5" type="big_decimal">
+            <column name="xgnh_y5" precision="8" scale="1" />
+        </property>
+        <property name="xgnh_y6" type="big_decimal">
+            <column name="xgnh_y6" precision="8" scale="1" />
+        </property>
+		
+		<property name="ch1" type="string">
+			<column name="ch1" length="10" />
+		</property>
+		<property name="ch2" type="string">
+			<column name="ch2" length="10" />
+		</property>
+		<property name="ch3" type="string">
+			<column name="ch3" length="10" />
+		</property>
+		<property name="ch4" type="string">
+			<column name="ch4" length="10" />
+		</property>
+		<property name="ch5" type="string">
+			<column name="ch5" length="10" />
+		</property>
+		<property name="ch6" type="string">
+			<column name="ch6" length="10" />
+		</property>
+		
+		<property name="xgnh_y1_jsr" type="string">
+			<column name="xgnh_y1_jsr" length="10" />
+		</property>
+		<property name="xgnh_y2_jsr" type="string">
+			<column name="xgnh_y2_jsr" length="10" />
+		</property>
+		<property name="xgnh_y3_jsr" type="string">
+			<column name="xgnh_y3_jsr" length="10" />
+		</property>
+		<property name="xgnh_y4_jsr" type="string">
+			<column name="xgnh_y4_jsr" length="10" />
+		</property>
+		<property name="xgnh_y5_jsr" type="string">
+			<column name="xgnh_y5_jsr" length="10" />
+		</property>
+		<property name="xgnh_y6_jsr" type="string">
+			<column name="xgnh_y6_jsr" length="10" />
+		</property>
+		
+		
+		
+        <property name="fst_ys" type="big_decimal">
+            <column name="fst_ys" precision="8" scale="1" />
+        </property>
+        <property name="fst_cs" type="big_decimal">
+            <column name="fst_cs" precision="8" scale="1" />
+        </property>
+        <property name="hzbsl" type="big_decimal">
+            <column name="hzbsl" precision="8" scale="1" />
+        </property>
+        <property name="hgbsl" type="big_decimal">
+            <column name="hgbsl" precision="8" scale="1" />
+        </property>
+        <property name="ycpwsl" type="big_decimal">
+            <column name="ycpwsl" precision="8" scale="1" />
+        </property>
+        <property name="xgnh_yd1" type="big_decimal">
+            <column name="xgnh_yd1" precision="8" scale="1" />
+        </property>
+        <property name="xgnh_yd2" type="big_decimal">
+            <column name="xgnh_yd2" precision="8" scale="1" />
+        </property>
+        <property name="xgnh_yd3" type="big_decimal">
+            <column name="xgnh_yd3" precision="8" scale="1" />
+        </property>
+        <property name="xgnh_yd4" type="big_decimal">
+            <column name="xgnh_yd4" precision="8" scale="1" />
+        </property>
+        <property name="fst_yys" type="big_decimal">
+            <column name="fst_yys" precision="8" scale="1" />
+        </property>
+        <property name="fst_ycs" type="big_decimal">
+            <column name="fst_ycs" precision="8" scale="1" />
+        </property>
+        <property name="hzbsl_y" type="big_decimal">
+            <column name="hzbsl_y" precision="8" scale="1" />
+        </property>
+        <property name="hgbsl_y" type="big_decimal">
+            <column name="hgbsl_y" precision="8" scale="1" />
+        </property>
+        <property name="ycpwsl_y" type="big_decimal">
+            <column name="ycpwsl_y" precision="8" scale="1" />
+        </property>
+
+
+		
+	</class>
+</hibernate-mapping>

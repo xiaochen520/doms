@@ -1,0 +1,135 @@
+
+body {
+    font-family: Microsoft YaHei;
+    margin: 0;
+    padding: 0;
+}
+ul, li, p, dl, dt, dd, h2, h3, a, input, span, strong {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+img {
+    border: 0 none;
+}
+.all_flag {
+    clear: both;
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+    top: 170px;
+    width: 26px;
+}
+.all_flag_l {
+    float: left;
+    padding-top: 26px;
+    width: 26px;
+}
+.all_flag_l span {
+    background-color: #E33221;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    height: 101px;
+    line-height: 18px;
+    padding-top: 4px;
+    text-align: center;
+    width: 26px;
+}
+.all_flag_r {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #F1F1F1;
+    border-image: none;
+    border-style: solid;
+    border-width: 5px 1px 1px;
+    display: none;
+    float: left;
+    width: 159px;
+    height:330px;
+}
+.all_flag_r_nav {
+    height: 31px;
+}
+.all_flag_r_nav li {
+    background-color: #E6E6E6;
+    border-top: 3px solid #E6E6E6;
+    cursor: pointer;
+    float: left;
+    font-size: 12px;
+    font-weight: 600;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    width: 66px;
+}
+.all_flag_r_nav li.now {
+    background-color: #F5F5F5;
+    border-top-color: #E33221;
+}
+.all_flag_r_con {
+    background-color: #FFFFFF;
+    clear: both;
+    overflow: hidden;
+}
+.all_flag_r_con li {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #FFFFFF #FFFFFF #F1F1F1;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px 0;
+    float: left;
+    height: 27px;
+    line-height: 26px;
+    width: 198px;
+}
+.all_flag_r_con span {
+    display: block;
+    float: left;
+    font-size: 12px;
+}
+.all_flag_r_con .con_99_1 {
+    background-color: #767676;
+    color: #FFFFFF;
+    height: 16px;
+    line-height: 16px;
+    margin: 6px 0 0 10px;
+    overflow: hidden;
+    text-align: center;
+    width: 16px;
+}
+.all_flag_r_con .con_99_1.fast {
+    background-color: #E33221;
+}
+.all_flag_r_con .con_99_2 {
+    overflow: hidden;
+    padding-left: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 90px;
+}
+.all_flag_r_con .con_99_2 a {
+    color: #333333;
+    text-decoration: none;
+}
+.all_flag_r_con .con_99_3 {
+    color: #777777;
+    padding-left: 5px;
+    width: 40px;
+}
+.all_flag_r_con .con_99_4 {
+    color: #777777;
+    padding: 4px 0 0 5px;
+    width: 16px;
+}
+* html .all_flag {
+    position: absolute;
+    right: auto;
+}

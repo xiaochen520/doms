@@ -1,0 +1,21 @@
+package com.echo.service;
+
+import java.util.List;
+
+import com.echo.dto.PcRpdU1WaterAutoT;
+
+import net.sf.json.JSONArray;
+
+public interface U1s1gyService {
+
+	public JSONArray searchU1s1gy(String txtDate)throws Exception;
+
+	public List<PcRpdU1WaterAutoT> SreachU1S1gy(String id, String name)throws Exception;
+
+	public int searchCalcNum()throws Exception;
+
+	public boolean updateU1S1gy(PcRpdU1WaterAutoT us)throws Exception;
+
+	public List<Object[]> searchExportU1S1(String txtDate, String fields)throws Exception;
+	
+}

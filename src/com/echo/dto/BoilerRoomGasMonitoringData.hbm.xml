@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.echo.dto.BoilerRoomGasMonitoringData" table="PC_RD_BOILER_H2S_T">
+
+		<id name="brgmdId" type="integer">
+			<column name="boiler_h2s_t_id" />
+		</id>
+
+		<property name="acquisitionTime" type="timestamp">
+			<column name="acquisition_time" length="7" />
+		</property>
+
+		<property name="blockStationName" type="string">
+			<column name="blockstation_name" length="30" />
+		</property>
+
+		<property name="h2sConcentration_1" type="big_decimal">
+			<column name="h2s_nd_1" precision="8" scale="2" />
+		</property>
+		<property name="cC_Gas_1" type="big_decimal">
+			<column name="krqt_nd_1" precision="8" scale="2" />
+		</property>
+
+		<property name="h2sConcentration_2" type="big_decimal">
+			<column name="h2s_nd_2" precision="8" scale="2" />
+		</property>
+		<property name="cC_Gas_2" type="big_decimal">
+			<column name="krqt_nd_2" precision="8" scale="2" />
+		</property>
+
+		<property name="h2sConcentration_3" type="big_decimal">
+			<column name="h2s_nd_3" precision="8" scale="2" />
+		</property>
+		<property name="cC_Gas_3" type="big_decimal">
+			<column name="krqt_nd_3" precision="8" scale="2" />
+		</property>
+
+		<property name="h2sConcentration_4" type="big_decimal">
+			<column name="h2s_nd_4" precision="8" scale="2" />
+		</property>
+		<property name="cC_Gas_4" type="big_decimal">
+			<column name="krqt_nd_4" precision="8" scale="2" />
+		</property>
+
+		<property name="h2sConcentration_5" type="big_decimal">
+			<column name="h2s_nd_5" precision="8" scale="2" />
+		</property>
+		<property name="cC_Gas_5" type="big_decimal">
+			<column name="krqt_nd_5" precision="8" scale="2" />
+		</property>
+
+		<property name="reserved1" type="big_decimal">
+			<column name="reserved1" precision="8" scale="2" />
+		</property>
+		<property name="reserved2" type="big_decimal">
+			<column name="reserved2" precision="8" scale="2" />
+		</property>
+
+		<property name="reserved3" type="int">
+			<column name="reserved3" />
+		</property>
+		<property name="reserved4" type="int">
+			<column name="reserved4" />
+		</property>
+
+
+		<property name="reserved5" type="string">
+			<column name="reserved5" length="30" />
+		</property>
+		<property name="reserved6" type="string">
+			<column name="reserved6" length="30" />
+		</property>
+
+	</class>
+
+</hibernate-mapping>

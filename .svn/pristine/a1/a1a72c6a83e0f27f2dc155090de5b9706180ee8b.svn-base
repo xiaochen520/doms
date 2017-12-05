@@ -1,0 +1,1232 @@
+package com.echo.dto;
+
+import java.math.BigDecimal;
+import java.util.Date;
+
+/**
+ * PcRpdUThinWaterAutoT entity. @author MyEclipse Persistence Tools
+ */
+
+public class PcRpdUThinWaterAutoT implements java.io.Serializable {
+
+	// Fields
+
+	private String rpdUThinWaterAutoId;
+	private Date bbsj;
+	private Date cjsj;
+	private BigDecimal f1Fytsb;
+	private BigDecimal f1Gltsb;
+	private BigDecimal f3Fytsb;
+	private BigDecimal fi1Fyj;
+	private BigDecimal fi2Fyq;
+	private BigDecimal fi2Yjo1;
+	private BigDecimal fi2Yjo2;
+	private BigDecimal fi2Yjo3;
+	private BigDecimal fi3Fyjo1;
+	private BigDecimal fi3Fyjo2;
+	private BigDecimal fi3Fyjo3;
+	private BigDecimal fi3Fyq;
+	private BigDecimal fiJhso1;
+	private BigDecimal fiYtzs;
+	private BigDecimal fiYyclzls;
+	private BigDecimal ftDx;
+	private BigDecimal ftDxAdd;
+	private BigDecimal ftWsb;
+	private BigDecimal ftXx;
+	private BigDecimal ftXxAdd;
+	private BigDecimal ftZsq1;
+	private BigDecimal fytsb1ScSv;
+	private BigDecimal fytsb2ScSv;
+	private BigDecimal fytsb3ScSv;
+	private BigDecimal glb1SdScSv;
+	private BigDecimal glb2SdScSv;
+	private BigDecimal glhcgSpanSv;
+	private BigDecimal hcgLtLsv;
+	private BigDecimal jhygLtLsv;
+	private BigDecimal l11Tcg;
+	private BigDecimal li1Hcg;
+	private BigDecimal li1Jhg;
+	private BigDecimal li1Wsc;
+	private BigDecimal li2Hcg;
+	private BigDecimal li2Jhg;
+	private BigDecimal li2Tcg;
+	private BigDecimal li2Wsc;
+	private BigDecimal liWyg;
+	private BigDecimal ltXfyw;
+	private BigDecimal pnCs;
+	private BigDecimal pnKpTim;
+	private BigDecimal pnStTim;
+	private BigDecimal pqCs;
+	private BigDecimal pqKpTim;
+	private BigDecimal pqStTim;
+	private BigDecimal pt101a;
+	private BigDecimal pt101b;
+	private BigDecimal pt102a;
+	private BigDecimal pt102b;
+	private BigDecimal pt103a;
+	private BigDecimal pt103b;
+	private BigDecimal pt104a;
+	private BigDecimal pt104b;
+	private BigDecimal ptDxZsb;
+	private BigDecimal ptXxZsb;
+	private BigDecimal ptZsb;
+	private BigDecimal ptZsq;
+	private BigDecimal sc12ZsbAlmSv;
+	private BigDecimal sc34ZsbAlmSv;
+	private BigDecimal t1Ggl;
+	private BigDecimal t1Gjb;
+	private BigDecimal t1Gjz;
+	private BigDecimal t2Gfx;
+	private BigDecimal t2Ggl;
+	private BigDecimal t2Gjb;
+	private BigDecimal t2Gjz;
+	private BigDecimal t3Gfx;
+	private BigDecimal t3Ggl;
+	private BigDecimal t3Gjb;
+	private BigDecimal t3Gjz;
+	private BigDecimal TFxzq;
+	private BigDecimal tt101;
+	private BigDecimal tt102;
+	private BigDecimal tt103;
+	private BigDecimal tt104;
+	private BigDecimal ttDxZsb;
+	private BigDecimal ttXxZsb;
+	private BigDecimal ttZsbfHsv;
+	private BigDecimal wygLtLsv;
+	private BigDecimal yj1NdSv;
+	private BigDecimal yj1ZlSv;
+	private BigDecimal yj2NdSv;
+	private BigDecimal yj2ZlSv;
+	private BigDecimal yj3NdSv;
+	private BigDecimal yj3ZlSv;
+	private BigDecimal yjb1ScSv;
+	private BigDecimal yjb2Sc1Sv;
+	private BigDecimal yjb2Sc2Sv;
+	private BigDecimal yjb2Sc3Sv;
+	private BigDecimal yjb3Sc1Sv;
+	private BigDecimal yjb3Sc2Sv;
+	private BigDecimal ytzsSpanSv;
+	private BigDecimal zvcZsfSdSv;
+	private BigDecimal fi1Fyq;
+	private BigDecimal yqlsxfwlj;
+	private BigDecimal glqcsxfwlj;
+	private BigDecimal wsbckxfwlj;
+	private BigDecimal yj1xfwlj;
+	private BigDecimal fyq1jsxfwlj;
+	private BigDecimal fyq1yl2xfwlj;
+	private BigDecimal fyq1yj3xfwlj;
+	private BigDecimal fyq2jsxfwlj;
+	private BigDecimal fyq2yl2xfwlj;
+	private BigDecimal fyq2yj3xfwlj;
+	private BigDecimal fyq3jsxfwlj;
+	private BigDecimal fyq3yl2xfwlj;
+	private BigDecimal fyq3yj3xfwlj;
+	private BigDecimal zsb1dl;
+	private BigDecimal zsb2dl;
+	private BigDecimal zsb3dl;
+	private BigDecimal zsb4dl;
+	private BigDecimal wsb1pl;
+	private BigDecimal wsb2pl;
+	private BigDecimal wsbxfwlj;
+
+	// Constructors
+
+	/** default constructor */
+	public PcRpdUThinWaterAutoT() {
+	}
+
+	/** minimal constructor */
+	public PcRpdUThinWaterAutoT(Date bbsj) {
+		this.bbsj = bbsj;
+	}
+
+	/** full constructor */
+	public PcRpdUThinWaterAutoT(Date bbsj, Date cjsj, BigDecimal f1Fytsb,
+			BigDecimal f1Gltsb, BigDecimal f3Fytsb, BigDecimal fi1Fyj, BigDecimal fi2Fyq,
+			BigDecimal fi2Yjo1, BigDecimal fi2Yjo2, BigDecimal fi2Yjo3, BigDecimal fi3Fyjo1,
+			BigDecimal fi3Fyjo2, BigDecimal fi3Fyjo3, BigDecimal fi3Fyq, BigDecimal fiJhso1,
+			BigDecimal fiYtzs, BigDecimal fiYyclzls, BigDecimal ftDx, BigDecimal ftDxAdd,
+			BigDecimal ftWsb, BigDecimal ftXx, BigDecimal ftXxAdd, BigDecimal ftZsq1,
+			BigDecimal fytsb1ScSv, BigDecimal fytsb2ScSv, BigDecimal fytsb3ScSv,
+			BigDecimal glb1SdScSv, BigDecimal glb2SdScSv, BigDecimal glhcgSpanSv,
+			BigDecimal hcgLtLsv, BigDecimal jhygLtLsv, BigDecimal l11Tcg, BigDecimal li1Hcg,
+			BigDecimal li1Jhg, BigDecimal li1Wsc, BigDecimal li2Hcg, BigDecimal li2Jhg,
+			BigDecimal li2Tcg, BigDecimal li2Wsc, BigDecimal liWyg, BigDecimal ltXfyw,
+			BigDecimal pnCs, BigDecimal pnKpTim, BigDecimal pnStTim, BigDecimal pqCs,
+			BigDecimal pqKpTim, BigDecimal pqStTim, BigDecimal pt101a, BigDecimal pt101b,
+			BigDecimal pt102a, BigDecimal pt102b, BigDecimal pt103a, BigDecimal pt103b,
+			BigDecimal pt104a, BigDecimal pt104b, BigDecimal ptDxZsb, BigDecimal ptXxZsb,
+			BigDecimal ptZsb, BigDecimal ptZsq, BigDecimal sc12ZsbAlmSv,
+			BigDecimal sc34ZsbAlmSv, BigDecimal t1Ggl, BigDecimal t1Gjb, BigDecimal t1Gjz,
+			BigDecimal t2Gfx, BigDecimal t2Ggl, BigDecimal t2Gjb, BigDecimal t2Gjz,
+			BigDecimal t3Gfx, BigDecimal t3Ggl, BigDecimal t3Gjb, BigDecimal t3Gjz,
+			BigDecimal TFxzq, BigDecimal tt101, BigDecimal tt102, BigDecimal tt103,
+			BigDecimal tt104, BigDecimal ttDxZsb, BigDecimal ttXxZsb, BigDecimal ttZsbfHsv,
+			BigDecimal wygLtLsv, BigDecimal yj1NdSv, BigDecimal yj1ZlSv, BigDecimal yj2NdSv,
+			BigDecimal yj2ZlSv, BigDecimal yj3NdSv, BigDecimal yj3ZlSv, BigDecimal yjb1ScSv,
+			BigDecimal yjb2Sc1Sv, BigDecimal yjb2Sc2Sv, BigDecimal yjb2Sc3Sv,
+			BigDecimal yjb3Sc1Sv, BigDecimal yjb3Sc2Sv, BigDecimal ytzsSpanSv,
+			BigDecimal zvcZsfSdSv, BigDecimal fi1Fyq, BigDecimal yqlsxfwlj,
+			BigDecimal glqcsxfwlj, BigDecimal wsbckxfwlj, BigDecimal yj1xfwlj,
+			BigDecimal fyq1jsxfwlj, BigDecimal fyq1yl2xfwlj, BigDecimal fyq1yj3xfwlj,
+			BigDecimal fyq2jsxfwlj, BigDecimal fyq2yl2xfwlj, BigDecimal fyq2yj3xfwlj,
+			BigDecimal fyq3jsxfwlj, BigDecimal fyq3yl2xfwlj, BigDecimal fyq3yj3xfwlj,
+			BigDecimal zsb1dl, BigDecimal zsb2dl, BigDecimal zsb3dl, BigDecimal zsb4dl,
+			BigDecimal wsb1pl, BigDecimal wsb2pl, BigDecimal wsbxfwlj) {
+		this.bbsj = bbsj;
+		this.cjsj = cjsj;
+		this.f1Fytsb = f1Fytsb;
+		this.f1Gltsb = f1Gltsb;
+		this.f3Fytsb = f3Fytsb;
+		this.fi1Fyj = fi1Fyj;
+		this.fi2Fyq = fi2Fyq;
+		this.fi2Yjo1 = fi2Yjo1;
+		this.fi2Yjo2 = fi2Yjo2;
+		this.fi2Yjo3 = fi2Yjo3;
+		this.fi3Fyjo1 = fi3Fyjo1;
+		this.fi3Fyjo2 = fi3Fyjo2;
+		this.fi3Fyjo3 = fi3Fyjo3;
+		this.fi3Fyq = fi3Fyq;
+		this.fiJhso1 = fiJhso1;
+		this.fiYtzs = fiYtzs;
+		this.fiYyclzls = fiYyclzls;
+		this.ftDx = ftDx;
+		this.ftDxAdd = ftDxAdd;
+		this.ftWsb = ftWsb;
+		this.ftXx = ftXx;
+		this.ftXxAdd = ftXxAdd;
+		this.ftZsq1 = ftZsq1;
+		this.fytsb1ScSv = fytsb1ScSv;
+		this.fytsb2ScSv = fytsb2ScSv;
+		this.fytsb3ScSv = fytsb3ScSv;
+		this.glb1SdScSv = glb1SdScSv;
+		this.glb2SdScSv = glb2SdScSv;
+		this.glhcgSpanSv = glhcgSpanSv;
+		this.hcgLtLsv = hcgLtLsv;
+		this.jhygLtLsv = jhygLtLsv;
+		this.l11Tcg = l11Tcg;
+		this.li1Hcg = li1Hcg;
+		this.li1Jhg = li1Jhg;
+		this.li1Wsc = li1Wsc;
+		this.li2Hcg = li2Hcg;
+		this.li2Jhg = li2Jhg;
+		this.li2Tcg = li2Tcg;
+		this.li2Wsc = li2Wsc;
+		this.liWyg = liWyg;
+		this.ltXfyw = ltXfyw;
+		this.pnCs = pnCs;
+		this.pnKpTim = pnKpTim;
+		this.pnStTim = pnStTim;
+		this.pqCs = pqCs;
+		this.pqKpTim = pqKpTim;
+		this.pqStTim = pqStTim;
+		this.pt101a = pt101a;
+		this.pt101b = pt101b;
+		this.pt102a = pt102a;
+		this.pt102b = pt102b;
+		this.pt103a = pt103a;
+		this.pt103b = pt103b;
+		this.pt104a = pt104a;
+		this.pt104b = pt104b;
+		this.ptDxZsb = ptDxZsb;
+		this.ptXxZsb = ptXxZsb;
+		this.ptZsb = ptZsb;
+		this.ptZsq = ptZsq;
+		this.sc12ZsbAlmSv = sc12ZsbAlmSv;
+		this.sc34ZsbAlmSv = sc34ZsbAlmSv;
+		this.t1Ggl = t1Ggl;
+		this.t1Gjb = t1Gjb;
+		this.t1Gjz = t1Gjz;
+		this.t2Gfx = t2Gfx;
+		this.t2Ggl = t2Ggl;
+		this.t2Gjb = t2Gjb;
+		this.t2Gjz = t2Gjz;
+		this.t3Gfx = t3Gfx;
+		this.t3Ggl = t3Ggl;
+		this.t3Gjb = t3Gjb;
+		this.t3Gjz = t3Gjz;
+		this.TFxzq = TFxzq;
+		this.tt101 = tt101;
+		this.tt102 = tt102;
+		this.tt103 = tt103;
+		this.tt104 = tt104;
+		this.ttDxZsb = ttDxZsb;
+		this.ttXxZsb = ttXxZsb;
+		this.ttZsbfHsv = ttZsbfHsv;
+		this.wygLtLsv = wygLtLsv;
+		this.yj1NdSv = yj1NdSv;
+		this.yj1ZlSv = yj1ZlSv;
+		this.yj2NdSv = yj2NdSv;
+		this.yj2ZlSv = yj2ZlSv;
+		this.yj3NdSv = yj3NdSv;
+		this.yj3ZlSv = yj3ZlSv;
+		this.yjb1ScSv = yjb1ScSv;
+		this.yjb2Sc1Sv = yjb2Sc1Sv;
+		this.yjb2Sc2Sv = yjb2Sc2Sv;
+		this.yjb2Sc3Sv = yjb2Sc3Sv;
+		this.yjb3Sc1Sv = yjb3Sc1Sv;
+		this.yjb3Sc2Sv = yjb3Sc2Sv;
+		this.ytzsSpanSv = ytzsSpanSv;
+		this.zvcZsfSdSv = zvcZsfSdSv;
+		this.fi1Fyq = fi1Fyq;
+		this.yqlsxfwlj = yqlsxfwlj;
+		this.glqcsxfwlj = glqcsxfwlj;
+		this.wsbckxfwlj = wsbckxfwlj;
+		this.yj1xfwlj = yj1xfwlj;
+		this.fyq1jsxfwlj = fyq1jsxfwlj;
+		this.fyq1yl2xfwlj = fyq1yl2xfwlj;
+		this.fyq1yj3xfwlj = fyq1yj3xfwlj;
+		this.fyq2jsxfwlj = fyq2jsxfwlj;
+		this.fyq2yl2xfwlj = fyq2yl2xfwlj;
+		this.fyq2yj3xfwlj = fyq2yj3xfwlj;
+		this.fyq3jsxfwlj = fyq3jsxfwlj;
+		this.fyq3yl2xfwlj = fyq3yl2xfwlj;
+		this.fyq3yj3xfwlj = fyq3yj3xfwlj;
+		this.zsb1dl = zsb1dl;
+		this.zsb2dl = zsb2dl;
+		this.zsb3dl = zsb3dl;
+		this.zsb4dl = zsb4dl;
+		this.wsb1pl = wsb1pl;
+		this.wsb2pl = wsb2pl;
+		this.wsbxfwlj = wsbxfwlj;
+	}
+
+	// Property accessors
+
+	public String getRpdUThinWaterAutoId() {
+		return this.rpdUThinWaterAutoId;
+	}
+
+	public void setRpdUThinWaterAutoId(String rpdUThinWaterAutoId) {
+		this.rpdUThinWaterAutoId = rpdUThinWaterAutoId;
+	}
+
+	public Date getBbsj() {
+		return this.bbsj;
+	}
+
+	public void setBbsj(Date bbsj) {
+		this.bbsj = bbsj;
+	}
+
+	public Date getCjsj() {
+		return this.cjsj;
+	}
+
+	public void setCjsj(Date cjsj) {
+		this.cjsj = cjsj;
+	}
+
+	public BigDecimal getF1Fytsb() {
+		return this.f1Fytsb;
+	}
+
+	public void setF1Fytsb(BigDecimal f1Fytsb) {
+		this.f1Fytsb = f1Fytsb;
+	}
+
+	public BigDecimal getF1Gltsb() {
+		return this.f1Gltsb;
+	}
+
+	public void setF1Gltsb(BigDecimal f1Gltsb) {
+		this.f1Gltsb = f1Gltsb;
+	}
+
+	public BigDecimal getF3Fytsb() {
+		return this.f3Fytsb;
+	}
+
+	public void setF3Fytsb(BigDecimal f3Fytsb) {
+		this.f3Fytsb = f3Fytsb;
+	}
+
+	public BigDecimal getFi1Fyj() {
+		return this.fi1Fyj;
+	}
+
+	public void setFi1Fyj(BigDecimal fi1Fyj) {
+		this.fi1Fyj = fi1Fyj;
+	}
+
+	public BigDecimal getFi2Fyq() {
+		return this.fi2Fyq;
+	}
+
+	public void setFi2Fyq(BigDecimal fi2Fyq) {
+		this.fi2Fyq = fi2Fyq;
+	}
+
+	public BigDecimal getFi2Yjo1() {
+		return this.fi2Yjo1;
+	}
+
+	public void setFi2Yjo1(BigDecimal fi2Yjo1) {
+		this.fi2Yjo1 = fi2Yjo1;
+	}
+
+	public BigDecimal getFi2Yjo2() {
+		return this.fi2Yjo2;
+	}
+
+	public void setFi2Yjo2(BigDecimal fi2Yjo2) {
+		this.fi2Yjo2 = fi2Yjo2;
+	}
+
+	public BigDecimal getFi2Yjo3() {
+		return this.fi2Yjo3;
+	}
+
+	public void setFi2Yjo3(BigDecimal fi2Yjo3) {
+		this.fi2Yjo3 = fi2Yjo3;
+	}
+
+	public BigDecimal getFi3Fyjo1() {
+		return this.fi3Fyjo1;
+	}
+
+	public void setFi3Fyjo1(BigDecimal fi3Fyjo1) {
+		this.fi3Fyjo1 = fi3Fyjo1;
+	}
+
+	public BigDecimal getFi3Fyjo2() {
+		return this.fi3Fyjo2;
+	}
+
+	public void setFi3Fyjo2(BigDecimal fi3Fyjo2) {
+		this.fi3Fyjo2 = fi3Fyjo2;
+	}
+
+	public BigDecimal getFi3Fyjo3() {
+		return this.fi3Fyjo3;
+	}
+
+	public void setFi3Fyjo3(BigDecimal fi3Fyjo3) {
+		this.fi3Fyjo3 = fi3Fyjo3;
+	}
+
+	public BigDecimal getFi3Fyq() {
+		return this.fi3Fyq;
+	}
+
+	public void setFi3Fyq(BigDecimal fi3Fyq) {
+		this.fi3Fyq = fi3Fyq;
+	}
+
+	public BigDecimal getFiJhso1() {
+		return this.fiJhso1;
+	}
+
+	public void setFiJhso1(BigDecimal fiJhso1) {
+		this.fiJhso1 = fiJhso1;
+	}
+
+	public BigDecimal getFiYtzs() {
+		return this.fiYtzs;
+	}
+
+	public void setFiYtzs(BigDecimal fiYtzs) {
+		this.fiYtzs = fiYtzs;
+	}
+
+	public BigDecimal getFiYyclzls() {
+		return this.fiYyclzls;
+	}
+
+	public void setFiYyclzls(BigDecimal fiYyclzls) {
+		this.fiYyclzls = fiYyclzls;
+	}
+
+	public BigDecimal getFtDx() {
+		return this.ftDx;
+	}
+
+	public void setFtDx(BigDecimal ftDx) {
+		this.ftDx = ftDx;
+	}
+
+	public BigDecimal getFtDxAdd() {
+		return this.ftDxAdd;
+	}
+
+	public void setFtDxAdd(BigDecimal ftDxAdd) {
+		this.ftDxAdd = ftDxAdd;
+	}
+
+	public BigDecimal getFtWsb() {
+		return this.ftWsb;
+	}
+
+	public void setFtWsb(BigDecimal ftWsb) {
+		this.ftWsb = ftWsb;
+	}
+
+	public BigDecimal getFtXx() {
+		return this.ftXx;
+	}
+
+	public void setFtXx(BigDecimal ftXx) {
+		this.ftXx = ftXx;
+	}
+
+	public BigDecimal getFtXxAdd() {
+		return this.ftXxAdd;
+	}
+
+	public void setFtXxAdd(BigDecimal ftXxAdd) {
+		this.ftXxAdd = ftXxAdd;
+	}
+
+	public BigDecimal getFtZsq1() {
+		return this.ftZsq1;
+	}
+
+	public void setFtZsq1(BigDecimal ftZsq1) {
+		this.ftZsq1 = ftZsq1;
+	}
+
+	public BigDecimal getFytsb1ScSv() {
+		return this.fytsb1ScSv;
+	}
+
+	public void setFytsb1ScSv(BigDecimal fytsb1ScSv) {
+		this.fytsb1ScSv = fytsb1ScSv;
+	}
+
+	public BigDecimal getFytsb2ScSv() {
+		return this.fytsb2ScSv;
+	}
+
+	public void setFytsb2ScSv(BigDecimal fytsb2ScSv) {
+		this.fytsb2ScSv = fytsb2ScSv;
+	}
+
+	public BigDecimal getFytsb3ScSv() {
+		return this.fytsb3ScSv;
+	}
+
+	public void setFytsb3ScSv(BigDecimal fytsb3ScSv) {
+		this.fytsb3ScSv = fytsb3ScSv;
+	}
+
+	public BigDecimal getGlb1SdScSv() {
+		return this.glb1SdScSv;
+	}
+
+	public void setGlb1SdScSv(BigDecimal glb1SdScSv) {
+		this.glb1SdScSv = glb1SdScSv;
+	}
+
+	public BigDecimal getGlb2SdScSv() {
+		return this.glb2SdScSv;
+	}
+
+	public void setGlb2SdScSv(BigDecimal glb2SdScSv) {
+		this.glb2SdScSv = glb2SdScSv;
+	}
+
+	public BigDecimal getGlhcgSpanSv() {
+		return this.glhcgSpanSv;
+	}
+
+	public void setGlhcgSpanSv(BigDecimal glhcgSpanSv) {
+		this.glhcgSpanSv = glhcgSpanSv;
+	}
+
+	public BigDecimal getHcgLtLsv() {
+		return this.hcgLtLsv;
+	}
+
+	public void setHcgLtLsv(BigDecimal hcgLtLsv) {
+		this.hcgLtLsv = hcgLtLsv;
+	}
+
+	public BigDecimal getJhygLtLsv() {
+		return this.jhygLtLsv;
+	}
+
+	public void setJhygLtLsv(BigDecimal jhygLtLsv) {
+		this.jhygLtLsv = jhygLtLsv;
+	}
+
+	public BigDecimal getL11Tcg() {
+		return this.l11Tcg;
+	}
+
+	public void setL11Tcg(BigDecimal l11Tcg) {
+		this.l11Tcg = l11Tcg;
+	}
+
+	public BigDecimal getLi1Hcg() {
+		return this.li1Hcg;
+	}
+
+	public void setLi1Hcg(BigDecimal li1Hcg) {
+		this.li1Hcg = li1Hcg;
+	}
+
+	public BigDecimal getLi1Jhg() {
+		return this.li1Jhg;
+	}
+
+	public void setLi1Jhg(BigDecimal li1Jhg) {
+		this.li1Jhg = li1Jhg;
+	}
+
+	public BigDecimal getLi1Wsc() {
+		return this.li1Wsc;
+	}
+
+	public void setLi1Wsc(BigDecimal li1Wsc) {
+		this.li1Wsc = li1Wsc;
+	}
+
+	public BigDecimal getLi2Hcg() {
+		return this.li2Hcg;
+	}
+
+	public void setLi2Hcg(BigDecimal li2Hcg) {
+		this.li2Hcg = li2Hcg;
+	}
+
+	public BigDecimal getLi2Jhg() {
+		return this.li2Jhg;
+	}
+
+	public void setLi2Jhg(BigDecimal li2Jhg) {
+		this.li2Jhg = li2Jhg;
+	}
+
+	public BigDecimal getLi2Tcg() {
+		return this.li2Tcg;
+	}
+
+	public void setLi2Tcg(BigDecimal li2Tcg) {
+		this.li2Tcg = li2Tcg;
+	}
+
+	public BigDecimal getLi2Wsc() {
+		return this.li2Wsc;
+	}
+
+	public void setLi2Wsc(BigDecimal li2Wsc) {
+		this.li2Wsc = li2Wsc;
+	}
+
+	public BigDecimal getLiWyg() {
+		return this.liWyg;
+	}
+
+	public void setLiWyg(BigDecimal liWyg) {
+		this.liWyg = liWyg;
+	}
+
+	public BigDecimal getLtXfyw() {
+		return this.ltXfyw;
+	}
+
+	public void setLtXfyw(BigDecimal ltXfyw) {
+		this.ltXfyw = ltXfyw;
+	}
+
+	public BigDecimal getPnCs() {
+		return this.pnCs;
+	}
+
+	public void setPnCs(BigDecimal pnCs) {
+		this.pnCs = pnCs;
+	}
+
+	public BigDecimal getPnKpTim() {
+		return this.pnKpTim;
+	}
+
+	public void setPnKpTim(BigDecimal pnKpTim) {
+		this.pnKpTim = pnKpTim;
+	}
+
+	public BigDecimal getPnStTim() {
+		return this.pnStTim;
+	}
+
+	public void setPnStTim(BigDecimal pnStTim) {
+		this.pnStTim = pnStTim;
+	}
+
+	public BigDecimal getPqCs() {
+		return this.pqCs;
+	}
+
+	public void setPqCs(BigDecimal pqCs) {
+		this.pqCs = pqCs;
+	}
+
+	public BigDecimal getPqKpTim() {
+		return this.pqKpTim;
+	}
+
+	public void setPqKpTim(BigDecimal pqKpTim) {
+		this.pqKpTim = pqKpTim;
+	}
+
+	public BigDecimal getPqStTim() {
+		return this.pqStTim;
+	}
+
+	public void setPqStTim(BigDecimal pqStTim) {
+		this.pqStTim = pqStTim;
+	}
+
+	public BigDecimal getPt101a() {
+		return this.pt101a;
+	}
+
+	public void setPt101a(BigDecimal pt101a) {
+		this.pt101a = pt101a;
+	}
+
+	public BigDecimal getPt101b() {
+		return this.pt101b;
+	}
+
+	public void setPt101b(BigDecimal pt101b) {
+		this.pt101b = pt101b;
+	}
+
+	public BigDecimal getPt102a() {
+		return this.pt102a;
+	}
+
+	public void setPt102a(BigDecimal pt102a) {
+		this.pt102a = pt102a;
+	}
+
+	public BigDecimal getPt102b() {
+		return this.pt102b;
+	}
+
+	public void setPt102b(BigDecimal pt102b) {
+		this.pt102b = pt102b;
+	}
+
+	public BigDecimal getPt103a() {
+		return this.pt103a;
+	}
+
+	public void setPt103a(BigDecimal pt103a) {
+		this.pt103a = pt103a;
+	}
+
+	public BigDecimal getPt103b() {
+		return this.pt103b;
+	}
+
+	public void setPt103b(BigDecimal pt103b) {
+		this.pt103b = pt103b;
+	}
+
+	public BigDecimal getPt104a() {
+		return this.pt104a;
+	}
+
+	public void setPt104a(BigDecimal pt104a) {
+		this.pt104a = pt104a;
+	}
+
+	public BigDecimal getPt104b() {
+		return this.pt104b;
+	}
+
+	public void setPt104b(BigDecimal pt104b) {
+		this.pt104b = pt104b;
+	}
+
+	public BigDecimal getPtDxZsb() {
+		return this.ptDxZsb;
+	}
+
+	public void setPtDxZsb(BigDecimal ptDxZsb) {
+		this.ptDxZsb = ptDxZsb;
+	}
+
+	public BigDecimal getPtXxZsb() {
+		return this.ptXxZsb;
+	}
+
+	public void setPtXxZsb(BigDecimal ptXxZsb) {
+		this.ptXxZsb = ptXxZsb;
+	}
+
+	public BigDecimal getPtZsb() {
+		return this.ptZsb;
+	}
+
+	public void setPtZsb(BigDecimal ptZsb) {
+		this.ptZsb = ptZsb;
+	}
+
+	public BigDecimal getPtZsq() {
+		return this.ptZsq;
+	}
+
+	public void setPtZsq(BigDecimal ptZsq) {
+		this.ptZsq = ptZsq;
+	}
+
+	public BigDecimal getSc12ZsbAlmSv() {
+		return this.sc12ZsbAlmSv;
+	}
+
+	public void setSc12ZsbAlmSv(BigDecimal sc12ZsbAlmSv) {
+		this.sc12ZsbAlmSv = sc12ZsbAlmSv;
+	}
+
+	public BigDecimal getSc34ZsbAlmSv() {
+		return this.sc34ZsbAlmSv;
+	}
+
+	public void setSc34ZsbAlmSv(BigDecimal sc34ZsbAlmSv) {
+		this.sc34ZsbAlmSv = sc34ZsbAlmSv;
+	}
+
+	public BigDecimal getT1Ggl() {
+		return this.t1Ggl;
+	}
+
+	public void setT1Ggl(BigDecimal t1Ggl) {
+		this.t1Ggl = t1Ggl;
+	}
+
+	public BigDecimal getT1Gjb() {
+		return this.t1Gjb;
+	}
+
+	public void setT1Gjb(BigDecimal t1Gjb) {
+		this.t1Gjb = t1Gjb;
+	}
+
+	public BigDecimal getT1Gjz() {
+		return this.t1Gjz;
+	}
+
+	public void setT1Gjz(BigDecimal t1Gjz) {
+		this.t1Gjz = t1Gjz;
+	}
+
+	public BigDecimal getT2Gfx() {
+		return this.t2Gfx;
+	}
+
+	public void setT2Gfx(BigDecimal t2Gfx) {
+		this.t2Gfx = t2Gfx;
+	}
+
+	public BigDecimal getT2Ggl() {
+		return this.t2Ggl;
+	}
+
+	public void setT2Ggl(BigDecimal t2Ggl) {
+		this.t2Ggl = t2Ggl;
+	}
+
+	public BigDecimal getT2Gjb() {
+		return this.t2Gjb;
+	}
+
+	public void setT2Gjb(BigDecimal t2Gjb) {
+		this.t2Gjb = t2Gjb;
+	}
+
+	public BigDecimal getT2Gjz() {
+		return this.t2Gjz;
+	}
+
+	public void setT2Gjz(BigDecimal t2Gjz) {
+		this.t2Gjz = t2Gjz;
+	}
+
+	public BigDecimal getT3Gfx() {
+		return this.t3Gfx;
+	}
+
+	public void setT3Gfx(BigDecimal t3Gfx) {
+		this.t3Gfx = t3Gfx;
+	}
+
+	public BigDecimal getT3Ggl() {
+		return this.t3Ggl;
+	}
+
+	public void setT3Ggl(BigDecimal t3Ggl) {
+		this.t3Ggl = t3Ggl;
+	}
+
+	public BigDecimal getT3Gjb() {
+		return this.t3Gjb;
+	}
+
+	public void setT3Gjb(BigDecimal t3Gjb) {
+		this.t3Gjb = t3Gjb;
+	}
+
+	public BigDecimal getT3Gjz() {
+		return this.t3Gjz;
+	}
+
+	public void setT3Gjz(BigDecimal t3Gjz) {
+		this.t3Gjz = t3Gjz;
+	}
+
+	public BigDecimal getTFxzq() {
+		return this.TFxzq;
+	}
+
+	public void setTFxzq(BigDecimal TFxzq) {
+		this.TFxzq = TFxzq;
+	}
+
+	public BigDecimal getTt101() {
+		return this.tt101;
+	}
+
+	public void setTt101(BigDecimal tt101) {
+		this.tt101 = tt101;
+	}
+
+	public BigDecimal getTt102() {
+		return this.tt102;
+	}
+
+	public void setTt102(BigDecimal tt102) {
+		this.tt102 = tt102;
+	}
+
+	public BigDecimal getTt103() {
+		return this.tt103;
+	}
+
+	public void setTt103(BigDecimal tt103) {
+		this.tt103 = tt103;
+	}
+
+	public BigDecimal getTt104() {
+		return this.tt104;
+	}
+
+	public void setTt104(BigDecimal tt104) {
+		this.tt104 = tt104;
+	}
+
+	public BigDecimal getTtDxZsb() {
+		return this.ttDxZsb;
+	}
+
+	public void setTtDxZsb(BigDecimal ttDxZsb) {
+		this.ttDxZsb = ttDxZsb;
+	}
+
+	public BigDecimal getTtXxZsb() {
+		return this.ttXxZsb;
+	}
+
+	public void setTtXxZsb(BigDecimal ttXxZsb) {
+		this.ttXxZsb = ttXxZsb;
+	}
+
+	public BigDecimal getTtZsbfHsv() {
+		return this.ttZsbfHsv;
+	}
+
+	public void setTtZsbfHsv(BigDecimal ttZsbfHsv) {
+		this.ttZsbfHsv = ttZsbfHsv;
+	}
+
+	public BigDecimal getWygLtLsv() {
+		return this.wygLtLsv;
+	}
+
+	public void setWygLtLsv(BigDecimal wygLtLsv) {
+		this.wygLtLsv = wygLtLsv;
+	}
+
+	public BigDecimal getYj1NdSv() {
+		return this.yj1NdSv;
+	}
+
+	public void setYj1NdSv(BigDecimal yj1NdSv) {
+		this.yj1NdSv = yj1NdSv;
+	}
+
+	public BigDecimal getYj1ZlSv() {
+		return this.yj1ZlSv;
+	}
+
+	public void setYj1ZlSv(BigDecimal yj1ZlSv) {
+		this.yj1ZlSv = yj1ZlSv;
+	}
+
+	public BigDecimal getYj2NdSv() {
+		return this.yj2NdSv;
+	}
+
+	public void setYj2NdSv(BigDecimal yj2NdSv) {
+		this.yj2NdSv = yj2NdSv;
+	}
+
+	public BigDecimal getYj2ZlSv() {
+		return this.yj2ZlSv;
+	}
+
+	public void setYj2ZlSv(BigDecimal yj2ZlSv) {
+		this.yj2ZlSv = yj2ZlSv;
+	}
+
+	public BigDecimal getYj3NdSv() {
+		return this.yj3NdSv;
+	}
+
+	public void setYj3NdSv(BigDecimal yj3NdSv) {
+		this.yj3NdSv = yj3NdSv;
+	}
+
+	public BigDecimal getYj3ZlSv() {
+		return this.yj3ZlSv;
+	}
+
+	public void setYj3ZlSv(BigDecimal yj3ZlSv) {
+		this.yj3ZlSv = yj3ZlSv;
+	}
+
+	public BigDecimal getYjb1ScSv() {
+		return this.yjb1ScSv;
+	}
+
+	public void setYjb1ScSv(BigDecimal yjb1ScSv) {
+		this.yjb1ScSv = yjb1ScSv;
+	}
+
+	public BigDecimal getYjb2Sc1Sv() {
+		return this.yjb2Sc1Sv;
+	}
+
+	public void setYjb2Sc1Sv(BigDecimal yjb2Sc1Sv) {
+		this.yjb2Sc1Sv = yjb2Sc1Sv;
+	}
+
+	public BigDecimal getYjb2Sc2Sv() {
+		return this.yjb2Sc2Sv;
+	}
+
+	public void setYjb2Sc2Sv(BigDecimal yjb2Sc2Sv) {
+		this.yjb2Sc2Sv = yjb2Sc2Sv;
+	}
+
+	public BigDecimal getYjb2Sc3Sv() {
+		return this.yjb2Sc3Sv;
+	}
+
+	public void setYjb2Sc3Sv(BigDecimal yjb2Sc3Sv) {
+		this.yjb2Sc3Sv = yjb2Sc3Sv;
+	}
+
+	public BigDecimal getYjb3Sc1Sv() {
+		return this.yjb3Sc1Sv;
+	}
+
+	public void setYjb3Sc1Sv(BigDecimal yjb3Sc1Sv) {
+		this.yjb3Sc1Sv = yjb3Sc1Sv;
+	}
+
+	public BigDecimal getYjb3Sc2Sv() {
+		return this.yjb3Sc2Sv;
+	}
+
+	public void setYjb3Sc2Sv(BigDecimal yjb3Sc2Sv) {
+		this.yjb3Sc2Sv = yjb3Sc2Sv;
+	}
+
+	public BigDecimal getYtzsSpanSv() {
+		return this.ytzsSpanSv;
+	}
+
+	public void setYtzsSpanSv(BigDecimal ytzsSpanSv) {
+		this.ytzsSpanSv = ytzsSpanSv;
+	}
+
+	public BigDecimal getZvcZsfSdSv() {
+		return this.zvcZsfSdSv;
+	}
+
+	public void setZvcZsfSdSv(BigDecimal zvcZsfSdSv) {
+		this.zvcZsfSdSv = zvcZsfSdSv;
+	}
+
+	public BigDecimal getFi1Fyq() {
+		return this.fi1Fyq;
+	}
+
+	public void setFi1Fyq(BigDecimal fi1Fyq) {
+		this.fi1Fyq = fi1Fyq;
+	}
+
+	public BigDecimal getYqlsxfwlj() {
+		return this.yqlsxfwlj;
+	}
+
+	public void setYqlsxfwlj(BigDecimal yqlsxfwlj) {
+		this.yqlsxfwlj = yqlsxfwlj;
+	}
+
+	public BigDecimal getGlqcsxfwlj() {
+		return this.glqcsxfwlj;
+	}
+
+	public void setGlqcsxfwlj(BigDecimal glqcsxfwlj) {
+		this.glqcsxfwlj = glqcsxfwlj;
+	}
+
+	public BigDecimal getWsbckxfwlj() {
+		return this.wsbckxfwlj;
+	}
+
+	public void setWsbckxfwlj(BigDecimal wsbckxfwlj) {
+		this.wsbckxfwlj = wsbckxfwlj;
+	}
+
+	public BigDecimal getYj1xfwlj() {
+		return this.yj1xfwlj;
+	}
+
+	public void setYj1xfwlj(BigDecimal yj1xfwlj) {
+		this.yj1xfwlj = yj1xfwlj;
+	}
+
+	public BigDecimal getFyq1jsxfwlj() {
+		return this.fyq1jsxfwlj;
+	}
+
+	public void setFyq1jsxfwlj(BigDecimal fyq1jsxfwlj) {
+		this.fyq1jsxfwlj = fyq1jsxfwlj;
+	}
+
+	public BigDecimal getFyq1yl2xfwlj() {
+		return this.fyq1yl2xfwlj;
+	}
+
+	public void setFyq1yl2xfwlj(BigDecimal fyq1yl2xfwlj) {
+		this.fyq1yl2xfwlj = fyq1yl2xfwlj;
+	}
+
+	public BigDecimal getFyq1yj3xfwlj() {
+		return this.fyq1yj3xfwlj;
+	}
+
+	public void setFyq1yj3xfwlj(BigDecimal fyq1yj3xfwlj) {
+		this.fyq1yj3xfwlj = fyq1yj3xfwlj;
+	}
+
+	public BigDecimal getFyq2jsxfwlj() {
+		return this.fyq2jsxfwlj;
+	}
+
+	public void setFyq2jsxfwlj(BigDecimal fyq2jsxfwlj) {
+		this.fyq2jsxfwlj = fyq2jsxfwlj;
+	}
+
+	public BigDecimal getFyq2yl2xfwlj() {
+		return this.fyq2yl2xfwlj;
+	}
+
+	public void setFyq2yl2xfwlj(BigDecimal fyq2yl2xfwlj) {
+		this.fyq2yl2xfwlj = fyq2yl2xfwlj;
+	}
+
+	public BigDecimal getFyq2yj3xfwlj() {
+		return this.fyq2yj3xfwlj;
+	}
+
+	public void setFyq2yj3xfwlj(BigDecimal fyq2yj3xfwlj) {
+		this.fyq2yj3xfwlj = fyq2yj3xfwlj;
+	}
+
+	public BigDecimal getFyq3jsxfwlj() {
+		return this.fyq3jsxfwlj;
+	}
+
+	public void setFyq3jsxfwlj(BigDecimal fyq3jsxfwlj) {
+		this.fyq3jsxfwlj = fyq3jsxfwlj;
+	}
+
+	public BigDecimal getFyq3yl2xfwlj() {
+		return this.fyq3yl2xfwlj;
+	}
+
+	public void setFyq3yl2xfwlj(BigDecimal fyq3yl2xfwlj) {
+		this.fyq3yl2xfwlj = fyq3yl2xfwlj;
+	}
+
+	public BigDecimal getFyq3yj3xfwlj() {
+		return this.fyq3yj3xfwlj;
+	}
+
+	public void setFyq3yj3xfwlj(BigDecimal fyq3yj3xfwlj) {
+		this.fyq3yj3xfwlj = fyq3yj3xfwlj;
+	}
+
+	public BigDecimal getZsb1dl() {
+		return this.zsb1dl;
+	}
+
+	public void setZsb1dl(BigDecimal zsb1dl) {
+		this.zsb1dl = zsb1dl;
+	}
+
+	public BigDecimal getZsb2dl() {
+		return this.zsb2dl;
+	}
+
+	public void setZsb2dl(BigDecimal zsb2dl) {
+		this.zsb2dl = zsb2dl;
+	}
+
+	public BigDecimal getZsb3dl() {
+		return this.zsb3dl;
+	}
+
+	public void setZsb3dl(BigDecimal zsb3dl) {
+		this.zsb3dl = zsb3dl;
+	}
+
+	public BigDecimal getZsb4dl() {
+		return this.zsb4dl;
+	}
+
+	public void setZsb4dl(BigDecimal zsb4dl) {
+		this.zsb4dl = zsb4dl;
+	}
+
+	public BigDecimal getWsb1pl() {
+		return this.wsb1pl;
+	}
+
+	public void setWsb1pl(BigDecimal wsb1pl) {
+		this.wsb1pl = wsb1pl;
+	}
+
+	public BigDecimal getWsb2pl() {
+		return this.wsb2pl;
+	}
+
+	public void setWsb2pl(BigDecimal wsb2pl) {
+		this.wsb2pl = wsb2pl;
+	}
+
+	public BigDecimal getWsbxfwlj() {
+		return this.wsbxfwlj;
+	}
+
+	public void setWsbxfwlj(BigDecimal wsbxfwlj) {
+		this.wsbxfwlj = wsbxfwlj;
+	}
+
+}

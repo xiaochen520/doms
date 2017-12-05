@@ -1,0 +1,725 @@
+package com.echo.util;
+
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
+
+/**
+ * @author Administrator
+ *
+ */
+public class DateBean {
+	private int dataYear; //当前年份
+	private int dataMonth; //当前月份
+	private int dayOfMonth;//当前月份天数
+	private int weekOfMonthCount; //当前年份周数
+	private String FstDayOfWeekInMonth; //当前月份第一周的第一天日期
+	
+	static SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//24小时制
+	
+	/**
+	 * 获取当前系统时间  年月日 时分秒 毫秒
+	 * @return
+	 */
+	public static List<String> getYeahMonthDay(){
+		
+		List<String> datelist = new ArrayList<String>();
+		Calendar now = Calendar.getInstance();  
+		datelist.add(String.valueOf(now.get(Calendar.YEAR)));
+		datelist.add(String.valueOf((now.get(Calendar.MONTH) + 1)));
+		datelist.add(String.valueOf(now.get(Calendar.DAY_OF_MONTH)));
+		datelist.add(String.valueOf(now.get(Calendar.HOUR_OF_DAY)));
+		datelist.add(String.valueOf(now.get(Calendar.MINUTE)));
+		datelist.add(String.valueOf(now.get(Calendar.SECOND)));
+		datelist.add(String.valueOf(now.getTimeInMillis()));
+		return datelist;
+		
+	}
+	/**
+	 * 根据年月获取 数据开始结束时间
+	 * @param yeah
+	 * @param month
+	 * @return
+	 */
+	public static List<String> getYeahMonth(String yeah,String month){
+		if(Integer.parseInt(month) < 10){
+			month = "0"+Integer.parseInt(month);
+		}
+		String startDate = yeah +"-"+month+"-01";
+		String afterdate = getTimeAfterMonthTime(startDate);
+		
+		List<String> datelist = new ArrayList<String>();
+		datelist.add(startDate);
+		datelist.add(afterdate);
+		
+		return datelist;
+	}
+	
+	
+	public static List<String> getYeahMonth1(String yeah,String month){
+		if(Integer.parseInt(month) < 10){
+			month = "0"+Integer.parseInt(month);
+		}
+		int tmonth = Integer.parseInt(month);
+		int tyear = Integer.parseInt(yeah);
+		System.out.println(tyear+"年"+tmonth+"月");					
+		Calendar a = Calendar.getInstance(); 
+		a.set(Calendar.YEAR, tyear);
+		a.set(Calendar.MONTH, tmonth-1);
+		a.set(Calendar.DATE, 1);//把日期设置为当月第一天 
+		a.roll(Calendar.DATE, -1);//日期回滚一天，也就是最后一天					 
+		int maxDate = a.get(Calendar.DATE); 
+		int endday = a.getActualMaximum(Calendar.DAY_OF_MONTH);
+		System.out.println("本月总共有"+maxDate+"天");
+		System.out.println("本月最后一天是"+endday+"号");
+		
+		
+		String startDate = yeah +"-"+month+"-01";
+		String afterdate = yeah +"-"+month+"-"+endday+"";
+		
+		List<String> datelist = new ArrayList<String>();
+		datelist.add(startDate);
+		datelist.add(afterdate);
+		
+		return datelist;
+	}
+	
+	/**2个年月日类型时间比较
+	 * 
+	 * @param DATE1  第一个日期
+	 * @param DATE2 第一个日期
+	 * @return 0 表示2时间相等 1表示第一个日期大于第二个日期 -1表示表示第一个日期小于第二个日期 
+	 */
+	public static int compare_date(String DATE1, String DATE2) {
+        
+        
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date dt1 = df.parse(DATE1);
+            Date dt2 = df.parse(DATE2);
+            if (dt1.getTime() > dt2.getTime()) {
+//                System.out.println("dt1 在dt2后");
+                return 1;
+            } else if (dt1.getTime() < dt2.getTime()) {
+//                System.out.println("dt1在dt2前");
+                return -1;
+            } else {
+                return 0;
+            }
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return 0;
+    }
+	
+	public String getFstDayOfWeekInMonth() {
+		return FstDayOfWeekInMonth;
+	}
+	public void setFstDayOfWeekInMonth(String fstDayOfWeekInMonth) {
+		FstDayOfWeekInMonth = fstDayOfWeekInMonth;
+	}
+	public int getWeekOfMonthCount() {
+		return weekOfMonthCount;
+	}
+	public void setWeekOfMonthCount(int weekOfMonthCount) {
+		this.weekOfMonthCount = weekOfMonthCount;
+	}
+	
+	public int getDataYear() {
+		return dataYear;
+	}
+	public void setDataYear(int dataYear) {
+		this.dataYear = dataYear;
+	}
+	public int getDataMonth() {
+		return dataMonth;
+	}
+	public void setDataMonth(int dataMonth) {
+		this.dataMonth = dataMonth;
+	}
+	public int getDayOfMonth() {
+		return dayOfMonth;
+	}
+	public void setDayOfMonth(int dayOfMonth) {
+		this.dayOfMonth = dayOfMonth;
+	}
+	
+	//获取Date格式时间  String ->Timestamp
+	public static Timestamp getTimestamp(String time){
+		Timestamp ts = new Timestamp(System.currentTimeMillis());
+		 ts = Timestamp.valueOf(time);  
+		return ts;
+	}
+	
+	//获取字符串格式时间
+	public static String getTimeStr(Date time){
+		String timestamp = sdformat.format(time);
+		return timestamp;
+	}
+	//字符串转DATE格式 yyyy-MM-dd HH:mm:ss");//24小时制
+	public static Date getStrNowDate(String time){
+	
+		Date date = null;
+		try {
+			 date=sdformat.parse(time);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return date;
+	}
+	
+	
+	//字符串转DATE格式
+	public static Date getStrDate(String time){
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//		String strDate = "2012-3-1";
+		
+		Date date = null;
+		try {
+			if(time != null && !"".equals(time) && !"null".equals(time)){
+				if(time.indexOf("/") != -1){
+					time = time.replace("/", "-");
+				}
+				 date=sdf.parse(time);
+			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return date;
+	}
+	public static Date getStrDateNotNull(String time){
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//		String strDate = "2012-3-1";
+		Date date = null;
+		if(time !=null  &&  !"".equals(time)){
+		try {
+			 date=sdf.parse(time);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+		return date;
+	}
+	
+	//字符串转DATE格式
+	public static String getChinaDate(String time){
+		String[] times = time.split("-");
+	
+		return times[0]+"年"+times[1]+"月"+times[2]+"日";
+	}
+	
+	//字符串转DATE格式
+	public static String getChinaDateD(String time){
+//		String[] times = time.split("-");
+		time = time.replaceAll("年", "-");
+		time = time.replaceAll("月", "-");
+		time = time.substring(0, time.length()-1);
+		return time;
+	}
+	//字符串转DATE格式
+		public static Date getFormatDate(String dateStr,String format){
+			
+			SimpleDateFormat sdf = new SimpleDateFormat(format);
+//			String strDate = "2012-3-1";
+			Date date = null;
+			try {
+				 date=sdf.parse(dateStr);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			return date;
+		}
+	public static Date getStrDateTime(String time){
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+//		String strDate = "2012-3-1";
+		Date date = null;
+		try {
+			if(time != null && !"".equals(time)){
+				 date=sdf.parse(time);
+			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return date;
+	}
+	
+	
+	public static long getsqlDateTime(String time){
+		
+		Date date = getStrDate(time);
+		  if (date == null) {
+		  return 0;
+		  } else {
+		  long currentTime = dateToLong(date); // date类型转成long类型
+		  return currentTime;
+		  }
+	}
+	
+	 // date类型转换为long类型
+	  // date要转换的date类型的时间
+	  public static long dateToLong(Date date) {
+	  return date.getTime();
+	  }
+	
+	//获取当前系统时间
+	public static String getSystemTime()throws Exception{
+		Date now = new Date(); 
+		String hehe = sdformat.format(now); 
+		//getStrNowDate(hehe);
+		return hehe;
+
+	}
+	
+	
+	//获取当前系统时间
+	public static String getSystemTime1()throws Exception{
+		Date now = new Date(); 
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String hehe = sdf.format(now); 
+		//getStrNowDate(hehe);
+		return hehe;
+
+	}
+	//获取当前系统时间
+	public static String getSystemTime2()throws Exception{
+		Date now = new Date(); 
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh24:mi:ss");
+		String hehe = sdf.format(now); 
+		//getStrNowDate(hehe);
+		return hehe;
+
+	}
+	/*
+	 *  获取指定日期之后一月。
+	 *  time 指定日期
+	 */
+	@SuppressWarnings("static-access")
+	public static String getTimeAfterMonthTime(String time){
+		Date nowdate = getStrDate(time);
+		Calendar   calendar   =   new   GregorianCalendar(); 
+		calendar.setTime(nowdate); 
+		calendar.add(calendar.MONTH,1);//把日期往后增加一月.整数往后推,负数往前移动 
+		Date afterdate=calendar.getTime();   //这个时间就是日期往后推一天的结果 
+		SimpleDateFormat sdformat1 = new SimpleDateFormat("yyyy-MM-dd");//24小时制
+		return sdformat1.format(afterdate); 
+	}
+	
+	/*
+	 *  获取指定日期之后一天。
+	 *  time 指定日期
+	 */
+	@SuppressWarnings("static-access")
+	public static String getTimeAfterDAYTime(String time){
+		Date nowdate = getStrDate(time);
+		Calendar   calendar   =   new   GregorianCalendar(); 
+		calendar.setTime(nowdate); 
+		calendar.add(calendar.DATE,1);//把日期往后增加一天.整数往后推,负数往前移动 
+		Date afterdate=calendar.getTime();   //这个时间就是日期往后推一天的结果 
+		SimpleDateFormat sdformat1 = new SimpleDateFormat("yyyy-MM-dd");//24小时制
+		return sdformat1.format(afterdate); 
+	}
+	/*
+	 *  获取指定日期。
+	 *  time 指定日期
+	 */
+	
+	public static String getTimeDAYTime(String time){
+		Date nowdate = getStrDate(time);
+		Calendar   calendar   =   new   GregorianCalendar(); 
+		calendar.setTime(nowdate); 
+	//	calendar.add(calendar.DATE);//把日期往后增加一天.整数往后推,负数往前移动 
+	//	Date afterdate=calendar.getTime();   //这个时间就是日期往后推一天的结果 
+		SimpleDateFormat sdformat1 = new SimpleDateFormat("yyyy-MM-dd");//24小时制
+		return sdformat1.format(nowdate); 
+	}
+	/*
+	 *  获取指定日期之前一天。
+	 *  time 指定日期
+	 */
+	@SuppressWarnings("static-access")
+	public static String getBeforeDAYTime(String time){
+		Date nowdate = getStrDate(time);
+		Calendar   calendar   =   new   GregorianCalendar(); 
+		calendar.setTime(nowdate); 
+		calendar.add(calendar.DATE,-1);//把日期往后增加一天.整数往后推,负数往前移动 
+		Date afterdate=calendar.getTime();   //这个时间就是日期往后推一天的结果 
+		SimpleDateFormat sdformat1 = new SimpleDateFormat("yyyy-MM-dd");//24小时制
+		return sdformat1.format(afterdate); 
+	}
+	
+	/*
+	 *  获取指定日期之前二天。
+	 *  time 指定日期
+	 */
+	@SuppressWarnings("static-access")
+	public static String getBefore2DAYTime(String time){
+		Date nowdate = getStrDate(time);
+		Calendar   calendar   =   new   GregorianCalendar(); 
+		calendar.setTime(nowdate); 
+		calendar.add(calendar.DATE,-2);//把日期往后增加一天.整数往后推,负数往前移动 
+		Date afterdate=calendar.getTime();   //这个时间就是日期往后推一天的结果 
+		SimpleDateFormat sdformat1 = new SimpleDateFormat("yyyy-MM-dd");//24小时制
+		return sdformat1.format(afterdate); 
+	}
+	
+	/*
+	 * 
+	 * 获取指定日期之前7天
+	 * time 指定日期
+	 * */
+	
+	@SuppressWarnings("static-access")
+	public static String getBefore6DAYTime(String time){
+		Date nowdate = getStrDate(time);
+		Calendar   calendar   =   new   GregorianCalendar(); 
+		calendar.setTime(nowdate); 
+		calendar.add(calendar.DATE,-6);//把日期往后增加一天.整数往后推,负数往前移动 
+		Date afterdate=calendar.getTime();   //这个时间就是日期往后推一天的结果 
+		SimpleDateFormat sdformat1 = new SimpleDateFormat("yyyy-MM-dd");//24小时制
+		return sdformat1.format(afterdate); 
+	}
+	
+	@SuppressWarnings("static-access")
+	public static String getBefore5DAYTime(String time){
+		Date nowdate = getStrDate(time);
+		Calendar   calendar   =   new   GregorianCalendar(); 
+		calendar.setTime(nowdate); 
+		calendar.add(calendar.DATE,-5);//把日期往后增加一天.整数往后推,负数往前移动 
+		Date afterdate=calendar.getTime();   //这个时间就是日期往后推一天的结果 
+		SimpleDateFormat sdformat1 = new SimpleDateFormat("yyyy-MM-dd");//24小时制
+		return sdformat1.format(afterdate); 
+	}
+	
+	@SuppressWarnings("static-access")
+	public static String getBefore4DAYTime(String time){
+		Date nowdate = getStrDate(time);
+		Calendar   calendar   =   new   GregorianCalendar(); 
+		calendar.setTime(nowdate); 
+		calendar.add(calendar.DATE,-4);//把日期往后增加一天.整数往后推,负数往前移动 
+		Date afterdate=calendar.getTime();   //这个时间就是日期往后推一天的结果 
+		SimpleDateFormat sdformat1 = new SimpleDateFormat("yyyy-MM-dd");//24小时制
+		return sdformat1.format(afterdate); 
+	}
+	
+	@SuppressWarnings("static-access")
+	public static String getBefore3DAYTime(String time){
+		Date nowdate = getStrDate(time);
+		Calendar   calendar   =   new   GregorianCalendar(); 
+		calendar.setTime(nowdate); 
+		calendar.add(calendar.DATE,-3);//把日期往后增加一天.整数往后推,负数往前移动 
+		Date afterdate=calendar.getTime();   //这个时间就是日期往后推一天的结果 
+		SimpleDateFormat sdformat1 = new SimpleDateFormat("yyyy-MM-dd");//24小时制
+		return sdformat1.format(afterdate); 
+	}
+/*
+ * 获取当前系统日期的前一天指定时间及当天的指定时间或不带时间的当前日期的前一天
+ * 
+ */
+	public static String getCalcTime(String calcNum,String calcFlag,String resultFlag) throws Exception {
+		Calendar c = Calendar.getInstance();//
+		calcNum = (Integer.parseInt(calcNum) + 24) + "";
+		int year = c.get(Calendar.YEAR);    //获取年
+		int month = c.get(Calendar.MONTH) + 1;   //获取月份，0表示1月份
+		int day = c.get(Calendar.DAY_OF_MONTH);    //获取当前天数
+		if (!"endTime".equals(calcFlag)) {
+			day = day - 1;
+		}
+		if ("day".equals(resultFlag)) {//日期不带时分秒
+			return year + "-" + month + "-"+ day;
+		}
+		return year + "-" + month + "-"+ day + " " + calcNum + ":00:00";
+	}
+	
+	/**
+	 * 获取数据库中动态报表时间范围
+	 * @param calcNum 波动值
+	 * @param time 传入时间为空为默认当天
+	 * @param endf 开始结束标识 0:开始时间 1：结束时间
+	 * @return
+	 * @throws Exception
+	 */
+	
+	@SuppressWarnings("static-access")
+	public static String getDynamicTime(String calcNum,String time,String endf) throws Exception {
+		Date nowdate = null;
+		Calendar   calendar = null;
+		int endcalcNum = (Integer.parseInt(calcNum) + 24);
+		if(time != null && !"".equals(time)){
+			 nowdate = getStrDate(time);
+			 calendar   =   new   GregorianCalendar(); 
+			 calendar.setTime(nowdate); 
+		}else{
+			calendar = Calendar.getInstance();//
+		}
+		if("0".equals(endf)){
+			calendar.add(calendar.HOUR_OF_DAY,Integer.parseInt(calcNum));//把日期往后增加一天.整数往后推,负数往前移动 
+		}else{
+			calendar.add(calendar.HOUR_OF_DAY,endcalcNum);//把日期往后增加一天.整数往后推,负数往前移动 
+		}
+		
+		
+		Date afterdate=calendar.getTime();   //这个时间就是日期往后推一天的结果 
+		SimpleDateFormat sdformat1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");//24小时制
+		return sdformat1.format(afterdate);
+	}
+	
+	public static String getParamTime(String time)throws Exception{
+		String newdate = "";
+		if(time != null && !"".equals(time)){
+			
+			if(time.length() == 10){
+				newdate = time +" 00:00:00";
+			}else if(time.length() == 13){
+				newdate = time +"00:00";
+			}else if(time.length() == 16){
+				newdate = time +":00";
+			}else if(time.length() == 19){
+				newdate = time;
+			}else{
+				newdate = getSystemTime();
+			}
+		}else{
+			newdate = getSystemTime();
+		}
+		
+		
+		return newdate;
+	}
+	/**
+	 * 按顺序导出报表所需要1天之内时间段
+	 * @param param  配置文件中时间名称
+	 * @param param  查询时间
+	 * @return
+	 */
+	@SuppressWarnings("unused")
+	public static String[][] getReportTime(String param,String txtDate){
+		List<String> timelist = null;
+		String beforetime = getBeforeDAYTime(txtDate);
+		PropertiesConfig pc = new PropertiesConfig();//写在adction 里 在查询拼接sql及导出报表时都要用到 
+		//读取时间 按时间分组数据 
+		String[] timeStr = pc.getSystemConfiguration(param).split("&"); 
+		String[][] dates = null;
+		if(param.equals("time4")){
+			dates = new String[1][]; 
+		}else if(param.equals("time1")){
+				dates = new String[1][]; 
+		}else if(param.equals("time12")){
+			dates = new String[1][]; 
+		}else if(param.equals("time11")){
+			dates = new String[2][]; 
+		}else{
+			dates = new String[3][]; 
+		}
+		for (int i = 0; i < dates.length; i++) { 
+		String[] timeStrs = null;
+		timeStrs = timeStr[i].split(","); 
+		String[] newtimes = new String[timeStrs.length];
+		if(timeStrs != null && timeStrs.length>0){
+			for(int j=0; j<timeStrs.length;j++){
+				if("00:00".equals(timeStrs[j])){
+					beforetime = txtDate;
+				}
+				newtimes[j] = beforetime+" "+timeStrs[j]+":00";
+			}
+		}
+		dates[i] = newtimes;
+		}
+		return dates;
+	}	
+	
+	public static String[][] getReportDays(String param){
+		PropertiesConfig pc = new PropertiesConfig();//写在adction 里 在查询拼接sql及导出报表时都要用到 
+		//读取时间 按时间分组数据 
+		String[] timeStr = pc.getSystemConfiguration(param).split("&"); 
+		String[][] dates = null;
+		if(param.equals("time15")){
+			dates = new String[7][]; 
+		}
+		for (int i = 0; i < dates.length; i++) { 
+		String[] timeStrs = null;
+		timeStrs = timeStr[i].split(","); 
+		String[] newtimes = new String[timeStrs.length];
+		if(timeStrs != null && timeStrs.length>0){
+			for(int j=0; j<timeStrs.length;j++){				
+				newtimes[j] = timeStrs[j];
+			}
+		}
+		dates[i] = newtimes;
+		}
+		return dates;
+	}
+	
+	
+	public static String[][] getReportMonths(String param){
+		PropertiesConfig pc = new PropertiesConfig();//写在adction 里 在查询拼接sql及导出报表时都要用到 
+		//读取时间 按时间分组数据 
+		String[] timeStr = pc.getSystemConfiguration(param).split("&"); 
+		String[][] dates = null;
+		if(param.equals("time17")){
+			dates = new String[3][]; 
+		}
+		for (int i = 0; i < dates.length; i++) { 
+		String[] timeStrs = null;
+		timeStrs = timeStr[i].split(","); 
+		String[] newtimes = new String[timeStrs.length];
+		if(timeStrs != null && timeStrs.length>0){
+			for(int j=0; j<timeStrs.length;j++){				
+				newtimes[j] = timeStrs[j];
+			}
+		}
+		dates[i] = newtimes;
+		}
+		return dates;
+	}
+	
+	
+	
+//	public static String[][] getReportDays(String date){
+//		String day6 = DateBean.getBefore6DAYTime(date);
+//		String day5 = DateBean.getBefore5DAYTime(date);
+//		String day4 = DateBean.getBefore4DAYTime(date);
+//		String day3 = DateBean.getBefore3DAYTime(date);
+//		String day2 = DateBean.getBefore2DAYTime(date);
+//		String day1 = DateBean.getBeforeDAYTime(date);
+//		String day = date;
+//		List<String> timeList = new ArrayList<String>();
+////		timeList.add(day6);
+//		timeList.add(day6);
+////		timeList.add(day5);
+//		timeList.add(day5);
+////		timeList.add(day4);
+//		timeList.add(day4);
+////		timeList.add(day3);
+//		timeList.add(day3);
+////		timeList.add(day2);
+//		timeList.add(day2);
+////		timeList.add(day1);
+//		timeList.add(day1);
+////		timeList.add(day);
+//		timeList.add(day);
+//		String[][] dates = new String[7][];
+//		for (int i = 0; i < dates.length; i++) { 
+//			System.out.println(dates.length);
+//			String[] newtimes = new String[7];
+//			System.out.println(newtimes.length);
+//			if(timeList != null && timeList.size()>0){
+//				for(int j=0; j<7;j++){
+//					newtimes[j] = timeList.get(j);
+//				}
+//			}
+//			dates[i] = newtimes;
+//			}
+//			return dates;
+//	}
+	
+	/**
+	 * 按顺序导出报表所需要1天之内时间段
+	 * @param param  配置文件中时间名称
+	 * @param param  查询时间
+	 * @return
+	 */
+	@SuppressWarnings("unused")
+	public static String[][] getReport2Time(String param,String txtDate){
+		List<String> timelist = null;
+		String beforetime = getBeforeDAYTime(txtDate);
+		String before2time = getBefore2DAYTime(txtDate);
+		PropertiesConfig pc = new PropertiesConfig();//写在adction 里 在查询拼接sql及导出报表时都要用到 
+		//读取时间 按时间分组数据 
+		String[] timeStr = pc.getSystemConfiguration(param).split("&"); 
+		String[][] dates = new String[1][]; 
+		for (int i = 0; i < dates.length; i++) { 
+			String[] timeStrs = null;
+			timeStrs = timeStr[i].split(","); 
+			String[] newtimes = new String[timeStrs.length];
+			if(timeStrs != null && timeStrs.length>0){
+				for(int j=0; j<timeStrs.length;j++){
+					if("08:00".equals(timeStrs[j])){
+						if(j==2){
+							before2time = beforetime;
+						}else{
+							before2time = txtDate;
+						}
+					}
+					newtimes[j] = before2time+" "+timeStrs[j]+":00";
+				}
+			}
+			dates[i] = newtimes;
+		}
+		
+		
+		return dates;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(getChinaDateD("2014年04月25日"));
+		
+		String[][] x = getReportTime("time", "2014-04-24");
+		
+		for(String[] fg:x){
+			for(String fx:fg){
+				System.out.println(fx);
+			}
+		}
+		
+		System.out.println("2014-04-23 14:00:00".substring(11, 16));
+	}
+	//xianshi  days
+	@SuppressWarnings("unused")
+	public static String[][] getDay(String param,String txtDate){
+		
+		Calendar cal = Calendar.getInstance();  
+		SimpleDateFormat sf =new SimpleDateFormat("yyyy-MM");
+		try {
+			cal.setTime(sf.parse(txtDate));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		int month = cal.get(Calendar.MONTH); //注意月份是从0开始的,比如当前7月，获得的month为6
+		
+		PropertiesConfig pc = new PropertiesConfig();//写在adction 里 在查询拼接sql及导出报表时都要用到 
+		//读取时间 按时间分组数据 
+		String[] timeStr = pc.getSystemConfiguration(param).split("&"); 
+		String[][] dates = new String[3][]; 
+		for (int i = 0; i < dates.length; i++) { 
+			String[] timeStrs = null;
+			timeStrs = timeStr[i].split(","); 
+			String[] newtimes = new String[timeStrs.length];
+			if(timeStrs != null && timeStrs.length>0){
+				for(int j=0; j<timeStrs.length;j++){
+					newtimes[j] = txtDate+"-"+timeStrs[j];
+				}
+			}
+			dates[i] = newtimes;
+			}
+		return dates;
+	}
+	
+	public static String getYeahMonthO(String yeah,String month){
+		if(Integer.parseInt(month) < 10){
+			month = "0"+Integer.parseInt(month);
+		}
+		String startDate = yeah +"."+month;
+		return startDate;
+	}
+	
+	public static String clearDateN(String date){
+		return date.replaceAll("/", "-");
+	}
+
+
+	
+
+}

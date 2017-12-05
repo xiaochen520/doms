@@ -1,0 +1,316 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- 系统Action -->
+	<package name="dayreport" extends="struts-default">
+		<!-- 日报Action -->
+		
+		<!-- SAGD井日报Action -->
+		<action name="sagddrpd_*" class="com.echo.action.SagddRPDAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		
+		<!-- SAGD井日报维护Action -->
+		<action name="sagddrpdwh_*" class="com.echo.action.SagddRPDWHAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		
+
+		<!-- 软化器再生Action -->
+		<action name="rhqzs_*" class="com.echo.action.RhqzsAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		
+		<!-- 软化器再生1Action -->
+		<action name="rhqzs1_*" class="com.echo.action.Rhqzs1Action" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		
+		
+		<!-- 注站站(转油)日报Action -->
+		<action name="stationrpd_*" class="com.echo.action.StationRPDAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		
+		<!--锅炉普通湿热日报 Action -->
+		<action name="srglrb_*" class="com.echo.action.BoilerCommondRPDAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		
+		<!--锅炉普通湿热日报维护 Action -->
+		<action name="srglrbwh_*" class="com.echo.action.BoilerCommondRPDAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+			
+		<action name="bcRodwh_*" class="com.echo.action.BoilerCommondRPDWHAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		
+		
+		<!-- 湿蒸锅炉分时Action -->
+		<action name="szglfs_*" class="com.echo.action.SzglfsAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		
+		
+		<!-- 高干度锅炉分时Action -->
+		<action name="ggdglfs_*" class="com.echo.action.GgdglfsAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		
+		<!-- 过热锅炉分时Action -->
+		<action name="grglfs_*" class="com.echo.action.GrglfsAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		
+		<!--过热锅炉日报 Action -->
+		<action name="blilercdrpd_*" class="com.echo.action.BoilerCrossdRPDAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		
+		<!--过热锅炉日报维护 Action -->
+		<action name="blilercdrpdwh_*" class="com.echo.action.BoilerCrossdRPDWHAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		
+		<!--气井日报 Action -->
+		<action name="gasRPD_*" class="com.echo.action.GasWellRPDAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		<!--气井日报 维护Action -->
+		<action name="gasRPDWH_*" class="com.echo.action.GasWellRPDWHAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		
+		<!--常规油井日报 Action -->
+		<action name="ruleWellRPD_*" class="com.echo.action.RuleWellRPDAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		
+		<!--常规油井日报 维护Action -->
+		<action name="ruleWellRPDWH_*" class="com.echo.action.RuleWellRPDWHAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		<!--注水井日报 维护Action -->
+		<action name="floodingRPD_*" class="com.echo.action.FloodingRPDAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		<!--稀油井日报 维护Action -->
+		<action name="thinWellRPDWH_*" class="com.echo.action.ThinWellRPDWHAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+			<!--注汽井日报 维护Action -->
+		<action name="gasDailyWH_*" class="com.echo.action.GasDailyWHAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+			<!--关井日报 维护Action -->
+		<action name="gjwh_*" class="com.echo.action.CloseWellAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		<!--措施日报 维护Action -->
+		<action name="cswh_*" class="com.echo.action.MeasuresAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		
+			<!--关井日报 维护Action -->
+		<action name="zpgl_*" class="com.echo.action.ZpglAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		<!--热洗清蜡日报 维护Action -->
+		<action name="rxqlwh_*" class="com.echo.action.RxqlwhAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		
+		<!--水源井运行日报Action 
+		<action name="syjyxrb_*" class="com.echo.action.SyjyxrbAction" method="{1}">
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>-->
+		<!-- 文件上传Action -->
+		<action name="upload" class="com.echo.action.ExcelAction">
+			<param name="savePath">/uploadExcel</param>
+			<result name="SUCCESS" type="dispatcher">/page/dayreport/success.jsp</result>
+			<result name="fail" type="dispatcher">/page/dayreport/importExcel.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		<!-- 文件上传Action -->
+		<action name="uploadSagd" class="com.echo.action.ExcelSagdAction">
+			<param name="savePath">/uploadExcel</param>
+			<result name="SUCCESS" type="dispatcher">/page/dayreport/success.jsp</result>
+			<result name="fail" type="dispatcher">/page/dayreport/importExcel.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+		
+		<!-- 文件上传Action -->
+		<action name="uploadbasic" class="com.echo.action.BasicExcelAction">
+			<param name="savePath">/uploadExcel</param>
+			<result name="SUCCESS" type="dispatcher">/page/dayreport/success.jsp</result>
+			<result name="fail" type="dispatcher">/page/dayreport/FimportExcel.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+
+	</package>
+</struts>

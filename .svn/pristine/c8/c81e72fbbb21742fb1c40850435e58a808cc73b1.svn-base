@@ -1,0 +1,16 @@
+package com.echo.service;
+
+import java.util.List;
+
+import net.sf.json.JSONArray;
+
+public interface LineMeasureService {
+
+	public JSONArray searchLineM(String txtDate)throws Exception;
+
+	public List<Object[]> searchLineMeasure(String txtDate, String fields)throws Exception;
+
+	public JSONArray searchLineMs(String txtDate)throws Exception;
+
+
+}

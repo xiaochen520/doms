@@ -1,0 +1,55 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>contactour.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+    <div class="contact">
+                  <ul>
+                                          <li style="width:627px;">
+                            <h2> <font color="#836FFF" size="5">总公司联系方式</font></h2>
+                            <div class="content">
+								<ul> <li> <div class=content><strong>北京安控科技股份有限公司</strong><strong><br> </strong><br> <strong>地址</strong>：北京市海淀区地锦路9号院6号楼 <br> <strong>邮编</strong>：100095 <br> <strong>电话</strong>：010-62971668 <br> <strong>传真</strong>：010-62979746 <br> <strong>网址</strong>：www.echocontrol.com <br> <strong>E-mail</strong>：info@echocontrol.com </div> </li> </ul></div>
+                        </li>
+                                          <li style="width:627px;">
+                            <h2> <font color="#836FFF" size="5">子公司联系方式</font></h2>
+                            <div class="content">
+								<ul> <li> <div class=content><strong>北京安控自动化有限公司</strong> <br> <br> <strong>地址：</strong>北京市海淀区地锦路9号院6号楼 <br> <strong>邮编：</strong>100085<br> <strong>电话：</strong>010-62971668<br> <strong>传真：</strong>010-62979746<br> </div> <br> 
+								<li> <div class=content><strong>杭州安控环保科技有限公司 <br> <br> 地址：</strong>浙江省杭州富阳市受降镇银湖开发区上宋街6号<br> <strong>邮编：</strong>311422<br> <strong>电话：</strong>0571-61708111<br> <strong>传真：</strong>0571-63417222<br> </div> <br>
+								 <li> <div class=content><strong>陕西天安科技工程有限公司 <br> </strong><br> <strong>地址：</strong>陕西省西安市未央区凤城三路3号五洲大厦A座3楼<br> <strong>邮编：</strong>710016<br> <strong>电话：</strong>029-86189718/029-89163855 <br> <br>  </div> 
+								 <li> <div class=content><strong>新疆天安工程有限责任公司</strong> <br> <br> <strong>地址：</strong>新疆克拉玛依市鸿雁路78号<br> <strong>邮编：</strong>834000<br> <strong>电话：</strong>0990-6244720<br> <strong>传真：</strong>0990-6244720</div> </li> </ul> </div>
+                        </li>
+                                          <li style="width:627px;">
+                            <h2> <font color="#836FFF" size="5">分公司联系方式</font></h2>
+                            <div class="content">
+								<ul> <li> <div class=content><strong>大庆分公司</strong><br> <strong>地址：</strong>黑龙江省大庆市让胡路区创业大道世奥中心1710室<br> <strong>邮编：</strong>163453<br> <strong>电话：</strong>0459-5156715<br> <strong>传真：</strong>0459-5156715</div> </li> </ul></div>
+                        </li>
+                                          <li style="width:627px;">
+                           <h2> <font color="#836FFF" size="5">办事处联系方式</font></h2>
+                            <div class="content">
+								<UL> <LI> <DIV class=content><STRONG>新疆办事处<BR><BR>地址：</STRONG>乌鲁木齐市友好北路41号宏运大厦10楼G座 <BR><STRONG>邮编：</STRONG>830000<BR><STRONG>电话：</STRONG>0991-4842323<BR><STRONG>传真：</STRONG>0991-4823323 <BR></DIV><BR><BR> 
+								<LI> <DIV class=content><STRONG>青海办事处<BR><BR>地址：</STRONG>青海茫崖花土沟 <BR><STRONG>邮编：</STRONG>816400<BR><STRONG>电话：</STRONG>0977-8252760<BR><STRONG>传真：</STRONG>0977-8252760 <BR><BR></DIV> 
+								<LI> <DIV class=content><STRONG>大港办事处<BR></STRONG><BR><STRONG>地址：</STRONG>河北省沧洲市沧县东关可心小区1-1-101室<BR><STRONG>邮编：</STRONG>061100<BR><STRONG>电话：</STRONG>022-25945077<BR><STRONG>传真：</STRONG>022-25945077 <BR></DIV><BR><BR> 
+								<LI> <DIV class=content><STRONG>冀东办事处<BR></STRONG><BR><STRONG>地址：</STRONG>河北省唐海县海龙花园十五号楼一门501 <BR><STRONG>邮编：</STRONG>063200<BR><STRONG>电话：</STRONG>0315-8718799<BR><STRONG>传真：</STRONG>0315-8718799 <BR></DIV> <br><br>
+								<LI> <DIV class=content><STRONG>成都<BR></STRONG><BR><STRONG>地址：</STRONG>成都市高新区云华路333号西部信息产业园3栋4楼<BR><STRONG>邮编：</STRONG>610041<BR><STRONG>电话：</STRONG>028-85155284<BR><STRONG>传真：</STRONG>028-85155284 <BR></DIV></LI></UL>                            </div>
+                        </li>
+                                    </ul>
+                  <span class="clear_f"></span>
+                  <div class="h10"></div>
+                  <div class="more"><a href="javascript:;"></a></div>
+            </div>
+      </div>
+      <span class="clear_f"></span>
+
+    
+  </body>
+</html>

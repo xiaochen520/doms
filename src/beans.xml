@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+          http://www.springframework.org/schema/aop
+          http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+          http://www.springframework.org/schema/tx
+          http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<!-- Dao声明 -->
+	<bean id="gwghjcxxDao" class="com.echo.dao.impl.GwghjcxxDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="shysclrbDao" class="com.echo.dao.impl.SHYSCLRBDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="t2sclrbDao" class="com.echo.dao.impl.T2sclrbDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="syjyxrbDao" class="com.echo.dao.impl.SyjyxrbDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="rxqlwhDao" class="com.echo.dao.impl.RxqlwhDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="measuresDao" class="com.echo.dao.impl.MeasuresDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="gasDailyWHDao" class="com.echo.dao.impl.GasDailyWHDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="thinWellRPDWHDao" class="com.echo.dao.impl.ThinWellRPDWHDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="searchQueryAllDao" class="com.echo.dao.impl.SearchQueryAllDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="u1ZHRBDao" class="com.echo.dao.impl.U1ZHRBDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="floodingRPDDao" class="com.echo.dao.impl.FloodingRPDDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="gaswellrpddao" class="com.echo.dao.impl.GasWellRPDDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="ipUsedDao" class="com.echo.dao.impl.IPUsedDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="u1yqdtDao" class="com.echo.dao.impl.U1yqdtDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="u1s1gyDao" class="com.echo.dao.impl.U1s1gyDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="crudeOilDao" class="com.echo.dao.impl.CrudeOilDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="zhuWaterPumpDao" class="com.echo.dao.impl.ZhuWaterPumpDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="reactorDao" class="com.echo.dao.impl.ReactorDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="lineMeasureDao" class="com.echo.dao.impl.LineMeasureDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="manifoldRDADao" class="com.echo.dao.impl.ManifoldRDADaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="sagdDao" class="com.echo.dao.impl.SagdDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="ruleWellDao" class="com.echo.dao.impl.RuleWellDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="thinOilWellDao" class="com.echo.dao.impl.ThinOilWellDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="gasWellDao" class="com.echo.dao.impl.GasWellDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="waterInjectionDao" class="com.echo.dao.impl.WaterInjectionDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="waterFloodingDao" class="com.echo.dao.impl.WaterFloodingDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="producedRDDao" class="com.echo.dao.impl.ProducedRDDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="gasWellRDDao" class="com.echo.dao.impl.GasWellRDDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="instruMentationDao" class="com.echo.dao.impl.InstruMentationDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="controllerDao" class="com.echo.dao.impl.ControllerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!--
+		<bean id="pcCdMenuTDAO" class="com.echo.dto.PcCdMenuTDAO"> <property
+		name="sessionFactory"> <ref bean="sessionFactory" /> </property>
+		</bean>
+	-->
+	<bean id="userDao" class="com.echo.dao.impl.UserDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="roleDao" class="com.echo.dao.impl.RoleDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="rightDao" class="com.echo.dao.impl.RightDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="logDao" class="com.echo.dao.impl.LogDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="departmentDao" class="com.echo.dao.impl.DepartmentDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<!--
+		<bean id="pcCdOrgTDAO" class="com.echo.dto.PcCdOrgTDAO"> <property
+		name="sessionFactory"> <ref bean="sessionFactory" /> </property>
+		</bean> <bean id="pcCdPositionTDAO"
+		class="com.echo.dto.PcCdPositionTDAO"> <property
+		name="sessionFactory"> <ref bean="sessionFactory" /> </property>
+		</bean>
+	-->
+	<bean id="functionMenuDao" class="com.echo.dao.impl.FunctionMenuDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="pageDao" class="com.echo.dao.impl.PageDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+
+	<bean id="waterSoWellDao" class="com.echo.dao.impl.WaterSoWellDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+
+	<bean id="boilerBasicDao" class="com.echo.dao.impl.BoilerBasicDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="branchingBasicDao" class="com.echo.dao.impl.BranchingBasicDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="manifoldBasicDao" class="com.echo.dao.impl.ManifoldBasicDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="observationDao" class="com.echo.dao.impl.ObservationDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="combinationDao" class="com.echo.dao.impl.CombinationDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="stationTDao" class="com.echo.dao.impl.StationTDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="gasstationDao" class="com.echo.dao.impl.GasstationDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="oilDriDao" class="com.echo.dao.impl.OilDrillingDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="areaInfoDao" class="com.echo.dao.impl.AreaInfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="thinOilWellRDDao" class="com.echo.dao.impl.ThinOilWellRDDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="portalDao" class="com.echo.dao.impl.PortalDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="boilerCrosslRDDao" class="com.echo.dao.impl.BoilerCrossRDDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="boilerSuperheatRDDao" class="com.echo.dao.impl.BoilerSuperheatRDDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="srglRDDao" class="com.echo.dao.impl.SRGLRDDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="yCWellRDDao" class="com.echo.dao.impl.YCWellRDDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="waterFLRDDao" class="com.echo.dao.impl.WaterFLRDDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="waterSWRDDao" class="com.echo.dao.impl.WaterSWRDDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="boilerlineDao" class="com.echo.dao.impl.BoilerlineDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="orgDao" class="com.echo.dao.impl.OrgDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+
+	<bean id="stationRDDao" class="com.echo.dao.impl.StationRDDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="stationRPDDao" class="com.echo.dao.impl.StationRPDDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="comboBoxDao" class="com.echo.dao.impl.ComboBoxDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="reportMessageDao" class="com.echo.dao.impl.ReportMessageDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="yYCLJYRPDDao" class="com.echo.dao.impl.YYCLJYRPDDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="cCSCLDao" class="com.echo.dao.impl.CCSCLDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="sCLJYDao" class="com.echo.dao.impl.SCLJYDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="publicDao" class="com.echo.dao.impl.PublicDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="xYWSCLDao" class="com.echo.dao.impl.XYWSCLDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="u2szjcDao" class="com.echo.dao.impl.U2szjcDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+
+
+
+	<bean id="mbzhrbDao" class="com.echo.dao.impl.MBZHRBDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="u1czyDao" class="com.echo.dao.impl.U1CZYDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="u1fxjlDao" class="com.echo.dao.impl.U1FXJLDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="u1s2gyDao" class="com.echo.dao.impl.U1s2gyDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+
+	<bean id="commonDao" class="com.echo.dao.impl.CommonDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="ipghdbDao" class="com.echo.dao.impl.IpghdbDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="subcoolDao" class="com.echo.dao.impl.SubcoolDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="u1sclcsDao" class="com.echo.dao.impl.U1SCLCSDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+
+	<bean id="bjfzDao" class="com.echo.dao.impl.BjfzDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+
+	<bean id="boilerRoomGasMonitoringDataDao" class="com.echo.dao.impl.BoilerRoomGasMonitoringDataDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+
+
+
+	<!-- service 注入 -->
+
+	<bean id="manifoldRDAService" class="com.echo.service.impl.ManifoldRDAServiceImpl">
+		<property name="manifoldRDADao" ref="manifoldRDADao"></property>
+	</bean>
+
+
+	<bean id="sagdService" class="com.echo.service.impl.SagdServiceImpl">
+		<property name="sagdDao" ref="sagdDao"></property>
+	</bean>
+	<bean id="ruleWellService" class="com.echo.service.impl.RuleWellServiceImpl">
+		<property name="ruleWellDao" ref="ruleWellDao"></property>
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="thinOilWellService" class="com.echo.service.impl.ThinOilWellServiceImpl">
+		<property name="thinOilWellDao" ref="thinOilWellDao"></property>
+	</bean>
+
+	<bean id="gasWellService" class="com.echo.service.impl.GasWellServiceImpl">
+		<property name="gasWellDao" ref="gasWellDao"></property>
+	</bean>
+	<bean id="waterInjectionService" class="com.echo.service.impl.WaterInjectionServiceImpl">
+		<property name="waterInjectionDao" ref="waterInjectionDao"></property>
+	</bean>
+	<bean id="waterFloodingService" class="com.echo.service.impl.WaterFloodingServiceImpl">
+		<property name="waterFloodingDao" ref="waterFloodingDao"></property>
+	</bean>
+
+	<bean id="producedRDService" class="com.echo.service.impl.ProducedRDServiceImpl">
+		<property name="producedRDDao" ref="producedRDDao"></property>
+	</bean>
+	<bean id="gasWellRDService" class="com.echo.service.impl.GasWellRDServiceImpl">
+		<property name="gasWellRDDao" ref="gasWellRDDao"></property>
+	</bean>
+	<bean id="userService" class="com.echo.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao"></property>
+		<property name="pageDao" ref="pageDao"></property>
+		<property name="commonDao" ref="commonDao"></property>
+
+	</bean>
+
+	<bean id="roleService" class="com.echo.service.impl.RoleServiceImpl">
+		<property name="roleDao" ref="roleDao"></property>
+		<property name="rightDao" ref="rightDao"></property>
+	</bean>
+
+	<bean id="logService" class="com.echo.service.impl.LogServiceImpl">
+		<property name="logDao" ref="logDao"></property>
+		<property name="pageDao" ref="pageDao"></property>
+	</bean>
+	<bean id="systemTreeService" class="com.echo.service.impl.SystemTreeServiceImpl">
+		<property name="functionMenuDao" ref="functionMenuDao"></property>
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+
+
+
+	<bean id="waterSoWellService" class="com.echo.service.impl.WaterSoWellServiceImpl">
+		<property name="waterSoWellDao" ref="waterSoWellDao"></property>
+	</bean>
+
+
+	<bean id="boilerBasicService" class="com.echo.service.impl.BoilerBasicServiceImpl">
+		<property name="boilerBasicDao" ref="boilerBasicDao"></property>
+		<property name="pageDao" ref="pageDao"></property>
+	</bean>
+	<bean id="branchingBasicService" class="com.echo.service.impl.BranchingBasicServiceImpl">
+		<property name="branchingBasicDao" ref="branchingBasicDao"></property>
+		<property name="pageDao" ref="pageDao"></property>
+	</bean>
+	<bean id="manifoldBasicService" class="com.echo.service.impl.ManifoldBasicServiceImpl">
+		<property name="manifoldBasicDao" ref="manifoldBasicDao"></property>
+		<property name="pageDao" ref="pageDao"></property>
+	</bean>
+
+
+	<bean id="authorityUtil" class="com.echo.util.AuthorityUtil">
+		<property name="functionMenuDao" ref="functionMenuDao"></property>
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+
+	<bean id="observationService" class="com.echo.service.impl.ObservationServiceImpl">
+		<property name="observationDao" ref="observationDao"></property>
+	</bean>
+	<bean id="combinationService" class="com.echo.service.impl.CombinationServiceImpl">
+		<property name="combinationDao" ref="combinationDao"></property>
+		<property name="pageDao" ref="pageDao"></property>
+	</bean>
+
+	<bean id="departmentService" class="com.echo.service.impl.DepartmentServiceImpl">
+		<property name="departmentDao" ref="departmentDao"></property>
+		<property name="pageDao" ref="pageDao"></property>
+	</bean>
+	<bean id="teamService" class="com.echo.service.impl.TeamServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+		<property name="pageDao" ref="pageDao"></property>
+	</bean>
+	<bean id="stationTService" class="com.echo.service.impl.StationTServiceImpl">
+		<property name="stationTDao" ref="stationTDao"></property>
+		<property name="pageDao" ref="pageDao"></property>
+	</bean>
+	<bean id="gasstationService" class="com.echo.service.impl.GasstationServiceImpl">
+		<property name="gasstationDao" ref="gasstationDao"></property>
+		<property name="pageDao" ref="pageDao"></property>
+	</bean>
+	<bean id="oilDriService" class="com.echo.service.impl.OilDrillingServiceImpl">
+		<property name="oilDriDao" ref="oilDriDao"></property>
+		<property name="pageDao" ref="pageDao"></property>
+	</bean>
+	<bean id="areaInfoService" class="com.echo.service.impl.AreaInfoServiceImpl">
+		<property name="areaInfoDao" ref="areaInfoDao"></property>
+		<property name="pageDao" ref="pageDao"></property>
+	</bean>
+
+
+	<bean id="commonService" class="com.echo.service.impl.CommonServiceImpl">
+		<property name="stationTDao" ref="stationTDao"></property>
+		<property name="functionMenuDao" ref="functionMenuDao"></property>
+
+	</bean>
+	<bean id="thinOilWellRDService" class="com.echo.service.impl.ThinOilWellRDServiceImpl">
+		<property name="thinOilWellRDDao" ref="thinOilWellRDDao"></property>
+	</bean>
+	<bean id="boilerCrosslRDService" class="com.echo.service.impl.BoilerCrosslRDServiceImpl">
+		<property name="boilerCrosslRDDao" ref="boilerCrosslRDDao"></property>
+	</bean>
+	<bean id="boilerSuperheatRDService" class="com.echo.service.impl.BoilerSuperheatRDServiceImpl">
+		<property name="boilerSuperheatRDDao" ref="boilerSuperheatRDDao"></property>
+	</bean>
+	<bean id="srglRDService" class="com.echo.service.impl.SRGLRDServiceImpl">
+		<property name="srglRDDao" ref="srglRDDao"></property>
+	</bean>
+	<bean id="ggdglRDService" class="com.echo.service.impl.GGDGLRDServiceImpl">
+		<property name="srglRDDao" ref="srglRDDao"></property>
+	</bean>
+	<bean id="portalService" class="com.echo.service.impl.PortalServiceImpl">
+		<property name="portalDao" ref="portalDao"></property>
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="yCRDService" class="com.echo.service.impl.YCWellRDServiceImpl">
+		<property name="yCWellRDDao" ref="yCWellRDDao"></property>
+	</bean>
+	<bean id="waterFLRDService" class="com.echo.service.impl.WaterFLRDServiceImpl">
+		<property name="waterFLRDDao" ref="waterFLRDDao"></property>
+	</bean>
+	<bean id="waterSWRDService" class="com.echo.service.impl.WaterSWRDServiceImpl">
+		<property name="waterSWRDDao" ref="waterSWRDDao"></property>
+	</bean>
+	<bean id="instruMentationService" class="com.echo.service.impl.InstruMentationServiceImpl">
+		<property name="instruMentationDao" ref="instruMentationDao"></property>
+		<property name="pageDao" ref="pageDao"></property>
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="controllerService" class="com.echo.service.impl.ControllerServiceImpl">
+		<property name="controllerDao" ref="controllerDao"></property>
+		<property name="instruMentationDao" ref="instruMentationDao"></property>
+		<property name="pageDao" ref="pageDao"></property>
+
+	</bean>
+
+	<bean id="boilerlineService" class="com.echo.service.impl.BoilerlineServiceImpl">
+		<property name="boilerlineDao" ref="boilerlineDao"></property>
+		<property name="pageDao" ref="pageDao"></property>
+	</bean>
+
+	<bean id="orgService" class="com.echo.service.impl.OrgServiceImpl">
+		<property name="orgDao" ref="orgDao"></property>
+	</bean>
+
+	<bean id="stationRDService" class="com.echo.service.impl.StationRDServiceImpl">
+		<property name="stationRDDao" ref="stationRDDao"></property>
+
+	</bean>
+	<bean id="stationRPDService" class="com.echo.service.impl.StationRPDServiceImpl">
+		<property name="stationRPDDao" ref="stationRPDDao"></property>
+
+	</bean>
+	<bean id="comboBoxService" class="com.echo.service.impl.ComboBoxServiceImpl">
+		<property name="comboBoxDao" ref="comboBoxDao"></property>
+	</bean>
+
+	<bean id="lineMeasureService" class="com.echo.service.impl.LineMeasureServiceImpl">
+		<property name="lineMeasureDao" ref="lineMeasureDao"></property>
+	</bean>
+	<bean id="zhuWaterPumpService" class="com.echo.service.impl.ZhuWaterPumpServiceImpl">
+		<property name="zhuWaterPumpDao" ref="zhuWaterPumpDao"></property>
+	</bean>
+	<bean id="reactorService" class="com.echo.service.impl.ReactorServiceImpl">
+		<property name="reactorDao" ref="reactorDao"></property>
+	</bean>
+	<bean id="reportMessageService" class="com.echo.service.impl.ReportMessageServiceImpl">
+		<property name="reportMessageDao" ref="reportMessageDao"></property>
+		<property name="publicDao" ref="publicDao"></property>
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+
+
+	<bean id="yYCLJYRPDService" class="com.echo.service.impl.YYCLJYRPDServiceImpl">
+		<property name="yYCLJYRPDDao" ref="yYCLJYRPDDao"></property>
+	</bean>
+
+	<bean id="cCSCLService" class="com.echo.service.impl.CCSCLServiceImpl">
+		<property name="cCSCLDao" ref="cCSCLDao"></property>
+	</bean>
+
+	<bean id="scljyService" class="com.echo.service.impl.SCLJYServiceImpl">
+		<property name="sCLJYDao" ref="sCLJYDao"></property>
+	</bean>
+
+	<bean id="zhrbrpdService" class="com.echo.service.impl.ZHRBRPDServiceImpl">
+		<property name="publicDao" ref="publicDao"></property>
+	</bean>
+
+	<bean id="xYWSCLService" class="com.echo.service.impl.XYWSCLServiceImpl">
+		<property name="xYWSCLDao" ref="xYWSCLDao"></property>
+	</bean>
+
+	<bean id="crudeOilService" class="com.echo.service.impl.CrudeOilServiceImpl">
+		<property name="crudeOilDao" ref="crudeOilDao"></property>
+	</bean>
+
+	<bean id="u2szjcService" class="com.echo.service.impl.U2szjcServiceImpl">
+		<property name="u2szjcDao" ref="u2szjcDao"></property>
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+
+	<bean id="mbzhrbrpdService" class="com.echo.service.impl.MBZHRBRPDServiceImpl">
+		<property name="mbzhrbDao" ref="mbzhrbDao"></property>
+	</bean>
+	<bean id="u1szjcService" class="com.echo.service.impl.U1szjcServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+
+	<bean id="u1s1gyService" class="com.echo.service.impl.U1s1gyServiceImpl">
+		<property name="u1s1gyDao" ref="u1s1gyDao"></property>
+	</bean>
+
+	<bean id="u1czyService" class="com.echo.service.impl.U1CZYServiceImpl">
+		<property name="u1czyDao" ref="u1czyDao"></property>
+	</bean>
+	<bean id="u1fxjlService" class="com.echo.service.impl.U1FXJLServiceImpl">
+		<property name="u1fxjlDao" ref="u1fxjlDao"></property>
+	</bean>
+	<bean id="u1s2gyService" class="com.echo.service.impl.U1s2gyServiceImpl">
+		<property name="u1s2gyDao" ref="u1s2gyDao"></property>
+	</bean>
+	<bean id="xyyyclService" class="com.echo.service.impl.XyyyclServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="xyyqdtService" class="com.echo.service.impl.XyyqdtServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="xysqdtService" class="com.echo.service.impl.XysqdtServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+
+	<bean id="u1yqdtService" class="com.echo.service.impl.U1yqdtServiceImpl">
+		<property name="u1yqdtDao" ref="u1yqdtDao"></property>
+	</bean>
+	<bean id="u2fxjldtService" class="com.echo.service.impl.U2fxjldtServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="u2sqdtService" class="com.echo.service.impl.U2sqdtServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="u2yqdtService" class="com.echo.service.impl.U2yqdtServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="u1mbdtService" class="com.echo.service.impl.U1mbdtServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+
+	<bean id="ipUsedService" class="com.echo.service.impl.IPUsedServiceImpl">
+		<property name="ipUsedDao" ref="ipUsedDao"></property>
+	</bean>
+	<bean id="ipghdbService" class="com.echo.service.impl.IpghdbServiceImpl">
+		<property name="ipghdbDao" ref="ipghdbDao"></property>
+		<property name="pageDao" ref="pageDao"></property>
+	</bean>
+	<bean id="gaswellrpdservice" class="com.echo.service.impl.GasWellRPDServiceImpl">
+		<property name="gaswellrpddao" ref="gaswellrpddao"></property>
+	</bean>
+	<bean id="floodingRPDService" class="com.echo.service.impl.FloodingRPDServiceImpl">
+		<property name="floodingRPDDao" ref="floodingRPDDao"></property>
+		<property name="pageDao" ref="pageDao"></property>
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+
+	<bean id="u1ZHRBService" class="com.echo.service.impl.U1ZHRBServiceImpl">
+		<property name="u1ZHRBDao" ref="u1ZHRBDao"></property>
+	</bean>
+
+	<bean id="searchQueryAllService" class="com.echo.service.impl.SearchQueryAllServiceImpl">
+		<property name="searchQueryAllDao" ref="searchQueryAllDao"></property>
+	</bean>
+
+	<bean id="thinWellRPDWHService" class="com.echo.service.impl.ThinWellRPDWHServiceImpl">
+		<property name="thinWellRPDWHDao" ref="thinWellRPDWHDao"></property>
+		<property name="pageDao" ref="pageDao"></property>
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+
+	<bean id="excelService" class="com.echo.service.impl.ExcelServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="cCZRSHService" class="com.echo.service.impl.CCZRSHServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="gasDailyWHService" class="com.echo.service.impl.GasDailyWHServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+		<property name="gasDailyWHDao" ref="gasDailyWHDao"></property>
+		<property name="pageDao" ref="pageDao"></property>
+	</bean>
+
+	<bean id="closeWellService" class="com.echo.service.impl.CloseWellServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="zpglService" class="com.echo.service.impl.ZpglServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="rxqlwhService" class="com.echo.service.impl.RxqlwhServiceImpl">
+		<property name="rxqlwhDao" ref="rxqlwhDao"></property>
+		<property name="commonDao" ref="commonDao"></property>
+		<property name="pageDao" ref="pageDao"></property>
+	</bean>
+	<bean id="measuresService" class="com.echo.service.impl.MeasuresServiceImpl">
+		<property name="measuresDao" ref="measuresDao"></property>
+		<property name="commonDao" ref="commonDao"></property>
+		<property name="pageDao" ref="pageDao"></property>
+	</bean>
+	<bean id="syjyxrbService" class="com.echo.service.impl.SyjyxrbServiceImpl">
+		<property name="syjyxrbDao" ref="syjyxrbDao"></property>
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="cyqyxrbService" class="com.echo.service.impl.CyqyxrbServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+
+	<bean id="tytyxrbService" class="com.echo.service.impl.TytyxrbServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="jzsclrbService" class="com.echo.service.impl.JzsclrbServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="rhqyxrbService" class="com.echo.service.impl.RhqyxrbServiceImpl">
+		<property name="syjyxrbDao" ref="syjyxrbDao"></property>
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="t2sclrbService" class="com.echo.service.impl.T2sclrbServiceImpl">
+		<property name="t2sclrbDao" ref="t2sclrbDao"></property>
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="shysclRBService" class="com.echo.service.impl.SHYSCLRBServiceImpl">
+		<property name="shysclrbDao" ref="shysclrbDao"></property>
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="jzsclRDService" class="com.echo.service.impl.JzsclRDServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="gwghjcxxService" class="com.echo.service.impl.GwghjcxxServiceImpl">
+		<property name="gwghjcxxDao" ref="gwghjcxxDao"></property>
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="fcjcxxService" class="com.echo.service.impl.FcjcxxServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="zkxtxxService" class="com.echo.service.impl.ZkxtxxServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="gqlhzzhService" class="com.echo.service.impl.GQLHZZHServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="jzcjdxxService" class="com.echo.service.impl.JzcjdxxServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="zkcjdService" class="com.echo.service.impl.ZkcjdServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+	<bean id="sjtdjctjbService" class="com.echo.service.impl.SjtdjctjbServiceImpl">
+		<property name="commonDao" ref="commonDao"></property>
+	</bean>
+
+	<bean id="subcoolService" class="com.echo.service.impl.SubcoolServiceImpl">
+		<property name="subcoolDao" ref="subcoolDao"></property>
+	</bean>
+	<bean id="u1sclcsService" class="com.echo.service.impl.U1SCLCSServiceImpl">
+		<property name="u1sclcsDao" ref="u1sclcsDao"></property>
+	</bean>
+
+	<!-- 报警辅助分析配置 -->
+	<bean id="bjfzService" class="com.echo.service.impl.BjfzServiceImpl">
+		<property name="bjfzDao" ref="bjfzDao"></property>
+	</bean>
+	
+    <bean id="boilerRoomGasMonitoringService" class="com.echo.service.impl.BoilerRoomGasMonitoringServiceImpl">
+		<property name="boilerRoomGasMonitoringDataDao" ref="boilerRoomGasMonitoringDataDao"></property>
+	</bean>
+
+
+</beans>

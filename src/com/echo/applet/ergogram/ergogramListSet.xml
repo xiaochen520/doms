@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!-- 功图列表配置界面 -->
+<frame>
+	<baseTable>DBAT2073</baseTable>
+	<title> 功图查询 </title>
+	<tool>
+		<conditions>
+			<condition name="pageType" type="radio">
+				<option value="1">数据列表</option>
+				<option value="2">地面功图</option>
+				<option value="3">泵功图</option>
+			</condition>
+			<condition name="factory" type="hide" field="" mode="=">采油厂</condition>
+			<condition name="workBlock" type="hide" field="" mode="=">工区</condition>
+			<!--conditionCascade目前只支持下拉选择模式 -->
+			<conditionCascade>
+				<condition>
+					<modes name="selectType" onchange="" desc="选择查询方式">
+						<mode name="object" type="select" field="" objectTable="" valueField="" descField="" allowAll="" allValue="" onchange="">计量站</mode>
+						<!-- 如果需要增加选择项，请参照上一行处理；如果只有一行，将按普通的列表选项处理 -->
+					</modes>
+				</condition>
+				<subCondition>
+					<condition name="well" type="select" field="" objectTable="" valueField="" descField="" allowAll="" allValue="">井号</condition>
+				</subCondition>
+			</conditionCascade>
+			<condition name="chxNew" type="checkBox" onchange="">最新记录</condition>
+			<condition name="time" type="text" field="" dataType="time" mode="between" init1="-1" init2="0">时间</condition>
+		</conditions>
+		<buttons>
+			<button name="" onclick="">查询</button>
+			<button name="" onclick="">对比</button>
+			<button name="" onclick="">曲线</button>
+			<button name="" onclick="">导出</button>
+		</buttons>
+	</tool>
+	<table>
+		<rowFix>true</rowFix>
+		<colFix>true</colFix>
+		<oddRowBGColor enable="true">#123456</oddRowBGColor>
+		<cols>
+			<col dataType="" isPk="" isFix="" align="" size="" enableChart=""></col>
+			<col dataType="" isPk="" isFix="" align="" size="" enableChart=""></col>
+		</cols>
+	</table>
+</frame>

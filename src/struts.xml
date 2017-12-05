@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- <package name="logining" extends="struts-default"> --> 
+	<!--	<interceptors> --> 
+	<!--		定义session超时一个拦截器-->
+	<!--		<interceptor name="sessionout" class="com.echo.filter.SessionInterceptor"> --> 
+	<!--		</interceptor> --> 
+	<!--		<interceptor-stack name="myStack"> --> 
+	<!--		<interceptor-ref name="sessionout" /> --> 
+	<!--		</interceptor-stack> --> 
+	<!--</interceptors>-->
+	<!-- </package> -->
+	<!-- 开启使用开发模式，详细错误提示 --> 
+	<!-- Tomcat 不能放入有空格路径
+	<constant name="struts.devMode" value="true"></constant> -->
+		<!-- 指定际化资源文件baseNameglobalMessages --> 
+	<constant name="struts.custom.i18n.resources" value="globalMessages"/>
+	<!-- 设置该应用使用解码集 --> <constant name="struts.i18n.encoding" value="UTF-8"/>
+	<constant name="struts.multipart.maxSize" value="209715200"></constant>
+	<!-- 指定Struts 2默认的ObjectFactory Bean，该属性默认值是spring -->
+	<constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory"/>
+	
+	<package name="struts-abstract" extends="struts-default">
+		<global-results>
+			<result name="success" type="dispatcher">/pages/well/mian.html</result>
+			<result name="fail" type="dispatcher">/registerFail.jsp</result>
+			<result name="excel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</global-results>
+	</package>
+	
+
+	<!--<include file="config/struts-*.xml"></include>
+	-->
+	<include file="config/struts-system.xml"></include>
+	<include file="config/struts-dynamic.xml"></include>
+	<include file="config/struts-basicinfo.xml"></include>
+	<include file="config/struts-dynamicdata.xml"></include>
+	<include file="config/struts-classreport.xml"></include>
+	<include file="config/struts-dayreport.xml"></include>
+	<include file="config/struts-combination.xml"></include>
+	<include file="config/struts-subcool.xml"></include>
+	<include file="config/struts-dmsalarm.xml"></include> 
+		
+</struts>    
